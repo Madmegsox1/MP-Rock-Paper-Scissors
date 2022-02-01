@@ -1,7 +1,7 @@
 package org.madmeg.engine;
 
 
-import org.madmeg.engine.render.Color;
+import org.madmeg.engine.render.elements.Color;
 
 public final class Profile {
 

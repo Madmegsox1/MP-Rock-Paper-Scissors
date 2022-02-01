@@ -1,4 +1,4 @@
-package org.madmeg.engine.render;
+package org.madmeg.engine.render.elements;
 
 public class Color
 {
@@ -47,5 +47,24 @@ public class Color
         this.b = b;
         this.a = a;
     }
+
+
+    public static float[] convertColorToFloat(final Color c){
+        final float[] colors = new float[3];
+        colors[0] = c.r/255f;
+        colors[1] = c.g/255f;
+        colors[2] = c.b/255f;
+        return colors;
+    }
+
+    public static float[] convertColorToFloatAlpha(final Color c){
+        final float[] colors = new float[4];
+        colors[0] = c.r/255f;
+        colors[1] = c.g/255f;
+        colors[2] = c.b/255f;
+        colors[3] = c.a/255f;
+        return colors;
+    }
+
 
 }

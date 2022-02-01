@@ -1,25 +1,16 @@
 package org.madmeg.engine.render;
 
-import static org.lwjgl.glfw.GLFW.GLFW_FALSE;
-import static org.lwjgl.glfw.GLFW.GLFW_RESIZABLE;
-import static org.lwjgl.glfw.GLFW.GLFW_TRUE;
-import static org.lwjgl.glfw.GLFW.GLFW_VISIBLE;
-import static org.lwjgl.glfw.GLFW.glfwCreateWindow;
-import static org.lwjgl.glfw.GLFW.glfwInit;
-import static org.lwjgl.glfw.GLFW.glfwMakeContextCurrent;
-import static org.lwjgl.glfw.GLFW.glfwSetErrorCallback;
-import static org.lwjgl.glfw.GLFW.glfwSetWindowAspectRatio;
-import static org.lwjgl.glfw.GLFW.glfwSetWindowTitle;
-import static org.lwjgl.glfw.GLFW.glfwShowWindow;
-import static org.lwjgl.glfw.GLFW.glfwSwapInterval;
-import static org.lwjgl.glfw.GLFW.glfwWindowHint;
+import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWFramebufferSizeCallback;
 import org.lwjgl.opengl.GL11;
+import org.madmeg.engine.Engine;
 import org.madmeg.engine.Profile;
+import org.madmeg.event.events.KeyEvent;
+import org.madmeg.event.events.MouseClickEvent;
 
 public final class Display {
     private final String title;
@@ -58,6 +49,9 @@ public final class Display {
         {
             throw new RuntimeException("Failed to create the GLFW window");
         }
+
+        glfwSetMouseButtonCallback(window, ((window1, button, action, mods) -> Engine.getEventProcessor().postEvent(new MouseClickEvent(button, action, window))));
+        glfwSetKeyCallback(window, ((window1, key, scancode, action, mods) -> Engine.getEventProcessor().postEvent(new KeyEvent(key, action, window))));
 
         // final GLFWVidMode vidmode =
         // glfwGetVideoMode(glfwGetPrimaryMonitor());

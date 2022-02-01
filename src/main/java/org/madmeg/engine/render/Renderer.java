@@ -1,7 +1,6 @@
 package org.madmeg.engine.render;
 
-import static org.lwjgl.glfw.GLFW.glfwPollEvents;
-import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;
+import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.glClear;
@@ -12,7 +11,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 import org.madmeg.engine.Profile;
-
+import org.madmeg.engine.render.elements.Color;
 
 
 public final class Renderer {
@@ -21,12 +20,15 @@ public final class Renderer {
     private int fbo;
     private int rbo;
 
-    public Renderer()
+    private Display display;
+
+    public Renderer(Display display)
     {
         this.backgroundColor = new Color(Profile.Display.BACKGROUND_COLOR[0],
                 Profile.Display.BACKGROUND_COLOR[1],
                 Profile.Display.BACKGROUND_COLOR[2],
                 Profile.Display.BACKGROUND_COLOR[3]);
+        this.display = display;
     }
 
     public void init()
@@ -112,5 +114,9 @@ public final class Renderer {
         this.backgroundColor.g = color.g / 255;
         this.backgroundColor.b = color.b / 255;
         this.backgroundColor.a = color.a / 255;
+    }
+
+    public boolean shouldClose(){
+        return glfwWindowShouldClose(display.getWindow());
     }
 }
