@@ -1,6 +1,6 @@
 package org.madmeg.engine.render.elements;
 
-public class Color
+public final class Color
 {
 
     public float r;
