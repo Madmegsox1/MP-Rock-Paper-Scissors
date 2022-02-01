@@ -4,11 +4,10 @@ import org.madmeg.engine.Engine;
 import org.madmeg.engine.render.Display;
 import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.Renderer;
-import org.madmeg.engine.render.elements.Color;
-import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
 import org.madmeg.event.processor.CommitEvent;
+
 
 /**
  * @author Madmegsox1
@@ -19,6 +18,7 @@ import org.madmeg.event.processor.CommitEvent;
  */
 
 public final class Core extends Engine {
+
 
     @Override
     public void run(){
@@ -34,7 +34,9 @@ public final class Core extends Engine {
 
     @CommitEvent
     public void render(RenderEvent event){
-        RenderEngine.drawQuad(new Vector2(100, 100), 100, 100, new Color(0, 100, 0));
+
+
+
     }
 
     @CommitEvent
