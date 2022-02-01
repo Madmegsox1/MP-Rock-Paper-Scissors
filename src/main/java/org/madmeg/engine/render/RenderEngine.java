@@ -2,6 +2,7 @@ package org.madmeg.engine.render;
 
 import org.madmeg.engine.Engine;
 import org.madmeg.engine.render.elements.Color;
+import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.event.events.RenderEvent;
 
@@ -58,5 +59,25 @@ public final class RenderEngine {
         glVertex2f(vector.x + width ,vector.y);
 
         glEnd();
+    }
+
+    public static void drawQuadTexture(final Vector2 vector2, final float width, final float height, final Texture texture){
+        texture.bind();
+        glBegin(GL_QUADS);
+
+        glTexCoord2f(0, 0);
+        glVertex2f(vector2.x, vector2.y);
+
+        glTexCoord2f(1, 0);
+        glVertex2f(vector2.x + width ,vector2.y);
+
+        glTexCoord2f(1, 1);
+        glVertex2f(vector2.x + width, vector2.y + height);
+
+        glTexCoord2f(0, 1);
+        glVertex2f(vector2.x, vector2.y + height);
+
+        glEnd();
+        texture.disable();
     }
 }

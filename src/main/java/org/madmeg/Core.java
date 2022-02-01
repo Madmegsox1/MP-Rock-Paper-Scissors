@@ -4,6 +4,8 @@ import org.madmeg.engine.Engine;
 import org.madmeg.engine.render.Display;
 import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.Renderer;
+import org.madmeg.engine.render.elements.Texture;
+import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
 import org.madmeg.event.processor.CommitEvent;
@@ -19,7 +21,7 @@ import org.madmeg.event.processor.CommitEvent;
 
 public final class Core extends Engine {
 
-
+    public Texture texture;
     @Override
     public void run(){
         eventProcessor.addEventListener(this);
@@ -27,6 +29,7 @@ public final class Core extends Engine {
         display.init();
         renderer = new Renderer(display);
         renderer.init();
+        texture = new Texture("transparent");
         renderEngine = new RenderEngine();
         renderEngine.render(renderer, display);
     }
@@ -35,7 +38,7 @@ public final class Core extends Engine {
     @CommitEvent
     public void render(RenderEvent event){
 
-
+        RenderEngine.drawQuadTexture(new Vector2(100, 100), 100, 400, texture);
 
     }
 
