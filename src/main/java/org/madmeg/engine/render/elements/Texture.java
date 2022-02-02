@@ -2,6 +2,7 @@ package org.madmeg.engine.render.elements;
 
 import org.lwjgl.opengl.GL11;
 
+import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,9 +29,17 @@ public final class Texture {
         }
     }
 
+    public Texture(int w, int h, ByteBuffer buffer){
+        loadTexture(w, h, buffer);
+    }
+
     private void loadTexture(final String textureName) {
         this.texture = TextureLoader.readTexture(textureName);
         loadedTextures.put(this.texture, textureName);
+    }
+
+    private void loadTexture(int w, int h, ByteBuffer buffer){
+        this.texture = TextureLoader.readTexture(w, h, buffer);
     }
 
     public int getTexture() {

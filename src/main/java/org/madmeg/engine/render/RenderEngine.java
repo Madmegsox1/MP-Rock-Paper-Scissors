@@ -80,4 +80,25 @@ public final class RenderEngine {
         glEnd();
         texture.disable();
     }
+
+
+    public static void drawQuadTexture(final Vector2 vector2, final float width, final float height, final float tx, final float ty, final float tw, final float th,final Texture texture){
+        texture.bind();
+        glBegin(GL_QUADS);
+
+        glTexCoord2f(tx, ty);
+        glVertex2f(vector2.x, vector2.y);
+
+        glTexCoord2f(tx + tw, ty);
+        glVertex2f(vector2.x + width ,vector2.y);
+
+        glTexCoord2f(tx + tw, ty + th);
+        glVertex2f(vector2.x + width, vector2.y + height);
+
+        glTexCoord2f(tx, ty + th);
+        glVertex2f(vector2.x, vector2.y + height);
+
+        glEnd();
+        texture.disable();
+    }
 }
