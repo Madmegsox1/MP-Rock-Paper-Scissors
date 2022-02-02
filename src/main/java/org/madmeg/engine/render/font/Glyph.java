@@ -1,4 +1,4 @@
-package org.madmeg.engine.render.elements.font;
+package org.madmeg.engine.render.font;
 
 public class Glyph {
 

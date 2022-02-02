@@ -3,6 +3,7 @@ package org.madmeg.engine;
 import org.madmeg.engine.render.Display;
 import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.Renderer;
+import org.madmeg.engine.render.font.FontRenderer;
 import org.madmeg.event.processor.EventProcessor;
 
 public abstract class Engine extends Thread {
@@ -11,6 +12,7 @@ public abstract class Engine extends Thread {
     protected static Display display;
     protected static Renderer renderer;
     protected static RenderEngine renderEngine;
+    protected static FontRenderer fontRenderer;
 
 
     public Engine(){
@@ -32,5 +34,9 @@ public abstract class Engine extends Thread {
 
     public static RenderEngine getRenderEngine() {
         return renderEngine;
+    }
+
+    public static FontRenderer getFontRenderer() {
+        return fontRenderer;
     }
 }

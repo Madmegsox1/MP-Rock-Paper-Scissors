@@ -6,12 +6,11 @@ import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.Renderer;
 import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.elements.Vector2;
-import org.madmeg.engine.render.elements.font.Font;
+import org.madmeg.engine.render.font.Font;
+import org.madmeg.engine.render.font.FontRenderer;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
 import org.madmeg.event.processor.CommitEvent;
-
-import static java.awt.Font.MONOSPACED;
 
 
 /**
@@ -26,7 +25,6 @@ public final class Core extends Engine {
 
     public Texture texture;
 
-    Font f;
 
     @Override
     public void run(){
@@ -36,7 +34,11 @@ public final class Core extends Engine {
         renderer = new Renderer(display);
         renderer.init();
         texture = new Texture("transparent");
-        f = new Font(new java.awt.Font("times new roman", java.awt.Font.PLAIN, 100), true);
+        fontRenderer = new FontRenderer(
+                new Font(new java.awt.Font("times new roman", java.awt.Font.PLAIN, 30), true),
+                new Font(new java.awt.Font("comic sans ms", java.awt.Font.PLAIN, 30), true),
+                new Font()
+                );
         renderEngine = new RenderEngine();
         renderEngine.render(renderer, display);
     }
@@ -47,7 +49,7 @@ public final class Core extends Engine {
 
         RenderEngine.drawQuadTexture(new Vector2(100, 100), 100, 400, texture);
 
-        f.drawText("asd", 300, 300);
+        fontRenderer.renderFont("asd", new Vector2(300, 300));
 
     }
 
