@@ -101,8 +101,11 @@ public final class PacketProcessor {
     }
 
 
-
     private void processPacket(String packet){
+        final String[] data = packet.split("\\|");
+        final String head = data[0];
+
+
 
     }
 
