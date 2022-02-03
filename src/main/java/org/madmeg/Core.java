@@ -34,11 +34,7 @@ public final class Core extends Engine {
         renderer = new Renderer(display);
         renderer.init();
         texture = new Texture("transparent");
-        fontRenderer = new FontRenderer(
-                new Font(new java.awt.Font("times new roman", java.awt.Font.PLAIN, 30), true),
-                new Font(new java.awt.Font("comic sans ms", java.awt.Font.PLAIN, 30), true),
-                new Font()
-                );
+        fontRenderer = new FontRenderer(new Font());
         renderEngine = new RenderEngine();
         renderEngine.render(renderer, display);
     }
