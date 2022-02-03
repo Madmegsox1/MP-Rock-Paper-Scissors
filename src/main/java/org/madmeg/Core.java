@@ -51,6 +51,8 @@ public final class Core extends Engine {
 
         fontRenderer.renderFont("asd", new Vector2(300, 300));
 
+
+
     }
 
     @CommitEvent

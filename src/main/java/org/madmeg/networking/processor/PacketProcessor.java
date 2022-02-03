@@ -103,6 +103,7 @@ public final class PacketProcessor {
 
     private void processPacket(String packet){
         final String[] data = packet.split("\\|");
+        if(data.length < 1)return;
         final String head = data[0];
 
 

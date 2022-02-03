@@ -1,8 +1,6 @@
 package org.madmeg.engine;
 
 
-import org.madmeg.engine.render.elements.Color;
-
 public final class Profile {
 
     public final static class Display
@@ -35,29 +33,5 @@ public final class Profile {
         public static final String SOUND_LOCATION = "res/sound/";
         public static final String SOUND_FILEFORMAT = "wav";
 
-    }
-
-    public final static class Colors
-    {
-
-        public static final Color WHITE = new Color(255, 255, 255, 255);
-        public static final Color BLACK = new Color(0, 0, 0, 255);
-        public static final Color RED = new Color(255, 0, 0, 255);
-        public static final Color GREEN = new Color(0, 255, 0, 255);
-        public static final Color BLUE = new Color(0, 0, 255, 255);
-
-    }
-
-    public final static class UI
-    {
-
-        public static class Text
-        {
-            public final static int LETTER_SPACING = 12;
-            public final static char[] LETTERS =
-                    // Chars for the letters in the same order as the texture
-                    { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0',
-                            '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '=', '!', ':', 32 };
-        }
     }
 }
