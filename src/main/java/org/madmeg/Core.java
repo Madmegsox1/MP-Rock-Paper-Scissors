@@ -24,6 +24,7 @@ import org.madmeg.event.processor.CommitEvent;
 public final class Core extends Engine {
 
     public Texture texture;
+    public TitleScreen titleScreen;
 
 
     @Override
@@ -35,6 +36,7 @@ public final class Core extends Engine {
         renderer.init();
         texture = new Texture("transparent");
         fontRenderer = new FontRenderer(new Font());
+        titleScreen = new TitleScreen();
         renderEngine = new RenderEngine();
         renderEngine.render(renderer, display);
     }
@@ -43,9 +45,7 @@ public final class Core extends Engine {
     @CommitEvent
     public void render(RenderEvent event){
 
-        RenderEngine.drawQuadTexture(new Vector2(100, 100), 100, 400, texture);
-
-        fontRenderer.renderFont("asd", new Vector2(300, 300));
+        titleScreen.render(event);
 
 
 
@@ -54,6 +54,7 @@ public final class Core extends Engine {
     @CommitEvent
     public void click(MouseClickEvent event){
         System.out.println(event.mX + " " + event.mY);
+        titleScreen.mouseClick(event);
     }
 
     public static void main(String[] args){

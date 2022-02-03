@@ -25,6 +25,7 @@ public final class Button extends Element {
         super(x, y, w, h, parent);
         this.c = c;
         this.text = text;
+        this.update = onClick;
     }
 
 
