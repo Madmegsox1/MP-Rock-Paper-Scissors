@@ -22,7 +22,7 @@ public final class Display {
         this.title = title;
     }
 
-    public void init()
+    public void init(boolean aa)
     {
         // Error callback.
         glfwSetErrorCallback(this.errorCallback = GLFWErrorCallback.createPrint(System.err));
@@ -37,6 +37,10 @@ public final class Display {
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
+        if(aa) {
+            glfwWindowHint(GLFW_SAMPLES, 4);
+        }
+
         // Window creation
         this.window = GLFW.glfwCreateWindow(Profile.Display.WIDTH, Profile.Display.HEIGHT, this.title, NULL, NULL);
 
@@ -44,6 +48,8 @@ public final class Display {
         // this.window = glfwCreateWindow(Constants.Display.WIDTH,
         // Constants.Display.HEIGHT, this.title, GLFW.glfwGetPrimaryMonitor(),
         // NULL);
+
+
 
         if (this.window == NULL)
         {

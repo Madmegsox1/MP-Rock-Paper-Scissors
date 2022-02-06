@@ -31,7 +31,7 @@ public final class Core extends Engine {
     public void run(){
         eventProcessor.addEventListener(this);
         display = new Display("Rock - Paper - Scissors 101");
-        display.init();
+        display.init(true);
         renderer = new Renderer(display);
         renderer.init();
         texture = new Texture("1");
@@ -46,9 +46,6 @@ public final class Core extends Engine {
     public void render(RenderEvent event){
         RenderEngine.drawQuadTexture(new Vector2(500, 500), 100, 100, texture);
         titleScreen.render(event);
-
-
-
 
     }
 

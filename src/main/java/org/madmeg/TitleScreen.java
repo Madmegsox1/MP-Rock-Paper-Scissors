@@ -17,13 +17,11 @@ import org.madmeg.ui.elements.Label;
 
 public class TitleScreen implements Gui {
 
-    public Font f;
 
 
     public TitleScreen(){
-        f = new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), false);
-
-        addElement(new Label(Profile.Display.WIDTH / 2 - f.getWidth("RPS CARDS") / 2, 40, this, f, "RPS CARDS"));
+        Core.getFontRenderer().addFont(new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));
+        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("RPS CARDS") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS CARDS"));
         addElement(new Button(Profile.Display.WIDTH / 2  - 20, 100,
                 60,
                 40,

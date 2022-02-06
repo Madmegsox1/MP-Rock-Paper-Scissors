@@ -4,6 +4,7 @@ import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Vector2;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Madmegsox1
@@ -14,8 +15,8 @@ public final class FontRenderer {
 
     public ArrayList<Font> fonts = new ArrayList<>();
 
-    public FontRenderer(Font f1){
-        fonts.add(f1);
+    public FontRenderer(Font... f1){
+        fonts.addAll(List.of(f1));
     }
 
 
