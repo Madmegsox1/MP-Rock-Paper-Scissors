@@ -34,7 +34,7 @@ public final class Core extends Engine {
         display.init();
         renderer = new Renderer(display);
         renderer.init();
-        texture = new Texture("transparent");
+        texture = new Texture("test");
         fontRenderer = new FontRenderer(new Font());
         titleScreen = new TitleScreen();
         renderEngine = new RenderEngine();
@@ -44,8 +44,9 @@ public final class Core extends Engine {
 
     @CommitEvent
     public void render(RenderEvent event){
-
+        RenderEngine.drawQuadTexture(new Vector2(500, 500), 100, 100, texture);
         titleScreen.render(event);
+
 
 
 
