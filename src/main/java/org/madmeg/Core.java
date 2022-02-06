@@ -11,6 +11,7 @@ import org.madmeg.engine.render.font.FontRenderer;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
 import org.madmeg.event.processor.CommitEvent;
+import org.madmeg.ui.UiManager;
 
 
 /**
@@ -24,7 +25,6 @@ import org.madmeg.event.processor.CommitEvent;
 public final class Core extends Engine {
 
     public Texture texture;
-    public TitleScreen titleScreen;
 
 
     @Override
@@ -36,7 +36,8 @@ public final class Core extends Engine {
         renderer.init();
         texture = new Texture("1");
         fontRenderer = new FontRenderer(new Font());
-        titleScreen = new TitleScreen();
+        uiManager = new UiManager();
+        uiManager.setCurrentGui(new TitleScreen());
         renderEngine = new RenderEngine();
         renderEngine.render(renderer, display);
     }
@@ -45,14 +46,14 @@ public final class Core extends Engine {
     @CommitEvent
     public void render(RenderEvent event){
         RenderEngine.drawQuadTexture(new Vector2(500, 500), 100, 100, texture);
-        titleScreen.render(event);
+        uiManager.renderCurrentGui(event);
 
     }
 
     @CommitEvent
     public void click(MouseClickEvent event){
         System.out.println(event.mX + " " + event.mY);
-        titleScreen.mouseClick(event);
+        uiManager.passEvents(event);
     }
 
     public static void main(String[] args){

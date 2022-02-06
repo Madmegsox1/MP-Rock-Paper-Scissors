@@ -5,6 +5,7 @@ import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.Renderer;
 import org.madmeg.engine.render.font.FontRenderer;
 import org.madmeg.event.processor.EventProcessor;
+import org.madmeg.ui.UiManager;
 
 public abstract class Engine extends Thread {
 
@@ -13,6 +14,7 @@ public abstract class Engine extends Thread {
     protected static Renderer renderer;
     protected static RenderEngine renderEngine;
     protected static FontRenderer fontRenderer;
+    protected static UiManager uiManager;
 
 
     public Engine(){
@@ -38,5 +40,9 @@ public abstract class Engine extends Thread {
 
     public static FontRenderer getFontRenderer() {
         return fontRenderer;
+    }
+
+    public static UiManager getUiManager() {
+        return uiManager;
     }
 }

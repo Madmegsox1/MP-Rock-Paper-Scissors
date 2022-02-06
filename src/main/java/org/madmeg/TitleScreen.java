@@ -7,6 +7,7 @@ import org.madmeg.event.events.KeyEvent;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
 import org.madmeg.ui.Gui;
+import org.madmeg.ui.elements.Background;
 import org.madmeg.ui.elements.Button;
 import org.madmeg.ui.elements.Label;
 
@@ -21,6 +22,8 @@ public class TitleScreen implements Gui {
 
     public TitleScreen(){
         Core.getFontRenderer().addFont(new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));
+
+        addElement(new Background(new Color(0,0,0), this));
         addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("RPS CARDS") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS CARDS"));
         addElement(new Button(Profile.Display.WIDTH / 2  - 20, 100,
                 60,
@@ -32,6 +35,11 @@ public class TitleScreen implements Gui {
         ));
     }
 
+
+    @Override
+    public String name() {
+        return "TitleScreen";
+    }
 
     @Override
     public void update() {

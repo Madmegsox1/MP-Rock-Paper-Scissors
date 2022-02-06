@@ -16,6 +16,8 @@ public interface Gui {
 
     ArrayList<Element> elements = new ArrayList<>();
 
+    String name();
+
     default void addElement(Element e){
         e.assignId(elements.size() + 1);
         elements.add(e);
