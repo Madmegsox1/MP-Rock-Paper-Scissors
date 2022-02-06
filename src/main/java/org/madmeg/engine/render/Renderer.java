@@ -34,6 +34,7 @@ public final class Renderer {
         GL.createCapabilities();
 
         GL11.glEnable(GL11.GL_TEXTURE_2D);
+
         GL11.glDisable(GL11.GL_DEPTH_TEST);
 
         GL11.glMatrixMode(GL11.GL_PROJECTION);

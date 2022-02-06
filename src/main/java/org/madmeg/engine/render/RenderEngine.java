@@ -1,5 +1,6 @@
 package org.madmeg.engine.render;
 
+import org.lwjgl.opengl.GL11;
 import org.madmeg.engine.Engine;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Texture;
@@ -7,6 +8,7 @@ import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.event.events.RenderEvent;
 
 import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL14.glBlendFuncSeparate;
 
 public final class RenderEngine {
     public void render(final Renderer renderer, final Display display) {
@@ -62,6 +64,8 @@ public final class RenderEngine {
     }
 
     public static void drawQuadTexture(final Vector2 vector2, final float width, final float height, final Texture texture){
+        glEnable(GL11.GL_BLEND);
+        glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE, GL_ZERO, GL_ONE);
         texture.bind();
         glBegin(GL_QUADS);
 
@@ -79,10 +83,13 @@ public final class RenderEngine {
 
         glEnd();
         texture.disable();
+        GL11.glDisable(GL_BLEND);
     }
 
 
     public static void drawQuadTexture(final Vector2 vector2, final float width, final float height, final float tx, final float ty, final float tw, final float th,final Texture texture){
+        GL11.glEnable(GL11.GL_BLEND);
+        glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE, GL_ZERO, GL_ONE);
         texture.bind();
         glBegin(GL_QUADS);
 
@@ -100,5 +107,6 @@ public final class RenderEngine {
 
         glEnd();
         texture.disable();
+       GL11.glDisable(GL_BLEND);
     }
 }

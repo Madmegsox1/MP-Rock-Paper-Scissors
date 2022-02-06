@@ -11,7 +11,7 @@ public final class Profile {
         public final static int ASPECT_RATIO_NUMERATOR = 16;
         public final static int ASPECT_RATIO_DENOMINATOR = 9;
 
-        private final static int BACKGROUND_RED = 0;
+        private final static int BACKGROUND_RED = 255;
         private final static int BACKGROUND_GREEN = 0;
         private final static int BACKGROUND_BLUE = 0;
         private final static int BACKGROUND_ALPHA = 0;
