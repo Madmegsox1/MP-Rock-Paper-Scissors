@@ -317,7 +317,7 @@ public final class Font {
     }
 
 
-    public void drawText(CharSequence text, float x, float y, Color c) {
+    public void drawText(CharSequence text, float x, float y, org.madmeg.engine.render.elements.Color c) {
         int textHeight = getHeight(text);
 
         float drawX = x;
@@ -340,7 +340,7 @@ public final class Font {
             }
             Glyph g = glyphs.get(ch);
             RenderEngine.drawQuadTexture(new Vector2(drawX, drawY), g.width, g.height,
-                    normalize(g.x, tw, 0), normalize(g.y, th, 0), normalize(g.width, tw, 0), normalize(g.height, th, 0), texture);
+                    normalize(g.x, tw, 0), normalize(g.y, th, 0), normalize(g.width, tw, 0), normalize(g.height, th, 0), texture, c);
             drawX += g.width;
         }
 
@@ -348,7 +348,7 @@ public final class Font {
 
 
     public void drawText(CharSequence text, float x, float y) {
-        drawText(text, x, y, Color.WHITE);
+        drawText(text, x, y, new org.madmeg.engine.render.elements.Color(255,255,255));
     }
 
     private float normalize(float val, float max, float min){

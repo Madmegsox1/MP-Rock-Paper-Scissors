@@ -29,7 +29,7 @@ public class TitleScreen implements Gui {
                 40,
                 this,
                 "START",
-                new Color(255,255,10),
+                new Color(0,0,0),
                 n -> System.out.println("asd")
         ));
     }

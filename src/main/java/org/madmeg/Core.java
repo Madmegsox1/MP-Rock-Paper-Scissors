@@ -34,7 +34,7 @@ public final class Core extends Engine {
         display.init();
         renderer = new Renderer(display);
         renderer.init();
-        texture = new Texture("test");
+        texture = new Texture("1");
         fontRenderer = new FontRenderer(new Font());
         titleScreen = new TitleScreen();
         renderEngine = new RenderEngine();

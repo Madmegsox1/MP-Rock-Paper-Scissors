@@ -63,10 +63,10 @@ public final class RenderEngine {
         glEnd();
     }
 
-    public static void drawQuadTexture(final Vector2 vector2, final float width, final float height, final Texture texture){
-        glEnable(GL11.GL_BLEND);
-        glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE, GL_ZERO, GL_ONE);
+    public static void drawQuadTexture(final Vector2 vector2, final float width, final float height, final Texture texture, final Color color){
         texture.bind();
+        final float[] c = Color.convertColorToFloatAlpha(color);
+        glColor4f(c[0], c[1], c[2], c[3]);
         glBegin(GL_QUADS);
 
         glTexCoord2f(0, 0);
@@ -83,14 +83,34 @@ public final class RenderEngine {
 
         glEnd();
         texture.disable();
-        GL11.glDisable(GL_BLEND);
+    }
+
+    public static void drawQuadTexture(final Vector2 vector2, final float width, final float height, final Texture texture){
+        texture.bind();
+
+        glColor4f(1, 1, 1, 1);
+        glBegin(GL_QUADS);
+
+        glTexCoord2f(0, 0);
+        glVertex2f(vector2.x, vector2.y);
+
+        glTexCoord2f(1, 0);
+        glVertex2f(vector2.x + width ,vector2.y);
+
+        glTexCoord2f(1, 1);
+        glVertex2f(vector2.x + width, vector2.y + height);
+
+        glTexCoord2f(0, 1);
+        glVertex2f(vector2.x, vector2.y + height);
+
+        glEnd();
+        texture.disable();
     }
 
 
     public static void drawQuadTexture(final Vector2 vector2, final float width, final float height, final float tx, final float ty, final float tw, final float th,final Texture texture){
-        GL11.glEnable(GL11.GL_BLEND);
-        glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE, GL_ZERO, GL_ONE);
         texture.bind();
+        glColor4f(1,1,1,1);
         glBegin(GL_QUADS);
 
         glTexCoord2f(tx, ty);
@@ -107,6 +127,27 @@ public final class RenderEngine {
 
         glEnd();
         texture.disable();
-       GL11.glDisable(GL_BLEND);
+    }
+
+    public static void drawQuadTexture(final Vector2 vector2, final float width, final float height, final float tx, final float ty, final float tw, final float th,final Texture texture, final Color color){
+        texture.bind();
+        final float[] c = Color.convertColorToFloatAlpha(color);
+        glColor4f(c[0], c[1], c[2], c[3]);
+        glBegin(GL_QUADS);
+
+        glTexCoord2f(tx, ty);
+        glVertex2f(vector2.x, vector2.y);
+
+        glTexCoord2f(tx + tw, ty);
+        glVertex2f(vector2.x + width ,vector2.y);
+
+        glTexCoord2f(tx + tw, ty + th);
+        glVertex2f(vector2.x + width, vector2.y + height);
+
+        glTexCoord2f(tx, ty + th);
+        glVertex2f(vector2.x, vector2.y + height);
+
+        glEnd();
+        texture.disable();
     }
 }

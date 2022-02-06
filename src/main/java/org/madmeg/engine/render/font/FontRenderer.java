@@ -1,8 +1,8 @@
 package org.madmeg.engine.render.font;
 
+import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Vector2;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
