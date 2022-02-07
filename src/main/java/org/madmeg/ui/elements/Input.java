@@ -38,14 +38,24 @@ public final class Input extends Element {
     @Override
     public void mouseClick(MouseClickEvent event) {
         if (inBounds((int)event.mX, (int)event.mY) && event.action == 1){
+            System.out.println(editing);
             editing = !editing;
         }
+        else if(event.action == 1 && editing){
+            editing = false;
+        }
+
     }
 
     @Override
     public void keyClick(KeyEvent event) {
         if(editing && event.action == GLFW.GLFW_PRESS){
-            this.text += KeyEvent.convertKey(event.key);
+
+            if(event.key == GLFW.GLFW_KEY_BACKSPACE){
+                this.text = this.text.substring(0, this.text.length() - 1);
+            }else {
+                this.text += KeyEvent.convertKey(event.key);
+            }
         }
     }
 }

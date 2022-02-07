@@ -8,6 +8,7 @@ import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.engine.render.font.Font;
 import org.madmeg.engine.render.font.FontRenderer;
+import org.madmeg.event.events.KeyEvent;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
 import org.madmeg.event.processor.CommitEvent;
@@ -53,6 +54,11 @@ public final class Core extends Engine {
     @CommitEvent
     public void click(MouseClickEvent event){
         System.out.println(event.mX + " " + event.mY);
+        uiManager.passEvents(event);
+    }
+
+    @CommitEvent
+    public void key(KeyEvent event){
         uiManager.passEvents(event);
     }
 

@@ -9,6 +9,7 @@ import org.madmeg.event.events.RenderEvent;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.elements.Background;
 import org.madmeg.ui.elements.Button;
+import org.madmeg.ui.elements.Input;
 import org.madmeg.ui.elements.Label;
 
 /**
@@ -50,6 +51,8 @@ public class TitleScreen implements Gui {
                 new Color(100,0,0),
                 n -> Core.getUiManager().setCurrentGui(new Credits())
         ));
+
+        addElement(new Input(600, 600, 200, 50, this, new Color(255,255,255), new Color(0,0,0), "", Core.getFontRenderer().fonts.get(0)));
     }
 
 
