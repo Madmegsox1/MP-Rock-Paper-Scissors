@@ -11,34 +11,26 @@ import org.madmeg.ui.elements.Background;
 import org.madmeg.ui.elements.Button;
 import org.madmeg.ui.elements.Label;
 
-/**
- * @author Madmegsox1
- * @since 03/02/2022
- */
+public class Credits implements Gui {
 
-public class TitleScreen implements Gui {
+    public Credits(){
 
-
-
-    public TitleScreen(){
-        Core.getFontRenderer().addFont(new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));
-
-        addElement(new Background(new Color(0,0,0), this));
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("RPS CARDS") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS CARDS"));
-        addElement(new Button(Profile.Display.WIDTH / 2  - 20, 100,
+        addElement(new Background(new Color(0,0,200), this));
+        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Credits") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS CARDS"));
+        addElement(new Button(Profile.Display.WIDTH / 4  - 20, Profile.Display.HEIGHT-100,
                 60,
                 40,
                 this,
-                "START",
+                "Back",
                 new Color(100,0,0),
-                n -> Core.getUiManager().setCurrentGui(new Credits())
+                n -> Core.getUiManager().setCurrentGui(new TitleScreen())
         ));
-    }
 
+    }
 
     @Override
     public String name() {
-        return "TitleScreen";
+        return "Credits";
     }
 
     @Override
@@ -48,7 +40,7 @@ public class TitleScreen implements Gui {
 
     @Override
     public void render(RenderEvent event) {
-            passEvents(event);
+        passEvents(event);
     }
 
     @Override

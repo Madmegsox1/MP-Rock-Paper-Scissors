@@ -24,18 +24,18 @@ public interface Gui {
     }
 
     default void passEvents(Event event){
-        for (Element e : elements){
-            if(!e.shouldShow)continue;
-            if(event instanceof RenderEvent){
-                e.render((RenderEvent) event);
+        try {
+            for (Element e : elements) {
+                if (!e.shouldShow) continue;
+                if (event instanceof RenderEvent) {
+                    e.render((RenderEvent) event);
+                } else if (event instanceof MouseClickEvent) {
+                    e.mouseClick((MouseClickEvent) event);
+                } else if (event instanceof KeyEvent) {
+                    e.keyClick((KeyEvent) event);
+                }
             }
-            else if(event instanceof MouseClickEvent){
-                e.mouseClick((MouseClickEvent) event);
-            }
-            else if(event instanceof KeyEvent){
-                e.keyClick((KeyEvent) event);
-            }
-        }
+        }catch (Exception ignored){}
     }
 
     void update();
