@@ -14,13 +14,27 @@ import org.madmeg.ui.elements.Label;
 /**
  * @author Madmegsox1
  * @since 03/02/2022
+ * @author Basker12
+ * @since 07/02/22
  */
+
+/** Colours
+ * #202C39
+ * #283845
+ * #B8B08D
+ * #F2D492
+ * #F29559
+ */
+
 
 public class TitleScreen implements Gui {
 
 
 
     public TitleScreen(){
+
+        Core.getDisplay().setTitle("Login");
+
         Core.getFontRenderer().addFont(new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));
 
         addElement(new Background(new Color(0,0,0), this));
