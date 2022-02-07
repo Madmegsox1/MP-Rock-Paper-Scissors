@@ -14,6 +14,7 @@ import org.madmeg.ui.elements.Label;
 public class Credits implements Gui {
 
     public Credits(){
+        Core.getDisplay().setTitle("Credits");
 
         addElement(new Background(new Color(0,0,200), this));
         addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Credits") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS CARDS", new Color(255,255,255)));
