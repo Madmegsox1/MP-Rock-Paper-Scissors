@@ -13,7 +13,7 @@ import org.madmeg.ui.Gui;
  * @since 06/02/2022
  */
 
-public class Background extends Element {
+public final  class Background extends Element {
     public Color c;
     public Background(Color c, Gui parent) {
         super(0, 0, parent);

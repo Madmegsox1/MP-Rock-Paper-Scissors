@@ -1,5 +1,6 @@
 package org.madmeg.event.events;
 
+import org.lwjgl.glfw.GLFW;
 import org.madmeg.event.processor.Event;
 
 /**
@@ -14,5 +15,10 @@ public final class KeyEvent extends Event {
         this.key = key;
         this.action = action;
         this.window = window;
+    }
+
+
+    public static String convertKey(int key){
+        return GLFW.glfwGetKeyName(key, GLFW.glfwGetKeyScancode(key));
     }
 }

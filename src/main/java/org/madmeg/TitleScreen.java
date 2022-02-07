@@ -38,7 +38,10 @@ public class TitleScreen implements Gui {
         Core.getFontRenderer().addFont(new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));
 
         addElement(new Background(new Color(0,0,0), this));
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("RPS CARDS") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS CARDS"));
+
+        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("RPS-101") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS-101",
+                new Color(32, 44, 57)));
+
         addElement(new Button(Profile.Display.WIDTH / 2  - 20, 100,
                 60,
                 40,
@@ -62,7 +65,7 @@ public class TitleScreen implements Gui {
 
     @Override
     public void render(RenderEvent event) {
-            passEvents(event);
+        passEvents(event);
     }
 
     @Override
