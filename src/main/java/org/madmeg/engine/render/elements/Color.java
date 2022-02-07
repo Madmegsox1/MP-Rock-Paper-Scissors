@@ -48,6 +48,9 @@ public final class Color
         this.a = a;
     }
 
+    public static Color BLACK = new Color(0,0,0);
+    public static Color WHITE = new Color(255,255,255);
+
 
     public static float[] convertColorToFloat(final Color c){
         final float[] colors = new float[3];

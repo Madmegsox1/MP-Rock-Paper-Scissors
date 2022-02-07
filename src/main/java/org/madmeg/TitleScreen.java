@@ -28,7 +28,7 @@ import org.madmeg.ui.elements.Label;
  */
 
 
-public class TitleScreen implements Gui {
+public final class TitleScreen implements Gui {
 
 
 

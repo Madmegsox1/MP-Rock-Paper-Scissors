@@ -11,7 +11,7 @@ import org.madmeg.ui.elements.Background;
 import org.madmeg.ui.elements.Button;
 import org.madmeg.ui.elements.Label;
 
-public class Credits implements Gui {
+public final class Credits implements Gui {
 
     public Credits(){
         Core.getDisplay().setTitle("Credits");
