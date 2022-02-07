@@ -35,7 +35,7 @@ public final class Display {
 
         // Window config
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
         if(aa) {
             glfwWindowHint(GLFW_SAMPLES, 4);
