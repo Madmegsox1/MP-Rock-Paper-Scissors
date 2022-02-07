@@ -32,7 +32,7 @@ public final class Button extends Element {
 
 
     public void render(RenderEvent event){
-        RenderEngine.drawQuad(new Vector2(x, y), w, h, c);
+        RenderEngine.drawQuadA(new Vector2(x, y), w, h, c);
         Engine.getFontRenderer().renderFont(text, new Vector2(x + 5, y - 5));
     }
 

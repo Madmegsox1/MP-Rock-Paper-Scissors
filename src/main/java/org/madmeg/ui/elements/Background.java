@@ -22,6 +22,6 @@ public final  class Background extends Element {
 
     @Override
     public void render(RenderEvent event) {
-        RenderEngine.drawQuad(new Vector2(0,0), Profile.Display.WIDTH, Profile.Display.HEIGHT, c);
+        RenderEngine.drawQuadA(new Vector2(0,0), Profile.Display.WIDTH, Profile.Display.HEIGHT, c);
     }
 }
