@@ -16,7 +16,7 @@ import java.awt.image.BufferedImage;
  * @since 06/02/2022
  */
 
-public final  class Background extends Element {
+public final class Background extends Element {
     public Color c;
     public Texture backgroundTexture;
 

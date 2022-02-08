@@ -5,7 +5,7 @@ package org.madmeg.engine.render.elements;
  * @since 07/02/2022
  */
 
-public class Timer {
+public final class Timer {
     private long time = -1L;
 
     public boolean passedS(double s) {

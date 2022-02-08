@@ -4,6 +4,7 @@ import org.madmeg.engine.Engine;
 import org.madmeg.engine.render.Display;
 import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.Renderer;
+import org.madmeg.engine.render.elements.Animation;
 import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.engine.render.font.Font;
@@ -26,6 +27,7 @@ import org.madmeg.ui.UiManager;
 public final class Core extends Engine {
 
     public Texture texture;
+    public Animation animation;
 
 
     @Override
@@ -36,6 +38,15 @@ public final class Core extends Engine {
         renderer = new Renderer(display);
         renderer.init();
         texture = new Texture("1");
+
+
+        animation = new Animation(new Vector2(400, 400), 100, 100, 60);
+
+        animation.addTexture(texture);
+        animation.addTexture(new Texture("test"));
+        animation.addTexture(new Texture("transparent"));
+
+
         fontRenderer = new FontRenderer(new Font());
         uiManager = new UiManager();
         uiManager.setCurrentGui(new TitleScreen());
@@ -46,14 +57,15 @@ public final class Core extends Engine {
 
     @CommitEvent
     public void render(RenderEvent event){
-        RenderEngine.drawQuadTexture(new Vector2(500, 500), 100, 100, texture);
+        //RenderEngine.drawQuadTexture(new Vector2(500, 500), 100, 100, texture);
         uiManager.renderCurrentGui(event);
+        animation.render();
 
     }
 
     @CommitEvent
     public void click(MouseClickEvent event){
-        System.out.println(event.mX + " " + event.mY);
+
         uiManager.passEvents(event);
     }
 

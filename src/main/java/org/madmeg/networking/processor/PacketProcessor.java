@@ -24,7 +24,7 @@ public final class PacketProcessor {
     }
 
 
-    public void addPacketListener(final Object object) throws IllegalArgumentException {
+    public void addPacketListener(final Object object) {
         getEvents(object);
     }
 
