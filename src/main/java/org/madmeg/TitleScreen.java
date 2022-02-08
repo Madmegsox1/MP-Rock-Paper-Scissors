@@ -2,6 +2,7 @@ package org.madmeg;
 
 import org.madmeg.engine.Profile;
 import org.madmeg.engine.render.elements.Color;
+import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.font.Font;
 import org.madmeg.event.events.KeyEvent;
 import org.madmeg.event.events.MouseClickEvent;
@@ -11,6 +12,11 @@ import org.madmeg.ui.elements.Background;
 import org.madmeg.ui.elements.Button;
 import org.madmeg.ui.elements.Input;
 import org.madmeg.ui.elements.Label;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * @author Madmegsox1
@@ -32,13 +38,13 @@ public final class TitleScreen implements Gui {
 
 
 
-    public TitleScreen(){
+    public TitleScreen() {
 
         Core.getDisplay().setTitle("Login");
 
         Core.getFontRenderer().addFont(new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));
 
-        addElement(new Background(new Color(40,0,255), this));
+        addElement(new Background(new Texture("mountainBg"), this));
 
         addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("RPS-101") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS-101",
                 new Color(32, 44, 57)));

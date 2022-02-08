@@ -9,6 +9,8 @@ import org.madmeg.event.events.RenderEvent;
 import org.madmeg.ui.Element;
 import org.madmeg.ui.Gui;
 
+import java.awt.image.BufferedImage;
+
 /**
  * @author Madmegsox1
  * @since 06/02/2022
