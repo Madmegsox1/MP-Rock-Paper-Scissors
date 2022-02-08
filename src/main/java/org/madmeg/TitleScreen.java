@@ -50,12 +50,20 @@ public final class TitleScreen implements Gui {
                 new Color(32, 44, 57)));
 
         addElement(new Button(Profile.Display.WIDTH / 2  - 20, 100,
+                80,
+                40,
+                this,
+                "Credits",
+                new Color(100,0,0),
+                n -> Core.getUiManager().setCurrentGui(new Credits())));
+
+        addElement(new Button(Profile.Display.WIDTH / 2  - 20, 150,
                 60,
                 40,
                 this,
-                "START",
+                "Menu",
                 new Color(100,0,0),
-                n -> Core.getUiManager().setCurrentGui(new Credits())
+                n -> Core.getUiManager().setCurrentGui(new Menu())
         ));
 
         addElement(new Input(600, 600, 200, 20, this, new Color(255,255,255), new Color(0,0,0), "", Core.getFontRenderer().fonts.get(0)));
