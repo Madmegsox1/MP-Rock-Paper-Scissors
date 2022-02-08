@@ -25,8 +25,6 @@ import org.madmeg.ui.UiManager;
  */
 
 public final class Core extends Engine {
-
-    public Texture texture;
     public Animation animation;
 
 
@@ -37,12 +35,10 @@ public final class Core extends Engine {
         display.init(true);
         renderer = new Renderer(display);
         renderer.init();
-        texture = new Texture("1");
 
 
-        animation = new Animation(new Vector2(400, 400), 100, 100, 60);
-
-        animation.addTexture(texture);
+        animation = new Animation(new Vector2(400, 400), 100, 100, 30);
+        animation.addTexture(new Texture("1"));
         animation.addTexture(new Texture("test"));
         animation.addTexture(new Texture("transparent"));
 
@@ -59,7 +55,7 @@ public final class Core extends Engine {
     public void render(RenderEvent event){
         //RenderEngine.drawQuadTexture(new Vector2(500, 500), 100, 100, texture);
         uiManager.renderCurrentGui(event);
-        animation.render();
+        //animation.render();
 
     }
 

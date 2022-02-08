@@ -40,12 +40,17 @@ import java.io.IOException;
 public final class TitleScreen implements Gui {
 
 
-    public Texture rpsTexture;
+    public Texture paper;
+    public Texture rock;
+    public Texture scissors;
 
 
     public TitleScreen() {
 
-        rpsTexture = new Texture("rps");
+        paper = new Texture("paper");
+        rock = new Texture("rock");
+        scissors = new Texture("scissor");
+
 
         Core.getDisplay().setTitle("Login");
 
@@ -73,7 +78,7 @@ public final class TitleScreen implements Gui {
                 n -> Core.getUiManager().setCurrentGui(new Menu())
         ));
 
-        addElement(new Input(600, 600, 200, 20, this, new Color(255,255,255), new Color(0,0,0), "", Core.getFontRenderer().fonts.get(0)));
+        //addElement(new Input(600, 600, 200, 20, this, new Color(255,255,255), new Color(0,0,0), "", Core.getFontRenderer().fonts.get(0)));
     }
 
 
@@ -90,12 +95,9 @@ public final class TitleScreen implements Gui {
     @Override
     public void render(RenderEvent event) {
         passEvents(event);
-        GL11.glPushMatrix();
-
-        GL11.glRotatef(10, 0,0,1);
-        GL11.glTranslatef(-500f, -500f, 1);
-        RenderEngine.drawQuadTexture(new Vector2(500, 500), 100, 150, RenderEngine.normalize(40, 128, 0), 0, RenderEngine.normalize(45, 128, 0), RenderEngine.normalize(68, 128, 0), rpsTexture);
-        GL11.glPopMatrix();
+        RenderEngine.drawQuadTexture(new Vector2(100, 610), 50, 80, rock);
+        RenderEngine.drawQuadTexture(new Vector2(Profile.Display.WIDTH/2 + 50/2, 610), 50, 80, paper);
+        RenderEngine.drawQuadTexture(new Vector2(1130, 610), 50, 80, scissors);
     }
 
     @Override
