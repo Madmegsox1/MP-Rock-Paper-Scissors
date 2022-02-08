@@ -1,8 +1,11 @@
 package org.madmeg;
 
+import org.lwjgl.opengl.GL11;
 import org.madmeg.engine.Profile;
+import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Texture;
+import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.engine.render.font.Font;
 import org.madmeg.event.events.KeyEvent;
 import org.madmeg.event.events.MouseClickEvent;
@@ -37,8 +40,12 @@ import java.io.IOException;
 public final class TitleScreen implements Gui {
 
 
+    public Texture rpsTexture;
+
 
     public TitleScreen() {
+
+        rpsTexture = new Texture("rps");
 
         Core.getDisplay().setTitle("Login");
 
@@ -83,6 +90,12 @@ public final class TitleScreen implements Gui {
     @Override
     public void render(RenderEvent event) {
         passEvents(event);
+        GL11.glPushMatrix();
+
+        GL11.glRotatef(10, 0,0,1);
+        GL11.glTranslatef(-500f, -500f, 1);
+        RenderEngine.drawQuadTexture(new Vector2(500, 500), 100, 150, RenderEngine.normalize(40, 128, 0), 0, RenderEngine.normalize(45, 128, 0), RenderEngine.normalize(68, 128, 0), rpsTexture);
+        GL11.glPopMatrix();
     }
 
     @Override

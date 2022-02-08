@@ -48,7 +48,7 @@ public final class Button extends Element {
         }else {
             RenderEngine.drawQuadA(new Vector2(x, y), w, h, c);
         }
-        Engine.getFontRenderer().renderFont(text, new Vector2(x + 5, y + (h / 2f) - (Engine.getFontRenderer().fonts.get(0).getHeight( text) / 2f)));
+        Engine.getFontRenderer().renderFont(text, new Vector2(x + (w / 2f) - (Engine.getFontRenderer().fonts.get(0).getWidth(text) / 2f), y + (h / 2f) - (Engine.getFontRenderer().fonts.get(0).getHeight(text) / 2f)));
     }
 
     public void mouseClick(MouseClickEvent event){

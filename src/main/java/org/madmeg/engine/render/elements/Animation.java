@@ -21,7 +21,7 @@ public final class Animation {
         this.index = 0;
         this.pos = pos;
         this.w = w;
-        this.h =h;
+        this.h = h;
     }
 
 

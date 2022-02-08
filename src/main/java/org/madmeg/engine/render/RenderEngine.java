@@ -150,4 +150,8 @@ public final class RenderEngine {
         glEnd();
         texture.disable();
     }
+
+    public static float normalize(float val, float max, float min){
+        return (val - min)/(max - min);
+    }
 }
