@@ -14,6 +14,7 @@ import org.madmeg.event.events.KeyEvent;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
 import org.madmeg.event.processor.CommitEvent;
+import org.madmeg.ui.Gui;
 import org.madmeg.ui.UiManager;
 
 
@@ -26,8 +27,9 @@ import org.madmeg.ui.UiManager;
  */
 
 public final class Core extends Engine {
-    public Animation animation;
 
+    public Animation animation;
+    public Gui overlay = null;
 
     @Override
     public void run(){
@@ -56,7 +58,7 @@ public final class Core extends Engine {
     public void render(RenderEvent event){
         //RenderEngine.drawQuadTexture(new Vector2(500, 500), 100, 100, texture);
         uiManager.renderCurrentGui(event);
-        uiManager.renderOverlayGui(event);
+        if(overlay != null)  overlay.render(event);
         //animation.render();
 
     }
@@ -64,12 +66,22 @@ public final class Core extends Engine {
     @CommitEvent
     public void click(MouseClickEvent event){
 
-        uiManager.passEvents(event);
+        if(overlay != null) overlay.mouseClick(event);
+        else uiManager.passEvents(event);
     }
 
     @CommitEvent
     public void key(KeyEvent event){
+        if(event.key == GLFW.GLFW_KEY_F12 && event.action == 1){
+            if(overlay == null){
+                overlay = new Debug();
+            }else {
+                overlay = null;
+            }
+        }
+
         uiManager.passEvents(event);
+        if(overlay != null)  overlay.keyTyped(event);
     }
 
     public static void main(String[] args){

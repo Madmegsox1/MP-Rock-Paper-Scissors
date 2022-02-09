@@ -1,14 +1,7 @@
 package org.madmeg;
 
-import java.awt.BorderLayout;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
 import org.madmeg.engine.Profile;
 import org.madmeg.engine.render.elements.Color;
-import org.madmeg.engine.render.font.Font;
 import org.madmeg.event.events.KeyEvent;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
@@ -17,7 +10,7 @@ import org.madmeg.ui.elements.Background;
 import org.madmeg.ui.elements.Button;
 import org.madmeg.ui.elements.Label;
 
-public final class Menu implements Gui {
+public final class Menu extends Gui {
 
     public Menu(){
         Core.getDisplay().setTitle("Menu");

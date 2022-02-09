@@ -35,7 +35,7 @@ import java.io.IOException;
  */
 
 
-public final class TitleScreen implements Gui {
+public final class TitleScreen extends Gui {
 
 
     public Texture paper;

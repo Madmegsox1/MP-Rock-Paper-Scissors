@@ -12,18 +12,20 @@ import java.util.ArrayList;
  * @since 02/02/2022
  */
 
-public interface Gui {
+public abstract class Gui {
 
-    ArrayList<Element> elements = new ArrayList<>();
+    public ArrayList<Element> elements = new ArrayList<>();
 
-    String name();
+    public String name(){
+        return "";
+    }
 
-    default void addElement(Element e){
+    public void addElement(Element e){
         e.assignId(this.elements.size() + 1);
         this.elements.add(e);
     }
 
-    default void passEvents(Event event){
+    public void passEvents(Event event){
         try {
             for (Element e : this.elements) {
                 if (!e.shouldShow) continue;
@@ -38,11 +40,11 @@ public interface Gui {
         }catch (Exception ignored){}
     }
 
-    void update();
+    public void update(){}
 
-    void render(RenderEvent event);
+    public void render(RenderEvent event){}
 
-    void mouseClick(MouseClickEvent event);
+    public void mouseClick(MouseClickEvent event){}
 
-    void keyTyped(KeyEvent event);
+    public void keyTyped(KeyEvent event){}
 }

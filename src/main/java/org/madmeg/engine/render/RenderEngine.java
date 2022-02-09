@@ -1,7 +1,6 @@
 package org.madmeg.engine.render;
 
 import org.lwjgl.glfw.GLFW;
-import org.lwjgl.opengl.GL11;
 import org.madmeg.engine.Engine;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Texture;
@@ -9,7 +8,6 @@ import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.event.events.RenderEvent;
 
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL14.glBlendFuncSeparate;
 
 public final class RenderEngine {
 

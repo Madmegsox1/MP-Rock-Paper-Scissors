@@ -17,7 +17,7 @@ import org.madmeg.ui.elements.Label;
 // gold 242, 212, 146
 // blue 32, 44, 57
 
-public final class Credits implements Gui {
+public final class Credits extends Gui {
 
     public Credits(){
         Core.getDisplay().setTitle("Credits");
