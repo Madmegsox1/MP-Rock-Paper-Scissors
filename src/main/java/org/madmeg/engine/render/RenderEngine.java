@@ -1,5 +1,6 @@
 package org.madmeg.engine.render;
 
+import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL11;
 import org.madmeg.engine.Engine;
 import org.madmeg.engine.render.elements.Color;
@@ -11,11 +12,23 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL14.glBlendFuncSeparate;
 
 public final class RenderEngine {
+
+    public static int fps = 0;
+
     public void render(final Renderer renderer, final Display display) {
+        double time = GLFW.glfwGetTime();
+        int fpsOld = 0;
+        fps = 0;
         while (!renderer.shouldClose()) {
             renderer.prepare();
             Engine.getEventProcessor().postEvent(new RenderEvent(renderer, this));
             renderer.render(display.getWindow());
+            fpsOld++;
+            if(GLFW.glfwGetTime() - time >= 1.0){
+                fps = fpsOld;
+                fpsOld = 0;
+                time = GLFW.glfwGetTime();
+            }
         }
 
         System.exit(0);

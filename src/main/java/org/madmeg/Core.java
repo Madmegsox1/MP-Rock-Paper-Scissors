@@ -1,5 +1,6 @@
 package org.madmeg;
 
+import org.lwjgl.glfw.GLFW;
 import org.madmeg.engine.Engine;
 import org.madmeg.engine.render.Display;
 import org.madmeg.engine.render.RenderEngine;
@@ -55,6 +56,7 @@ public final class Core extends Engine {
     public void render(RenderEvent event){
         //RenderEngine.drawQuadTexture(new Vector2(500, 500), 100, 100, texture);
         uiManager.renderCurrentGui(event);
+        uiManager.renderOverlayGui(event);
         //animation.render();
 
     }

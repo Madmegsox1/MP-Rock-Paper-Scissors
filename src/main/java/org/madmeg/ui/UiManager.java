@@ -23,7 +23,9 @@ public final class UiManager {
         this.currentGui = currentGui;
     }
 
+
     public boolean isGuiCurrent(Gui gui){
+        if(currentGui == null)return false;
         return Objects.equals(gui.name(), currentGui.name());
     }
 
@@ -31,11 +33,12 @@ public final class UiManager {
         currentGui.render(event);
     }
 
+
     public void passEvents(Event event) {
-        if (event instanceof MouseClickEvent) {
-            currentGui.mouseClick((MouseClickEvent) event);
-        } else if (event instanceof KeyEvent) {
-            currentGui.keyTyped((KeyEvent) event);
-        }
+            if (event instanceof MouseClickEvent) {
+                currentGui.mouseClick((MouseClickEvent) event);
+            } else if (event instanceof KeyEvent) {
+                currentGui.keyTyped((KeyEvent) event);
+            }
     }
 }

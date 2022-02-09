@@ -1,6 +1,5 @@
 package org.madmeg;
 
-import org.lwjgl.opengl.GL11;
 import org.madmeg.engine.Profile;
 import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.elements.Color;
@@ -13,7 +12,6 @@ import org.madmeg.event.events.RenderEvent;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.elements.Background;
 import org.madmeg.ui.elements.Button;
-import org.madmeg.ui.elements.Input;
 import org.madmeg.ui.elements.Label;
 
 import javax.imageio.ImageIO;

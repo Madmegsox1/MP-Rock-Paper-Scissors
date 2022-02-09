@@ -19,13 +19,13 @@ public interface Gui {
     String name();
 
     default void addElement(Element e){
-        e.assignId(elements.size() + 1);
-        elements.add(e);
+        e.assignId(this.elements.size() + 1);
+        this.elements.add(e);
     }
 
     default void passEvents(Event event){
         try {
-            for (Element e : elements) {
+            for (Element e : this.elements) {
                 if (!e.shouldShow) continue;
                 if (event instanceof RenderEvent) {
                     e.render((RenderEvent) event);
