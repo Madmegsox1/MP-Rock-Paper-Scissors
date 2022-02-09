@@ -21,5 +21,9 @@ public abstract class Packet {
         return packetHead + ((packetData.startsWith("|")) ? packetData : splitter + packetData);
     }
 
+    public String compilePacket(String uuid, String username){
+        return packetHead +"|" +uuid + "|" + username + ((packetData.startsWith("|")) ? packetData : splitter + packetData);
+    }
+
 
 }

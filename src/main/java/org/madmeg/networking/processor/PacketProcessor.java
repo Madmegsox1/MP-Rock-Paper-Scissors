@@ -2,6 +2,8 @@ package org.madmeg.networking.processor;
 
 import org.madmeg.event.processor.Event;
 import org.madmeg.networking.Packet;
+import org.madmeg.server.packets.SConnect;
+import org.madmeg.server.packets.SPing;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
@@ -16,6 +18,9 @@ public final class PacketProcessor {
     public static final int port = 679;
     public static Socket currentSocket;
     public static long lastPacketTime;
+
+    private String uuid;
+    private String username = "test";
 
     private final List<Listener> events;
 
@@ -87,7 +92,7 @@ public final class PacketProcessor {
             currentSocket = connect();
             lastPacketTime = System.currentTimeMillis();
 
-            sendData(currentSocket, packet.compilePacket());
+            sendData(currentSocket, packet.compilePacket(uuid, username));
 
             final String data = receiveData(currentSocket).readLine();
 
@@ -106,8 +111,38 @@ public final class PacketProcessor {
         if(data.length < 1)return;
         final String head = data[0];
 
+        switch (head){
+            case "SConnect" -> {
+                SConnect p = new SConnect();
+                p.key = data[1];
+                uuid = data[1];
+                postPacket(p);
+            }case "SPing" -> {
+                SPing p = new SPing();
+                p.timeSent =Long.parseLong(data[1]);
+                lastPacketTime = Long.parseLong(data[1]);
+                postPacket(p);
+            }
+        }
+
 
 
     }
 
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

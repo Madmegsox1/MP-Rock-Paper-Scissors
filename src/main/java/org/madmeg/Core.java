@@ -14,6 +14,7 @@ import org.madmeg.event.events.KeyEvent;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
 import org.madmeg.event.processor.CommitEvent;
+import org.madmeg.networking.processor.PacketProcessor;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.UiManager;
 
@@ -30,12 +31,15 @@ public final class Core extends Engine {
 
     public Animation animation;
     public Gui overlay = null;
+    public PacketProcessor packetProcessor;
 
     @Override
     public void run(){
         eventProcessor.addEventListener(this);
+
         display = new Display("Rock - Paper - Scissors 101");
         display.init(true);
+
         renderer = new Renderer(display);
         renderer.init();
 
@@ -47,8 +51,13 @@ public final class Core extends Engine {
 
 
         fontRenderer = new FontRenderer(new Font());
+
         uiManager = new UiManager();
         uiManager.setCurrentGui(new TitleScreen());
+
+        packetProcessor = new PacketProcessor();
+
+
         renderEngine = new RenderEngine();
         renderEngine.render(renderer, display);
     }
