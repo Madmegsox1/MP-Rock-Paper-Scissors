@@ -39,6 +39,7 @@ public final class Debug extends Gui {
         addElement(new Label(40, 100, this, f, "DISPLAY: " + Profile.Display.WIDTH + " x " + Profile.Display.HEIGHT, Color.WHITE));
         addElement(new Label(40, 120, this, f,"CURRENT SCREEN: " + Core.getUiManager().getCurrentGui().name(), Color.WHITE));
         addElement(new Label(40, 140, this, f, "PING: " + PacketProcessor.ping, Color.WHITE));
+        addElement(new Label(40, 160, this, f, "LAST PACKET: " + (System.currentTimeMillis() - PacketProcessor.lastPacketTime) +"ms", Color.WHITE));
     }
 
     public String name(){
@@ -55,6 +56,8 @@ public final class Debug extends Gui {
         label.updateText("CPU: "+ operatingSystemMXBean.getProcessCpuLoad() * 100 + "%");
         label = (Label) elements.get(6);
         label.updateText("PING: " + PacketProcessor.ping);
+        label = (Label) elements.get(7);
+        label.updateText("LAST PACKET: " + (System.currentTimeMillis() - PacketProcessor.lastPacketTime) +"ms");
     }
 
     public void mouseClick(MouseClickEvent event){
