@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public final class PacketProcessor {
 
-    public static int port = 679;
+    public static int port = 4200;
     public static ServerSocket serverSocket;
     public static boolean running;
 
@@ -40,7 +40,7 @@ public final class PacketProcessor {
 
     private Socket receiveSocket(){
         try {
-            return this.serverSocket.accept();
+            return serverSocket.accept();
         } catch (final IOException e) {
             e.printStackTrace();
         }
@@ -72,15 +72,20 @@ public final class PacketProcessor {
             return;
         }
         while (running){
+            System.out.println("Listing for client");
             final Socket socket = receiveSocket();
+            System.out.println("Client Connected");
             if(socket == null){
                 System.out.println("A error occurred trying to create a socket session with the client");
                 return;
             }
             try {
                 final String rData = receiveData(socket).readLine();
+                System.out.println("Received packet from client");
                 processPacket(rData, socket);
+                System.out.println("Processed Packet");
                 socket.close();
+                System.out.println("Closed client connection");
             } catch (final IOException e) {
                 e.printStackTrace();
             }
@@ -95,6 +100,7 @@ public final class PacketProcessor {
     public void processPacket(String data, Socket socket){
         final String[] sData = data.split("\\|");
         final String packetHead = sData[0];
+        System.out.println(data);
         if(sData.length > 2) {
             final String uuid = sData[1];
             final String username = sData[2];

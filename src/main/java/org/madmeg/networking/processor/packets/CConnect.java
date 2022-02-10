@@ -10,5 +10,6 @@ import org.madmeg.networking.Packet;
 public final class CConnect extends Packet {
     public CConnect() {
         super("CConnect");
+        appendData("HelloServer");
     }
 }

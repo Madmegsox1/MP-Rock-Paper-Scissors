@@ -1,23 +1,25 @@
 package org.madmeg.networking.processor;
 
+import org.madmeg.Core;
 import org.madmeg.event.processor.Event;
 import org.madmeg.networking.Packet;
+import org.madmeg.networking.processor.packets.CConnect;
 import org.madmeg.server.packets.SConnect;
 import org.madmeg.server.packets.SPing;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
-public final class PacketProcessor {
+public final class PacketProcessor extends Thread {
 
-    public static final int port = 679;
+    public static final int port = 4200;
     public static Socket currentSocket;
     public static long lastPacketTime;
+    public static long ping;
+
+    public static Queue<Packet> packetQueue;
 
     private String uuid;
     private String username = "test";
@@ -26,6 +28,8 @@ public final class PacketProcessor {
 
     public PacketProcessor() {
         events = new ArrayList<>();
+        packetQueue = new LinkedList<>();
+        this.start();
     }
 
 
@@ -55,6 +59,15 @@ public final class PacketProcessor {
         });
     }
 
+    @Override
+    public void run() {
+        while (Core.running) {
+            while (!packetQueue.isEmpty()) {
+                sendPacket(packetQueue.remove());
+            }
+            try {Thread.sleep(200);} catch (final InterruptedException e) {e.printStackTrace();}
+        }
+    }
 
     public void postPacket(final Packet event){
         if(events.isEmpty())return;
@@ -68,6 +81,10 @@ public final class PacketProcessor {
                 }
             }
         });
+    }
+
+    public void queuePacket(Packet packet){
+        packetQueue.add(packet);
     }
 
 
@@ -88,17 +105,25 @@ public final class PacketProcessor {
     }
 
     public void sendPacket(Packet packet) {
+        System.out.println(packet.compilePacket());
         try {
+            System.out.println("Connection to server");
             currentSocket = connect();
+            System.out.println("Connected to server");
             lastPacketTime = System.currentTimeMillis();
-
-            sendData(currentSocket, packet.compilePacket(uuid, username));
+            if(packet instanceof CConnect){
+                sendData(currentSocket, packet.compilePacket());
+            }else {
+                sendData(currentSocket, packet.compilePacket(uuid, username));
+            }
 
             final String data = receiveData(currentSocket).readLine();
-
+            System.out.println("Receiving data from server");
             processPacket(data);
+            System.out.println("Processing packet from server");
 
             currentSocket.close();
+            System.out.println("Closed connection with server");
             currentSocket = null;
         }catch (final IOException e){
             e.printStackTrace();
@@ -116,17 +141,15 @@ public final class PacketProcessor {
                 SConnect p = new SConnect();
                 p.key = data[1];
                 uuid = data[1];
+                System.out.println("New uuid received from server -> " + uuid);
                 postPacket(p);
             }case "SPing" -> {
                 SPing p = new SPing();
                 p.timeSent =Long.parseLong(data[1]);
-                lastPacketTime = Long.parseLong(data[1]);
+                ping = System.currentTimeMillis() - Long.parseLong(data[1]);
                 postPacket(p);
             }
         }
-
-
-
     }
 
 

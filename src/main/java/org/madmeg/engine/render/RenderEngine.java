@@ -1,6 +1,7 @@
 package org.madmeg.engine.render;
 
 import org.lwjgl.glfw.GLFW;
+import org.madmeg.Core;
 import org.madmeg.engine.Engine;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Texture;
@@ -28,7 +29,7 @@ public final class RenderEngine {
                 time = GLFW.glfwGetTime();
             }
         }
-
+        Core.running = false;
         System.exit(0);
     }
 

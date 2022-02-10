@@ -7,6 +7,7 @@ import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.Renderer;
 import org.madmeg.engine.render.elements.Animation;
 import org.madmeg.engine.render.elements.Texture;
+import org.madmeg.engine.render.elements.Timer;
 import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.engine.render.font.Font;
 import org.madmeg.engine.render.font.FontRenderer;
@@ -15,6 +16,8 @@ import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
 import org.madmeg.event.processor.CommitEvent;
 import org.madmeg.networking.processor.PacketProcessor;
+import org.madmeg.networking.processor.packets.CConnect;
+import org.madmeg.networking.processor.packets.CPing;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.UiManager;
 
@@ -31,10 +34,14 @@ public final class Core extends Engine {
 
     public Animation animation;
     public Gui overlay = null;
-    public PacketProcessor packetProcessor;
+    public static PacketProcessor packetProcessor;
+
+    public Timer timer;
+    public static boolean running;
 
     @Override
     public void run(){
+        running = true;
         eventProcessor.addEventListener(this);
 
         display = new Display("Rock - Paper - Scissors 101");
@@ -56,10 +63,14 @@ public final class Core extends Engine {
         uiManager.setCurrentGui(new TitleScreen());
 
         packetProcessor = new PacketProcessor();
+        packetProcessor.queuePacket(new CConnect());
+
+        timer = new Timer();
 
 
         renderEngine = new RenderEngine();
         renderEngine.render(renderer, display);
+
     }
 
 
@@ -68,6 +79,14 @@ public final class Core extends Engine {
         //RenderEngine.drawQuadTexture(new Vector2(500, 500), 100, 100, texture);
         uiManager.renderCurrentGui(event);
         if(overlay != null)  overlay.render(event);
+
+
+        if(timer.passedMs(10000L)){
+            packetProcessor.queuePacket(new CPing());
+            timer.reset();
+        }
+
+
         //animation.render();
 
     }

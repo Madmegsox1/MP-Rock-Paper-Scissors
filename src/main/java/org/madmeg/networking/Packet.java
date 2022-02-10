@@ -2,7 +2,7 @@ package org.madmeg.networking;
 
 public abstract class Packet {
     private final String packetHead;
-    private String packetData;
+    private String packetData = "";
     public final char splitter = '|';
 
     public Packet(String packetHead){
@@ -10,7 +10,7 @@ public abstract class Packet {
     }
 
     public void appendData(String data){
-        packetData += splitter + data;
+            packetData += splitter + data;
     }
 
     public void setData(String data){
