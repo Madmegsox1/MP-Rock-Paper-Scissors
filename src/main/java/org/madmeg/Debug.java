@@ -9,6 +9,7 @@ import org.madmeg.engine.render.font.Font;
 import org.madmeg.event.events.KeyEvent;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
+import org.madmeg.networking.Packet;
 import org.madmeg.networking.processor.PacketProcessor;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.elements.Background;
@@ -39,7 +40,8 @@ public final class Debug extends Gui {
         addElement(new Label(40, 100, this, f, "DISPLAY: " + Profile.Display.WIDTH + " x " + Profile.Display.HEIGHT, Color.WHITE));
         addElement(new Label(40, 120, this, f,"CURRENT SCREEN: " + Core.getUiManager().getCurrentGui().name(), Color.WHITE));
         addElement(new Label(40, 140, this, f, "PING: " + PacketProcessor.ping, Color.WHITE));
-        addElement(new Label(40, 160, this, f, "LAST PACKET: " + (System.currentTimeMillis() - PacketProcessor.lastPacketTime) +"ms", Color.WHITE));
+        addElement(new Label(40, 160, this, f, "LAST PACKET: " + ((!Core.running) ? "0" :(System.currentTimeMillis() - PacketProcessor.lastPacketTime)) +"ms", Color.WHITE));
+        addElement(new Label(40, 180, this, f ,"PACKET QUEUE: " + buildPacketQ(), Color.WHITE));
     }
 
     public String name(){
@@ -57,7 +59,9 @@ public final class Debug extends Gui {
         label = (Label) elements.get(6);
         label.updateText("PING: " + PacketProcessor.ping);
         label = (Label) elements.get(7);
-        label.updateText("LAST PACKET: " + (System.currentTimeMillis() - PacketProcessor.lastPacketTime) +"ms");
+        label.updateText("LAST PACKET: " + ((!Core.running) ? "0" : (System.currentTimeMillis() - PacketProcessor.lastPacketTime)) +"ms");
+        label = (Label) elements.get(8);
+        label.updateText("PACKET QUEUE: " + buildPacketQ());
     }
 
     public void mouseClick(MouseClickEvent event){
@@ -66,5 +70,16 @@ public final class Debug extends Gui {
 
     public void keyTyped(KeyEvent event){
         passEvents(event);
+    }
+
+    private String buildPacketQ(){
+        StringBuilder builder = new StringBuilder();
+        int i = 0;
+        for(Packet p : PacketProcessor.packetQueue){
+            builder.append(p.getClass().getSimpleName());
+            builder.append(" ");
+        }
+
+        return ((PacketProcessor.packetQueue.isEmpty()) ? "Empty" : builder.toString());
     }
 }

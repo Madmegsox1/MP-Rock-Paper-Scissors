@@ -1,5 +1,6 @@
 package org.madmeg.networking.processor;
 
+import org.jasypt.util.text.StrongTextEncryptor;
 import org.madmeg.Core;
 import org.madmeg.event.processor.Event;
 import org.madmeg.networking.Packet;
@@ -100,6 +101,7 @@ public final class PacketProcessor extends Thread {
     }
 
     private void sendData(final Socket socket, final String data) throws IOException {
+        System.out.println(data);
         final OutputStream stream = socket.getOutputStream();
         final PrintWriter writer = new PrintWriter(stream, true);
         writer.println(data);
@@ -113,12 +115,19 @@ public final class PacketProcessor extends Thread {
             System.out.println("Connected to server");
             lastPacketTime = System.currentTimeMillis();
             if(packet instanceof CConnect){
-                sendData(currentSocket, packet.compilePacket());
+                sendData(currentSocket, packet.encryptPacket());
             }else {
-                sendData(currentSocket, packet.compilePacket(uuid, username));
+                sendData(currentSocket, packet.encryptPacket(uuid, username));
             }
 
-            final String data = receiveData(currentSocket).readLine();
+            String data = receiveData(currentSocket).readLine();
+
+            final StrongTextEncryptor textEncryptor = new StrongTextEncryptor();
+            final String[] dataSplit = data.split("\\|");
+            textEncryptor.setPassword(dataSplit[1]);
+            data = textEncryptor.decrypt(dataSplit[0]);
+
+
             System.out.println("Receiving data from server");
             processPacket(data);
             System.out.println("Processing packet from server");

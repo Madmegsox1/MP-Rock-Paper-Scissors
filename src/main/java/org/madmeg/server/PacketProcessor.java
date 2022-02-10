@@ -1,5 +1,6 @@
 package org.madmeg.server;
 
+import org.jasypt.util.text.StrongTextEncryptor;
 import org.madmeg.networking.Packet;
 import org.madmeg.server.packets.SConnect;
 import org.madmeg.server.packets.SPing;
@@ -25,12 +26,12 @@ public final class PacketProcessor {
 
     public static ArrayList<Client> clients;
 
-    public PacketProcessor(){
+    public PacketProcessor() {
         running = true;
         clients = new ArrayList<>();
     }
 
-    public void openPort(int port){
+    public void openPort(int port) {
         try {
             serverSocket = new ServerSocket(port);
         } catch (final IOException e) {
@@ -38,7 +39,7 @@ public final class PacketProcessor {
         }
     }
 
-    private Socket receiveSocket(){
+    private Socket receiveSocket() {
         try {
             return serverSocket.accept();
         } catch (final IOException e) {
@@ -47,7 +48,7 @@ public final class PacketProcessor {
         return null;
     }
 
-    private BufferedReader receiveData(final Socket socket){
+    private BufferedReader receiveData(final Socket socket) {
         try {
             return new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (final IOException e) {
@@ -56,7 +57,8 @@ public final class PacketProcessor {
         return null;
     }
 
-    private void sendData(final Socket socket, final String msg){
+    private void sendData(final Socket socket, final String msg) {
+        System.out.println(msg);
         final PrintWriter writer;
         try {
             writer = new PrintWriter(socket.getOutputStream(), true);
@@ -66,16 +68,16 @@ public final class PacketProcessor {
         }
     }
 
-    public void run(){
-        if(serverSocket == null){
+    public void run() {
+        if (serverSocket == null) {
             System.out.println("Server has not been initialised!");
             return;
         }
-        while (running){
+        while (running) {
             System.out.println("Listing for client");
             final Socket socket = receiveSocket();
             System.out.println("Client Connected");
-            if(socket == null){
+            if (socket == null) {
                 System.out.println("A error occurred trying to create a socket session with the client");
                 return;
             }
@@ -97,34 +99,42 @@ public final class PacketProcessor {
         }
     }
 
-    public void processPacket(String data, Socket socket){
+    public void processPacket(String data, Socket socket) {
+        String[] toDecrypt = data.split("\\|");
+        final StrongTextEncryptor textEncryptor = new StrongTextEncryptor();
+        textEncryptor.setPassword(toDecrypt[1]);
+        data = textEncryptor.decrypt(toDecrypt[0]);
+
+
         final String[] sData = data.split("\\|");
         final String packetHead = sData[0];
         System.out.println(data);
-        if(sData.length > 2) {
-            final String uuid = sData[1];
-            final String username = sData[2];
+        String uuid = "";
+        String username = "";
+        if (sData.length > 2) {
+            uuid = sData[1];
+            username = sData[2];
         }
 
-        switch (packetHead){
+        switch (packetHead) {
             case "CPing" -> {
-                sendPacket(new SPing(), socket);
+                sendPacket(new SPing(), socket, uuid);
             }
             case "CConnect" -> {
-                sendPacket(new SConnect(), socket);
+                sendPacket(new SConnect(), socket, "1");
             }
         }
     }
 
-    public void sendPacket(final Packet packet, final Socket socket){
-        if(serverSocket == null){
+    public void sendPacket(final Packet packet, final Socket socket, final String uuid) {
+        if (serverSocket == null) {
             System.out.println("Server has not been initialised!");
             return;
         }
-        if(socket == null){
+        if (socket == null) {
             System.out.println("A error occurred trying to create a socket session with the client");
             return;
         }
-        sendData(socket, packet.compilePacket());
+        sendData(socket, packet.encryptPacket(uuid));
     }
 }

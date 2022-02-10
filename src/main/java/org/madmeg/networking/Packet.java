@@ -1,5 +1,7 @@
 package org.madmeg.networking;
 
+import org.jasypt.util.text.StrongTextEncryptor;
+
 public abstract class Packet {
     private final String packetHead;
     private String packetData = "";
@@ -23,6 +25,24 @@ public abstract class Packet {
 
     public String compilePacket(String uuid, String username){
         return packetHead +"|" +uuid + "|" + username + ((packetData.startsWith("|")) ? packetData : splitter + packetData);
+    }
+
+    public String encryptPacket(){
+        StrongTextEncryptor textEncryptor = new StrongTextEncryptor();
+        textEncryptor.setPassword("1");
+        return textEncryptor.encrypt(compilePacket())+ "|1";
+    }
+
+    public String encryptPacket(String uuid){
+        StrongTextEncryptor textEncryptor = new StrongTextEncryptor();
+        textEncryptor.setPassword(uuid);
+        return textEncryptor.encrypt(compilePacket())+ "|" + uuid;
+    }
+
+    public String encryptPacket(String uuid, String username){
+        StrongTextEncryptor textEncryptor = new StrongTextEncryptor();
+        textEncryptor.setPassword(uuid);
+        return textEncryptor.encrypt(compilePacket(uuid, username)) + "|" + uuid;
     }
 
 
