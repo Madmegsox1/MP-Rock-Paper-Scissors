@@ -9,6 +9,7 @@ import org.madmeg.server.packets.SPing;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.util.*;
 
@@ -125,7 +126,11 @@ public final class PacketProcessor extends Thread {
             currentSocket.close();
             System.out.println("Closed connection with server");
             currentSocket = null;
-        }catch (final IOException e){
+        }catch (ConnectException e){
+            System.out.println("Connection refused from server!");
+            Core.running = false;
+        }
+        catch (final IOException e){
             e.printStackTrace();
         }
     }

@@ -81,7 +81,7 @@ public final class Core extends Engine {
         if(overlay != null)  overlay.render(event);
 
 
-        if(timer.passedMs(10000L)){
+        if(timer.passedMs(10000L) && running){
             packetProcessor.queuePacket(new CPing());
             timer.reset();
         }
