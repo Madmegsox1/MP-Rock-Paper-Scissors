@@ -40,7 +40,7 @@ public final class Credits extends Gui {
         addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Credits") / 2, 120, this, Core.getFontRenderer().fonts.get(1), "Credits", new Color(32, 44, 57)));
 
         //names
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("aaa") / 2, 240, this, Core.getFontRenderer().fonts.get(1), "aaa", new Color(242, 212, 146)));
+        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("PlaceHolder") / 2, 240, this, Core.getFontRenderer().fonts.get(1), "PlaceHolder", new Color(242, 212, 146)));
 
         //back button
         addElement(new Button(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Bk") / 2, Profile.Display.HEIGHT-100,
