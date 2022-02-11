@@ -26,15 +26,6 @@ import java.io.IOException;
  * @since 07/02/22
  */
 
-/** Colours
- * #202C39
- * #283845
- * #B8B08D
- * #F2D492
- * #F29559
- */
-
-
 public final class TitleScreen extends Gui {
 
 
