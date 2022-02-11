@@ -50,7 +50,7 @@ public final class TitleScreen extends Gui {
         addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("RPS-101") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS-101",
                 new Color(32, 44, 57)));
 
-        addElement(new Button(Profile.Display.WIDTH / 2  - 20, 100,
+        addElement(new Button(Profile.Display.WIDTH / 2  - 20, 150,
                 80,
                 40,
                 this,
@@ -58,7 +58,7 @@ public final class TitleScreen extends Gui {
                 new Color(100,0,0),
                 n -> Core.getUiManager().setCurrentGui(new Credits())));
 
-        addElement(new Button(Profile.Display.WIDTH / 2  - 20, 150,
+        addElement(new Button(Profile.Display.WIDTH / 2  - 20, 100,
                 60,
                 40,
                 this,
