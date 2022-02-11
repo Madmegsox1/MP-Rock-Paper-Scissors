@@ -9,31 +9,38 @@ import org.madmeg.engine.render.font.Font;
 import org.madmeg.event.events.KeyEvent;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
+import org.madmeg.ui.Element;
 import org.madmeg.ui.Gui;
-import org.madmeg.ui.elements.Background;
-import org.madmeg.ui.elements.Button;
-import org.madmeg.ui.elements.Label;
+import org.madmeg.ui.elements.*;
 
 // gold 242, 212, 146
 // blue 32, 44, 57
 
 public final class Credits extends Gui {
 
+    public Texture title;
+
     public Credits(){
+
+        title = new Texture("button"); //replace with title.png when made
+
+
         Core.getDisplay().setTitle("Credits");
 
         //background
         addElement(new Background(new Texture("mountainBg"), this));
 
-        //title
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("RPS-101") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS-101", new Color(242, 212, 146)));
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth(" RPS-101") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS-101", new Color(32, 44, 57)));
 
-        //credits
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Credits") / 2, 80, this, Core.getFontRenderer().fonts.get(1), "Credits", new Color(32, 44, 57,98)));
+        addElement(new Quad(515, 40, 250,80, this,title));
+
+        //title
+        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth(" RPS-101") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS-101", new Color(242, 212, 146)));
+
+        //sub-title
+        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Credits") / 2, 120, this, Core.getFontRenderer().fonts.get(1), "Credits", new Color(32, 44, 57)));
 
         //names
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("aaa") / 2, 120, this, Core.getFontRenderer().fonts.get(1), "aaa", new Color(242, 212, 146)));
+        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("aaa") / 2, 240, this, Core.getFontRenderer().fonts.get(1), "aaa", new Color(242, 212, 146)));
 
         //back button
         addElement(new Button(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Bk") / 2, Profile.Display.HEIGHT-100,
@@ -62,6 +69,10 @@ public final class Credits extends Gui {
         passEvents(event);
         //box for names to be in
         //RenderEngine.drawQuad(new Vector2(x, y), w, h, color);
+        //RenderEngine.drawQuad(new Vector2(544, 39), 202, 52,new Color(242, 212, 146, 50));    //should be rounded edges
+        //RenderEngine.drawQuad(new Vector2(545, 40), 200, 50,new Color(32, 44, 57, 50));    //should be rounded edges
+
+
 
     }
 
