@@ -1,6 +1,8 @@
 package org.madmeg.engine;
 
 
+import org.madmeg.engine.render.elements.Color;
+
 public final class Profile {
 
     public final static class Display
@@ -33,5 +35,14 @@ public final class Profile {
         public static final String SOUND_LOCATION = "res/sound/";
         public static final String SOUND_FILEFORMAT = "wav";
 
+    }
+
+    public final static class Colors
+    {
+        public static Color navyBlue = new Color(32, 44, 57);
+        public static Color lighterNavyBlue = new Color(40, 56, 69);
+        public static Color tealSand = new Color(184, 176, 141);
+        public static Color lighterTealSand = new Color(242, 212, 146);
+        public static Color funnyOrange = new Color(242, 149, 89);
     }
 }
