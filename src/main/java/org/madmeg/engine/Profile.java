@@ -40,7 +40,7 @@ public final class Profile {
     public final static class Colors
     {
         public static Color navyBlue = new Color(32, 44, 57);
-        public static Color  lighterNavyBlue = new Color(40, 56, 69);
+        public static Color lighterNavyBlue = new Color(40, 56, 69);
         public static Color tealSand = new Color(184, 176, 141);
         public static Color lighterTealSand = new Color(242, 212, 146);
         public static Color funnyOrange = new Color(242, 149, 89);
