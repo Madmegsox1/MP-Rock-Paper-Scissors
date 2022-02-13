@@ -43,8 +43,6 @@ public final class TitleScreen extends Gui {
 
         Core.getDisplay().setTitle("Login");
 
-        Core.getFontRenderer().addFont(new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));
-
         addElement(new Background(new Texture("mountainBg"), this));
 
         addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("RPS-101") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS-101",

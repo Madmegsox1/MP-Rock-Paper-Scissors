@@ -31,16 +31,15 @@ public final class Credits extends Gui {
         addElement(new Background(new Texture("mountainBg"), this));
 
 
-        addElement(new Quad(515, 40, 250,80, this,title));
-
         //title
+        addElement(new Quad(515, 30, 250,80, this,title));
         addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth(" RPS-101") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS-101", new Color(242, 212, 146)));
 
         //sub-title
         addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Credits") / 2, 120, this, Core.getFontRenderer().fonts.get(1), "Credits", new Color(32, 44, 57)));
 
-        //names
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("PlaceHolder") / 2, 240, this, Core.getFontRenderer().fonts.get(1), "PlaceHolder", new Color(242, 212, 146)));
+        //names  - use github api to get names from commits
+        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(2).getWidth("Name1") / 2, 240, this, Core.getFontRenderer().fonts.get(2), "Name1", new Color(242, 212, 146)));
 
         //back button
         addElement(new Button(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Bk") / 2, Profile.Display.HEIGHT-100,
@@ -69,8 +68,8 @@ public final class Credits extends Gui {
         passEvents(event);
         //box for names to be in
         //RenderEngine.drawQuad(new Vector2(x, y), w, h, color);
-        //RenderEngine.drawQuad(new Vector2(544, 39), 202, 52,new Color(242, 212, 146, 50));    //should be rounded edges
-        //RenderEngine.drawQuad(new Vector2(545, 40), 200, 50,new Color(32, 44, 57, 50));    //should be rounded edges
+        //RenderEngine.drawQuad(new Vector2(544, 39), 202, 52,new Color(242, 212, 146, 50));
+        //RenderEngine.drawQuad(new Vector2(545, 40), 200, 50,new Color(32, 44, 57, 50));
 
 
 
