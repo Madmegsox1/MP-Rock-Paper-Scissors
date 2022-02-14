@@ -22,7 +22,7 @@ public final class Credits extends Gui {
 
     public Credits(){
 
-        title = new Texture("button"); //replace with title.png when made
+        title = new Texture("button2"); //replace with title.png when made
 
 
         Core.getDisplay().setTitle("Credits");
@@ -47,7 +47,7 @@ public final class Credits extends Gui {
                 40,
                 this,
                 "Back",
-                new Texture("Button2"),
+                new Texture("Button"),
                 n -> Core.getUiManager().setCurrentGui(new TitleScreen())
         ));
     }
