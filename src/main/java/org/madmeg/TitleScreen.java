@@ -48,20 +48,20 @@ public final class TitleScreen extends Gui {
         addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("RPS-101") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS-101",
                 new Color(32, 44, 57)));
 
-        addElement(new Button(Profile.Display.WIDTH / 2  - 20, 150,
-                80,
-                40,
+        addElement(new Button(Profile.Display.WIDTH / 2  - 120/2, 150,
+                120,
+                60,
                 this,
                 "Credits",
-                new Color(100,0,0),
+                Core.btnTexture,
                 n -> Core.getUiManager().setCurrentGui(new Credits())));
 
-        addElement(new Button(Profile.Display.WIDTH / 2  - 20, 100,
+        addElement(new Button(Profile.Display.WIDTH / 2  - 100/2, 100,
+                100,
                 60,
-                40,
                 this,
                 "Menu",
-                new Color(100,0,0),
+                Core.btnTexture,
                 n -> Core.getUiManager().setCurrentGui(new Menu())
         ));
 

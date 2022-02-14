@@ -36,6 +36,8 @@ public final class Core extends Engine {
     public Gui overlay = null;
     public static PacketProcessor packetProcessor;
 
+    public static Texture btnTexture;
+
     public Timer timer;
     public static boolean running;
 
@@ -50,6 +52,8 @@ public final class Core extends Engine {
         renderer = new Renderer(display);
         renderer.init();
 
+
+        btnTexture = new Texture("button");
 
         animation = new Animation(new Vector2(400, 400), 100, 100, 30);
         animation.addTexture(new Texture("1"));

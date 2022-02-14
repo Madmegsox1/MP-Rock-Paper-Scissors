@@ -70,9 +70,6 @@ public final class Credits extends Gui {
         //RenderEngine.drawQuad(new Vector2(x, y), w, h, color);
         //RenderEngine.drawQuad(new Vector2(544, 39), 202, 52,new Color(242, 212, 146, 50));
         //RenderEngine.drawQuad(new Vector2(545, 40), 200, 50,new Color(32, 44, 57, 50));
-
-
-
     }
 
     @Override
