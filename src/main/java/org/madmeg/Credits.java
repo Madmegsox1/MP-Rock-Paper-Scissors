@@ -43,14 +43,13 @@ public final class Credits extends Gui {
 
         //back button
         addElement(new Button(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Bk") / 2, Profile.Display.HEIGHT-100,
-                50,
+                80,
                 40,
                 this,
                 "Back",
-                new Color(100,0,0),
+                new Texture("Button2"),
                 n -> Core.getUiManager().setCurrentGui(new TitleScreen())
         ));
-
     }
 
     @Override
