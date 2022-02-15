@@ -54,8 +54,8 @@ public final class Debug extends Gui {
         passEvents(event);
         Label label = (Label) elements.get(1);
         label.updateText("FPS: " + RenderEngine.fps);
-        label = (Label) elements.get(3);
-        label.updateText("CPU: "+ operatingSystemMXBean.getProcessCpuLoad() * 100 + "%");
+        //label = (Label) elements.get(3);
+        //label.updateText("CPU: "+ operatingSystemMXBean.getProcessCpuLoad() * 100 + "%");
         label = (Label) elements.get(6);
         label.updateText("PING: " + PacketProcessor.ping);
         label = (Label) elements.get(7);
