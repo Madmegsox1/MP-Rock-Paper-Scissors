@@ -24,6 +24,7 @@ import org.madmeg.ui.UiManager;
 
 /**
  * @author Madmegsox1
+ * @author JLey21
  *
  * Rock, Paper, Scissors Game
  *

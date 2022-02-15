@@ -15,6 +15,10 @@ import org.madmeg.ui.elements.*;
 
 // gold 242, 212, 146
 // blue 32, 44, 57
+/**
+ * @author JLey21
+ * @since 08/02/2022
+ */
 
 public final class Credits extends Gui {
 

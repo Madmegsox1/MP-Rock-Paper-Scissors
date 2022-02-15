@@ -12,6 +12,10 @@ import org.madmeg.ui.elements.Button;
 import org.madmeg.ui.elements.Label;
 import static org.madmeg.engine.Profile.Colors.navyBlue;
 
+/**
+ * @author JLey21
+ * @since 15/02/2022
+ */
 
 //josh is making a toggle switch to use for settings.
 
