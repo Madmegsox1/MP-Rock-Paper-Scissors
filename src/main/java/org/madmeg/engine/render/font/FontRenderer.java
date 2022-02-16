@@ -15,6 +15,16 @@ public final class FontRenderer {
 
     public ArrayList<Font> fonts = new ArrayList<>();
 
+
+    public static Font titleFont;
+    public static Font normalFont;
+    public static Font buttonFont;
+
+
+
+
+
+
     public FontRenderer(Font... f1){
         fonts.addAll(List.of(f1));
     }

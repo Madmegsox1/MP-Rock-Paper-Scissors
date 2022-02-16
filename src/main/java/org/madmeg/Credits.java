@@ -6,6 +6,7 @@ import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.engine.render.font.Font;
+import org.madmeg.engine.render.font.FontRenderer;
 import org.madmeg.event.events.KeyEvent;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
@@ -34,16 +35,16 @@ public final class Credits extends Gui {
 
         //title
         addElement(new Quad(485, 20, 300,100, this, Core.title));
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth(" RPS-101") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS-101", new Color(242, 212, 146)));
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth(" RPS-101") / 2, 40, this, FontRenderer.titleFont, "RPS-101", new Color(242, 212, 146)));
 
         //sub-title
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Credits") / 2, 120, this, Core.getFontRenderer().fonts.get(1), "Credits", new Color(32, 44, 57)));
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth("Credits") / 2, 120, this, FontRenderer.titleFont, "Credits", new Color(32, 44, 57)));
 
         //names  - use github api to get names from commits
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(2).getWidth("Name1") / 2, 240, this, Core.getFontRenderer().fonts.get(2), "Name1", new Color(242, 212, 146)));
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Name1") / 2, 240, this, FontRenderer.normalFont, "Name1", new Color(242, 212, 146)));
 
         //back button
-        addElement(new Button(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Bk") / 2, Profile.Display.HEIGHT-100,
+        addElement(new Button(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Bk") / 2, Profile.Display.HEIGHT-100,
                 80,
                 40,
                 this,

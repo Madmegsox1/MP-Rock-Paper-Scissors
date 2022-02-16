@@ -5,6 +5,7 @@ import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.elements.Vector2;
+import org.madmeg.engine.render.font.FontRenderer;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
 import org.madmeg.lambda.Update;
@@ -48,7 +49,7 @@ public final class Button extends Element {
         }else {
             RenderEngine.drawQuadA(new Vector2(x, y), w, h, c);
         }
-        Engine.getFontRenderer().renderFont(text, new Vector2(x + (w / 2f) - (Engine.getFontRenderer().fonts.get(0).getWidth(text) / 2f), y + (h / 2f) - (Engine.getFontRenderer().fonts.get(0).getHeight(text) / 2f)));
+        FontRenderer.buttonFont.drawText(text, x + (w / 2f) - (FontRenderer.buttonFont.getWidth(text) / 2f), y + (h / 2f) - (FontRenderer.buttonFont.getHeight(text) / 2f));
     }
 
     public void mouseClick(MouseClickEvent event){

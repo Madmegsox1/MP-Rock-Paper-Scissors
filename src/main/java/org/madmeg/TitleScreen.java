@@ -6,6 +6,7 @@ import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.engine.render.font.Font;
+import org.madmeg.engine.render.font.FontRenderer;
 import org.madmeg.event.events.KeyEvent;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
@@ -46,7 +47,7 @@ public final class TitleScreen extends Gui {
 
         addElement(new Background(new Texture("mountainBg"), this));
 
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(3).getWidth("RPS-101") / 2, 40, this, Core.getFontRenderer().fonts.get(3), "RPS-101",
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth("RPS-101") / 2, 40, this, FontRenderer.titleFont, "RPS-101",
                 new Color(32, 44, 57)));
 
         //credits page

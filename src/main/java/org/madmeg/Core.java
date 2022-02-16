@@ -67,8 +67,10 @@ public final class Core extends Engine {
 
 
         fontRenderer = new FontRenderer(new Font());
-        Core.getFontRenderer().addFont(new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));
-        Core.getFontRenderer().addFont(new Font(new java.awt.Font("impact", java.awt.Font.PLAIN,30), true));
+        FontRenderer.titleFont = (new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));
+        FontRenderer.normalFont = (new Font(new java.awt.Font("impact", java.awt.Font.PLAIN,30), true));
+        FontRenderer.buttonFont = new Font();
+
         Core.getFontRenderer().addFont(new Font(new java.awt.Font("Comic Sans MS", java.awt.Font.BOLD,50), true));
         Core.getFontRenderer().addFont(new Font(new java.awt.Font("impact", java.awt.Font.BOLD,20), true));
 

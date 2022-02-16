@@ -6,6 +6,7 @@ import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Timer;
 import org.madmeg.engine.render.font.Font;
+import org.madmeg.engine.render.font.FontRenderer;
 import org.madmeg.event.events.KeyEvent;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
@@ -32,7 +33,7 @@ public final class Debug extends Gui {
 
     public Debug(){
 
-        Font f = Core.getFontRenderer().fonts.get(0);
+        Font f = FontRenderer.buttonFont;
         addElement(new Background(new Color(100,100,100, 80), this));
         addElement(new Label(40, 40, this, f, "FPS: " + RenderEngine.fps, Color.WHITE));
         addElement(new Label(40, 60, this, f, "CORES: " + Runtime.getRuntime().availableProcessors(), Color.WHITE));
