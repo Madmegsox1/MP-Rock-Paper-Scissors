@@ -20,12 +20,12 @@ public abstract class Gui {
         return "";
     }
 
-    public void addElement(Element e){
+    public final void addElement(Element e){
         e.assignId(this.elements.size() + 1);
         this.elements.add(e);
     }
 
-    public void passEvents(Event event){
+    public final void passEvents(Event event){
         try {
             for (Element e : this.elements) {
                 if (!e.shouldShow) continue;
