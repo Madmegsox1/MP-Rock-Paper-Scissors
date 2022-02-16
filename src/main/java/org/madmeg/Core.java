@@ -40,6 +40,7 @@ public final class Core extends Engine {
     public static PacketProcessor packetProcessor;
 
     public static Texture btnTexture;
+    public static Texture title;
 
     public Timer timer;
     public static boolean running;
@@ -57,6 +58,7 @@ public final class Core extends Engine {
 
 
         btnTexture = new Texture("button");
+        title  = new Texture("button2"); //replace with title.png when made
 
         animation = new Animation(new Vector2(400, 400), 100, 100, 30);
         animation.addTexture(new Texture("1"));

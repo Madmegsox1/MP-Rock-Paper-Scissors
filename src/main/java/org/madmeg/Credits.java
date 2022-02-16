@@ -22,11 +22,8 @@ import org.madmeg.ui.elements.*;
 
 public final class Credits extends Gui {
 
-    public Texture title;
 
     public Credits(){
-
-        title = new Texture("button2"); //replace with title.png when made
 
 
         Core.getDisplay().setTitle("Credits");
@@ -36,7 +33,7 @@ public final class Credits extends Gui {
 
 
         //title
-        addElement(new Quad(515, 30, 250,80, this,title));
+        addElement(new Quad(485, 20, 300,100, this, Core.title));
         addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth(" RPS-101") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS-101", new Color(242, 212, 146)));
 
         //sub-title

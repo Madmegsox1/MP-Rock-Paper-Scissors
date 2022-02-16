@@ -10,22 +10,42 @@ import org.madmeg.ui.Gui;
 import org.madmeg.ui.elements.Background;
 import org.madmeg.ui.elements.Button;
 import org.madmeg.ui.elements.Label;
+import org.madmeg.ui.elements.Quad;
 
 import static org.madmeg.engine.Profile.Colors.navyBlue;
 
+/**
+ * @author JLey21
+ * @since 08/02/2022
+ */
+
+
 public final class Menu extends Gui {
 
+
     public Menu(){
+
+
         Core.getDisplay().setTitle("Menu");
 
+        //background
         addElement(new Background(new Texture("mountainBg"), this));
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Menu") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "Menu", new Color(32,44,57)));
-        addElement(new Button(Profile.Display.WIDTH / 4  - 20, Profile.Display.HEIGHT-100,
-                60,
+
+        //title
+        addElement(new Quad(485, 20, 300,100, this, Core.title));
+        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth(" RPS-101") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS-101", new Color(242, 212, 146)));
+
+        //sub-title
+        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Menu") / 2, 120, this, Core.getFontRenderer().fonts.get(1), "Menu", new Color(32,44,57)));
+        //
+
+        //back button
+        addElement(new Button(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Bk") / 2, Profile.Display.HEIGHT-100,
+                80,
                 40,
                 this,
                 "Back",
-                new Color(100,0,0),
+                new Texture("Button"),
                 n -> Core.getUiManager().setCurrentGui(new TitleScreen())
         ));
 

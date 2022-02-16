@@ -24,6 +24,9 @@ import java.io.IOException;
  * @since 03/02/2022
  * @author Baskersmells
  * @since 07/02/22
+ * @author JLey21
+ * @since 08/02/2022
+ *
  */
 
 public final class TitleScreen extends Gui {
@@ -49,8 +52,8 @@ public final class TitleScreen extends Gui {
                 new Color(32, 44, 57)));
 
         //credits page
-        addElement(new Button(Profile.Display.WIDTH / 2  - 120/2, 500,
-                120,
+        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 500,
+                140,
                 60,
                 this,
                 "Credits",
@@ -58,8 +61,8 @@ public final class TitleScreen extends Gui {
                 n -> Core.getUiManager().setCurrentGui(new Credits())));
 
         //menu page
-        addElement(new Button(Profile.Display.WIDTH / 2  - 100/2, 100,
-                100,
+        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 100,
+                140,
                 60,
                 this,
                 "Menu",
