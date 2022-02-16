@@ -7,14 +7,13 @@ import org.madmeg.event.events.KeyEvent;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
 import org.madmeg.ui.Gui;
-import org.madmeg.ui.elements.Background;
-import org.madmeg.ui.elements.Button;
-import org.madmeg.ui.elements.Label;
-import org.madmeg.ui.elements.Quad;
+import org.madmeg.ui.elements.*;
 
 import static org.madmeg.engine.Profile.Colors.navyBlue;
 
 /**
+ * @author DraconicVoid
+ * @since 08/02/2022
  * @author JLey21
  * @since 08/02/2022
  */
@@ -25,7 +24,7 @@ public final class Menu extends Gui {
 
     public Menu(){
 
-
+        //page name
         Core.getDisplay().setTitle("Menu");
 
         //background
@@ -45,7 +44,7 @@ public final class Menu extends Gui {
                 40,
                 this,
                 "Back",
-                new Texture("Button"),
+                Core.btnTexture,
                 n -> Core.getUiManager().setCurrentGui(new TitleScreen())
         ));
 

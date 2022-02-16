@@ -25,7 +25,7 @@ public final class Credits extends Gui {
 
     public Credits(){
 
-
+        //page name
         Core.getDisplay().setTitle("Credits");
 
         //background
@@ -48,7 +48,7 @@ public final class Credits extends Gui {
                 40,
                 this,
                 "Back",
-                new Texture("Button"),
+                Core.btnTexture,
                 n -> Core.getUiManager().setCurrentGui(new TitleScreen())
         ));
     }

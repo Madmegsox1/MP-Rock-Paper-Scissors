@@ -75,10 +75,6 @@ public final class TitleScreen extends Gui {
                 "Settings",
                 Core.btnTexture,
                 n -> Core.getUiManager().setCurrentGui(new Settings())));
-        //addElement(new Input(600, 600, 200, 20, this, new Color(255,255,255), new Color(0,0,0), "", Core.getFontRenderer().fonts.get(0)));
-
-        addElement(new Switch(100, 100, new Color(255,255,255), new Color(100, 100,100), this, n -> System.out.println("asd")));
-        addElement(new Input(200, 200, 100, 40, this, new Color(255,255,255), new Color(0,0,0), "Test", Core.getFontRenderer().fonts.get(3)));
     }
 
 

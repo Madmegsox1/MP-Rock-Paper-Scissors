@@ -1,16 +1,16 @@
 package org.madmeg;
 
+import org.lwjgl.system.CallbackI;
 import org.madmeg.engine.Profile;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Texture;
+import org.madmeg.engine.render.font.Font;
 import org.madmeg.event.events.KeyEvent;
 import org.madmeg.event.events.MouseClickEvent;
 import org.madmeg.event.events.RenderEvent;
 import org.madmeg.ui.Gui;
-import org.madmeg.ui.elements.Background;
-import org.madmeg.ui.elements.Button;
-import org.madmeg.ui.elements.Label;
-import org.madmeg.ui.elements.Quad;
+import org.madmeg.ui.elements.*;
+
 
 import static org.madmeg.engine.Profile.Colors.navyBlue;
 
@@ -24,6 +24,8 @@ import static org.madmeg.engine.Profile.Colors.navyBlue;
 public final class Settings extends Gui {
 
     public Settings(){
+
+        //page name
         Core.getDisplay().setTitle("Settings");
 
         //background
@@ -36,7 +38,9 @@ public final class Settings extends Gui {
         //sub-title
         addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Settings") / 2, 120, this, Core.getFontRenderer().fonts.get(1), "Settings", new Color(32,44,57)));
 
-        //
+        //Settings button - will change buttons to toggle switches when made
+        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(4).getWidth("Comic Sans") / 2, 200, this, Core.getFontRenderer().fonts.get(4), "Comic Sans", new Color(32,44,57)));
+        addElement(new Switch(Profile.Display.WIDTH / 2 - 25, 225, new Color(255,255,255), new Color(100, 100,100), this, n -> Core.getFontRenderer().fonts.set(1, (new Font(new java.awt.Font("Comic Sans MS", java.awt.Font.BOLD,50), true)))));
 
         //back button
         addElement(new Button(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Bk") / 2, Profile.Display.HEIGHT-100,
@@ -44,7 +48,7 @@ public final class Settings extends Gui {
                 40,
                 this,
                 "Back",
-                new Texture("Button"),
+                Core.btnTexture,
                 n -> Core.getUiManager().setCurrentGui(new TitleScreen())
         ));
 

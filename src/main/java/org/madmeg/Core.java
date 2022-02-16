@@ -70,6 +70,7 @@ public final class Core extends Engine {
         Core.getFontRenderer().addFont(new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));
         Core.getFontRenderer().addFont(new Font(new java.awt.Font("impact", java.awt.Font.PLAIN,30), true));
         Core.getFontRenderer().addFont(new Font(new java.awt.Font("Comic Sans MS", java.awt.Font.BOLD,50), true));
+        Core.getFontRenderer().addFont(new Font(new java.awt.Font("impact", java.awt.Font.BOLD,20), true));
 
         uiManager = new UiManager();
         uiManager.setCurrentGui(new TitleScreen());
