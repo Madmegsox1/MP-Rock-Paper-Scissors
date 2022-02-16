@@ -38,17 +38,20 @@ public final class TitleScreen extends Gui {
 
     public TitleScreen() {
 
+        //bottom textures
         paper = new Texture("paper");
         rock = new Texture("rock");
         scissors = new Texture("scissor");
 
-
+        //page name
         Core.getDisplay().setTitle("Login");
 
+        //background
         addElement(new Background(new Texture("mountainBg"), this));
 
-        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth("RPS-101") / 2, 40, this, FontRenderer.titleFont, "RPS-101",
-                new Color(32, 44, 57)));
+        //title
+        addElement(new Quad(485, 20, 300,100, this, Core.title));
+        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth(" RPS-101") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS-101", new Color(242, 212, 146)));
 
         //credits page
         addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 500,
