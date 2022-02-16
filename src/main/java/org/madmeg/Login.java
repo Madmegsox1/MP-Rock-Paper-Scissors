@@ -14,20 +14,20 @@ import org.madmeg.ui.Element;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.elements.*;
 
-// gold 242, 212, 146
-// blue 32, 44, 57
+
 /**
  * @author JLey21
  * @since 08/02/2022
  */
 
-public final class Credits extends Gui {
+
+public final class Login extends Gui {
 
 
-    public Credits(){
+    public Login(){
 
         //page name
-        Core.getDisplay().setTitle("RPS-101 | Credits");
+        Core.getDisplay().setTitle("RPS-101 | Login");
 
         //background
         addElement(new Background(new Texture("mountainBg"), this));
@@ -38,10 +38,14 @@ public final class Credits extends Gui {
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth(" RPS-101") / 2, 40, this, FontRenderer.titleFont, "RPS-101", new Color(242, 212, 146)));
 
         //sub-title
-        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth("Credits") / 2, 120, this, FontRenderer.titleFont, "Credits", new Color(32, 44, 57)));
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth("Login") / 2, 120, this, FontRenderer.titleFont, "Login", new Color(32, 44, 57)));
 
-        //names  - use github api to get names from commits
-        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Name1") / 2, 240, this, FontRenderer.normalFont, "Name1", new Color(242, 212, 146)));
+        //user inputs
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth("Username") / 2, 120, this, FontRenderer.normalFont, "Username", new Color(32, 44, 57)));
+        addElement(new Input(200, 200, 100, 40, this, new Color(255,255,255), new Color(0,0,0), "", Core.getFontRenderer().fonts.get(3)));
+
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth("Password") / 2, 120, this, FontRenderer.normalFont, "Password", new Color(32, 44, 57)));
+        addElement(new Input(200, 200, 100, 40, this, new Color(255,255,255), new Color(0,0,0), "", Core.getFontRenderer().fonts.get(3)));
 
         //back button
         addElement(new Button(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Bk") / 2, Profile.Display.HEIGHT-100,

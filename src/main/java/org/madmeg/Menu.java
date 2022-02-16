@@ -26,7 +26,7 @@ public final class Menu extends Gui {
     public Menu(){
 
         //page name
-        Core.getDisplay().setTitle("Menu");
+        Core.getDisplay().setTitle("RPS-101 | Menu");
 
         //background
         addElement(new Background(new Texture("mountainBg"), this));

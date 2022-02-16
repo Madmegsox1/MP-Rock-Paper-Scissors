@@ -27,7 +27,7 @@ public final class Settings extends Gui {
     public Settings(){
 
         //page name
-        Core.getDisplay().setTitle("Settings");
+        Core.getDisplay().setTitle("RPS-101 | Settings");
 
         //background
         addElement(new Background(new Texture("mountainBg"), this));

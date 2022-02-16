@@ -44,7 +44,7 @@ public final class TitleScreen extends Gui {
         scissors = new Texture("scissor");
 
         //page name
-        Core.getDisplay().setTitle("Login");
+        Core.getDisplay().setTitle("RPS-101 | TitleScreen");
 
         //background
         addElement(new Background(new Texture("mountainBg"), this));
@@ -79,6 +79,15 @@ public final class TitleScreen extends Gui {
                 "Settings",
                 Core.btnTexture,
                 n -> Core.getUiManager().setCurrentGui(new Settings())));
+
+        //login page
+        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 200,
+                140,
+                60,
+                this,
+                "Login",
+                Core.btnTexture,
+                n -> Core.getUiManager().setCurrentGui(new Login())));
     }
 
 
