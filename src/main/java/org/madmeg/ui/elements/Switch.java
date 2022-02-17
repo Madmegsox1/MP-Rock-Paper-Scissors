@@ -17,12 +17,12 @@ public final class Switch extends Element {
 
     public boolean switched;
 
-    public Switch(int x, int y, Color c1, Color c2, Gui parent, Update<Boolean> update) {
+    public Switch(int x, int y, Color c1, Color c2, Gui parent, boolean switched,Update<Boolean> update) {
         super(x, y, parent);
         this.update = update;
         this.c1 = c1;
         this.c2 = c2;
-        switched = false;
+        this.switched = switched;
     }
 
 

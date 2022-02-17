@@ -58,7 +58,7 @@ public final class Core extends Engine {
 
 
         btnTexture = new Texture("button");
-        title  = new Texture("button2"); //replace with title.png when made
+        title  = new Texture("button"); //replace with title.png when made
 
         animation = new Animation(new Vector2(400, 400), 100, 100, 30);
         animation.addTexture(new Texture("1"));

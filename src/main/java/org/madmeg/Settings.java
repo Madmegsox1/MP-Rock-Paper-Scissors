@@ -41,7 +41,7 @@ public final class Settings extends Gui {
 
         //Settings button - will change buttons to toggle switches when made
         addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(2).getWidth("Comic Sans") / 2, 200, this, Core.getFontRenderer().fonts.get(2), "Comic Sans", new Color(32,44,57)));
-        addElement(new Switch(Profile.Display.WIDTH / 2 - 25, 225, new Color(255,255,255), new Color(100, 100,100), this, n ->  {
+        addElement(new Switch(Profile.Display.WIDTH / 2 - 25, 225, new Color(255,255,255), new Color(100, 100,100), this, false,n ->  {
             if(n) FontRenderer.titleFont = (new Font(new java.awt.Font("Comic Sans MS", java.awt.Font.BOLD,50), true));
             else FontRenderer.titleFont = (new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));
         }));
