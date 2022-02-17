@@ -108,4 +108,12 @@ public final class FileManager {
         sc.close();
     }
 
+
+    public Config getConfig() {
+        return config;
+    }
+
+    public void setConfig(Config config) {
+        this.config = config;
+    }
 }

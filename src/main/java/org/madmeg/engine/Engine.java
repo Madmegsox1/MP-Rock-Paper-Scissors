@@ -1,5 +1,6 @@
 package org.madmeg.engine;
 
+import org.madmeg.engine.config.FileManager;
 import org.madmeg.engine.render.Display;
 import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.Renderer;
@@ -15,6 +16,7 @@ public abstract class Engine extends Thread {
     protected static RenderEngine renderEngine;
     protected static FontRenderer fontRenderer;
     protected static UiManager uiManager;
+    protected static FileManager fileManager;
 
 
     public Engine(){
@@ -44,5 +46,9 @@ public abstract class Engine extends Thread {
 
     public static UiManager getUiManager() {
         return uiManager;
+    }
+
+    public static FileManager getFileManager() {
+        return fileManager;
     }
 }

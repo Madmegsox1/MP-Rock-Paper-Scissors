@@ -87,18 +87,10 @@ public final class Core extends Engine {
 
         timer = new Timer();
 
+        fileManager = new FileManager();
 
-        Config c = new Config();
-        c.setComicSans(true);
-        c.setTestD(1);
-        c.setTestF(1f);
-        c.setTestI(1);
-        c.setTestS("test");
-
-        FileManager fileManager = new FileManager();
         try {
             fileManager.loadSettings();
-            //fileManager.saveSettings();
         } catch (NoSuchFieldException | IllegalAccessException | IOException e) {
             e.printStackTrace();
         }
