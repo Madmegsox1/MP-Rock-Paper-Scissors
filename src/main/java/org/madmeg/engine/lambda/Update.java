@@ -1,4 +1,4 @@
-package org.madmeg.lambda;
+package org.madmeg.engine.lambda;
 
 /**
  * @author Madmegsox1

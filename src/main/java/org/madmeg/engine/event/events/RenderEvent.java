@@ -1,8 +1,8 @@
-package org.madmeg.event.events;
+package org.madmeg.engine.event.events;
 
 import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.Renderer;
-import org.madmeg.event.processor.Event;
+import org.madmeg.engine.event.processor.Event;
 
 /**
  * @author Madmegsox1

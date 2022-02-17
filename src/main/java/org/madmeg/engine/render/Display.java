@@ -9,8 +9,8 @@ import org.lwjgl.glfw.GLFWFramebufferSizeCallback;
 import org.lwjgl.opengl.GL11;
 import org.madmeg.engine.Engine;
 import org.madmeg.engine.Profile;
-import org.madmeg.event.events.KeyEvent;
-import org.madmeg.event.events.MouseClickEvent;
+import org.madmeg.engine.event.events.KeyEvent;
+import org.madmeg.engine.event.events.MouseClickEvent;
 
 public final class Display {
     private final String title;

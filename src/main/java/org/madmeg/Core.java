@@ -2,6 +2,8 @@ package org.madmeg;
 
 import org.lwjgl.glfw.GLFW;
 import org.madmeg.engine.Engine;
+import org.madmeg.engine.config.Config;
+import org.madmeg.engine.config.FileManager;
 import org.madmeg.engine.render.Display;
 import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.Renderer;
@@ -11,15 +13,18 @@ import org.madmeg.engine.render.elements.Timer;
 import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.engine.render.font.Font;
 import org.madmeg.engine.render.font.FontRenderer;
-import org.madmeg.event.events.KeyEvent;
-import org.madmeg.event.events.MouseClickEvent;
-import org.madmeg.event.events.RenderEvent;
-import org.madmeg.event.processor.CommitEvent;
+import org.madmeg.engine.event.events.KeyEvent;
+import org.madmeg.engine.event.events.MouseClickEvent;
+import org.madmeg.engine.event.events.RenderEvent;
+import org.madmeg.engine.event.processor.CommitEvent;
 import org.madmeg.networking.processor.PacketProcessor;
 import org.madmeg.networking.processor.packets.CConnect;
 import org.madmeg.networking.processor.packets.CPing;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.UiManager;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 
 /**
@@ -81,6 +86,22 @@ public final class Core extends Engine {
         packetProcessor.queuePacket(new CConnect());
 
         timer = new Timer();
+
+
+        Config c = new Config();
+        c.setComicSans(true);
+        c.setTestD(1);
+        c.setTestF(1f);
+        c.setTestI(1);
+        c.setTestS("test");
+
+        FileManager fileManager = new FileManager();
+        try {
+            fileManager.loadSettings();
+            //fileManager.saveSettings();
+        } catch (NoSuchFieldException | IllegalAccessException | IOException e) {
+            e.printStackTrace();
+        }
 
 
         renderEngine = new RenderEngine();

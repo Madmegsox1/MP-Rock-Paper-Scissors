@@ -4,7 +4,7 @@ import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.elements.Vector2;
-import org.madmeg.event.events.RenderEvent;
+import org.madmeg.engine.event.events.RenderEvent;
 import org.madmeg.ui.Element;
 import org.madmeg.ui.Gui;
 

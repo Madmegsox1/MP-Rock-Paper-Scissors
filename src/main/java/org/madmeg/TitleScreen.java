@@ -5,18 +5,11 @@ import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.elements.Vector2;
-import org.madmeg.engine.render.font.Font;
-import org.madmeg.engine.render.font.FontRenderer;
-import org.madmeg.event.events.KeyEvent;
-import org.madmeg.event.events.MouseClickEvent;
-import org.madmeg.event.events.RenderEvent;
+import org.madmeg.engine.event.events.KeyEvent;
+import org.madmeg.engine.event.events.MouseClickEvent;
+import org.madmeg.engine.event.events.RenderEvent;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.elements.*;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * @author Madmegsox1

@@ -1,7 +1,7 @@
 package org.madmeg.ui.elements;
 
-import org.madmeg.event.events.RenderEvent;
-import org.madmeg.lambda.Update;
+import org.madmeg.engine.event.events.RenderEvent;
+import org.madmeg.engine.lambda.Update;
 import org.madmeg.ui.Element;
 import org.madmeg.ui.Gui;
 

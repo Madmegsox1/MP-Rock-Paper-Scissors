@@ -6,9 +6,9 @@ import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.engine.render.font.FontRenderer;
-import org.madmeg.event.events.MouseClickEvent;
-import org.madmeg.event.events.RenderEvent;
-import org.madmeg.lambda.Update;
+import org.madmeg.engine.event.events.MouseClickEvent;
+import org.madmeg.engine.event.events.RenderEvent;
+import org.madmeg.engine.lambda.Update;
 import org.madmeg.ui.Element;
 import org.madmeg.ui.Gui;
 

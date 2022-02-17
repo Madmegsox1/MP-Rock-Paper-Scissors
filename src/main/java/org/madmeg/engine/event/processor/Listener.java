@@ -1,4 +1,4 @@
-package org.madmeg.event.processor;
+package org.madmeg.engine.event.processor;
 
 import java.lang.reflect.Method;
 

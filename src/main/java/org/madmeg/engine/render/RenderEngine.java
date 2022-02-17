@@ -6,7 +6,7 @@ import org.madmeg.engine.Engine;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.elements.Vector2;
-import org.madmeg.event.events.RenderEvent;
+import org.madmeg.engine.event.events.RenderEvent;
 
 import static org.lwjgl.opengl.GL11.*;
 

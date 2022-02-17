@@ -1,8 +1,8 @@
-package org.madmeg.event.events;
+package org.madmeg.engine.event.events;
 
 import org.lwjgl.BufferUtils;
 import org.lwjgl.glfw.GLFW;
-import org.madmeg.event.processor.Event;
+import org.madmeg.engine.event.processor.Event;
 
 import java.nio.DoubleBuffer;
 

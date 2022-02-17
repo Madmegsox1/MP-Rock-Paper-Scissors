@@ -1,11 +1,11 @@
 package org.madmeg.ui.elements;
 
+import org.madmeg.engine.event.events.MouseClickEvent;
+import org.madmeg.engine.event.events.RenderEvent;
+import org.madmeg.engine.lambda.Update;
 import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Vector2;
-import org.madmeg.event.events.MouseClickEvent;
-import org.madmeg.event.events.RenderEvent;
-import org.madmeg.lambda.Update;
 import org.madmeg.ui.Element;
 import org.madmeg.ui.Gui;
 
@@ -17,7 +17,7 @@ public final class Switch extends Element {
 
     public boolean switched;
 
-    public Switch(int x, int y, Color c1, Color c2, Gui parent, boolean switched,Update<Boolean> update) {
+    public Switch(int x, int y, Color c1, Color c2, Gui parent, boolean switched, Update<Boolean> update) {
         super(x, y, parent);
         this.update = update;
         this.c1 = c1;

@@ -2,7 +2,7 @@ package org.madmeg.networking.processor;
 
 import org.jasypt.util.text.StrongTextEncryptor;
 import org.madmeg.Core;
-import org.madmeg.event.processor.Event;
+import org.madmeg.engine.event.processor.Event;
 import org.madmeg.networking.Packet;
 import org.madmeg.networking.processor.packets.CConnect;
 import org.madmeg.server.packets.SConnect;

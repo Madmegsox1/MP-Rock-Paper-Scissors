@@ -4,7 +4,7 @@ import org.madmeg.engine.render.Display;
 import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.Renderer;
 import org.madmeg.engine.render.font.FontRenderer;
-import org.madmeg.event.processor.EventProcessor;
+import org.madmeg.engine.event.processor.EventProcessor;
 import org.madmeg.ui.UiManager;
 
 public abstract class Engine extends Thread {

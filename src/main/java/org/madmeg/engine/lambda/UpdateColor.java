@@ -1,4 +1,4 @@
-package org.madmeg.lambda;
+package org.madmeg.engine.lambda;
 
 import org.madmeg.engine.render.elements.Color;
 

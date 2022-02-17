@@ -1,8 +1,8 @@
 package org.madmeg.ui;
 
-import org.madmeg.event.events.KeyEvent;
-import org.madmeg.event.events.MouseClickEvent;
-import org.madmeg.event.events.RenderEvent;
+import org.madmeg.engine.event.events.KeyEvent;
+import org.madmeg.engine.event.events.MouseClickEvent;
+import org.madmeg.engine.event.events.RenderEvent;
 
 /**
  * @author Madmegsox1
