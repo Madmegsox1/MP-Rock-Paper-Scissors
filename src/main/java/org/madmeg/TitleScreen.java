@@ -2,7 +2,6 @@ package org.madmeg;
 
 import org.madmeg.engine.Profile;
 import org.madmeg.engine.render.RenderEngine;
-import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.engine.event.events.KeyEvent;
@@ -62,7 +61,7 @@ public final class TitleScreen extends Gui {
         Input Username;
         Input Password;
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Username") / 2, 200, this, FontRenderer.normalFont, "Username", Profile.Colors.navyBlue));
-        addElement(Username = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 250, 280, 40, this, new Color(255,255,255), new Color(0,0,0), "", FontRenderer.normalFont));
+        addElement(Username = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 250, 280, 40, this, Profile.Colors.white, Profile.Colors.black, "", FontRenderer.normalFont));
 
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Password") / 2, 300, this, FontRenderer.normalFont, "Password", Profile.Colors.navyBlue));
         addElement(Password = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 350, 280, 40, this, Profile.Colors.white, Profile.Colors.black, "", FontRenderer.normalFont));
