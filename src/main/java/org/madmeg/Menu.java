@@ -1,7 +1,6 @@
 package org.madmeg;
 
 import org.madmeg.engine.Profile;
-import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.font.FontRenderer;
 import org.madmeg.engine.event.events.KeyEvent;
@@ -10,7 +9,6 @@ import org.madmeg.engine.event.events.RenderEvent;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.elements.*;
 
-import static org.madmeg.engine.Profile.Colors.navyBlue;
 
 /**
  * @author DraconicVoid
@@ -33,10 +31,10 @@ public final class Menu extends Gui {
 
         //title
         addElement(new Quad(485, 20, 300,100, this, Core.title));
-        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth(" RPS-101") / 2, 40, this, FontRenderer.titleFont, "RPS-101", new Color(242, 212, 146)));
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth(" RPS-101") / 2, 40, this, FontRenderer.titleFont, "RPS-101", Profile.Colors.lighterTealSand));
 
         //sub-title
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Menu") / 2, 120, this, FontRenderer.titleFont, "Menu", new Color(32,44,57)));
+        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Menu") / 2, 120, this, FontRenderer.titleFont, "Menu", Profile.Colors.navyBlue));
 
         //
 

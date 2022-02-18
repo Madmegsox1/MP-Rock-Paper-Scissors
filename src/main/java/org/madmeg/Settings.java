@@ -12,8 +12,6 @@ import org.madmeg.ui.Gui;
 import org.madmeg.ui.elements.*;
 
 
-import static org.madmeg.engine.Profile.Colors.navyBlue;
-
 /**
  * @author JLey21
  * @since 15/02/2022
@@ -33,13 +31,13 @@ public final class Settings extends Gui {
 
         //title
         addElement(new Quad(485, 20, 300,100, this, Core.title));
-        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth(" RPS-101") / 2, 40, this, FontRenderer.titleFont, "RPS-101", new Color(242, 212, 146)));
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth(" RPS-101") / 2, 40, this, FontRenderer.titleFont, "RPS-101", Profile.Colors.lighterTealSand));
 
         //sub-title
-        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth("Settings") / 2, 120, this, FontRenderer.titleFont, "Settings", new Color(32,44,57)));
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth("Settings") / 2, 120, this, FontRenderer.titleFont, "Settings", Profile.Colors.navyBlue));
 
         //Settings button - will change buttons to toggle switches when made
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(2).getWidth("Comic Sans") / 2, 200, this, Core.getFontRenderer().fonts.get(2), "Comic Sans", new Color(32,44,57)));
+        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(2).getWidth("Comic Sans") / 2, 200, this, Core.getFontRenderer().fonts.get(2), "Comic Sans", Profile.Colors.navyBlue));
         addElement(new Switch(Profile.Display.WIDTH / 2 - 25, 225, new Color(255,255,255), new Color(100, 100,100), this, Core.getFileManager().getConfig().isComicSans(),n ->  {
             if(n) {
                 FontRenderer.titleFont = (new Font(new java.awt.Font("Comic Sans MS", java.awt.Font.BOLD,50), true));
