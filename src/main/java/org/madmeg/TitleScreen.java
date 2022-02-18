@@ -38,7 +38,7 @@ public final class TitleScreen extends Gui {
         scissors = new Texture("scissor");
 
         //page name
-        Core.getDisplay().setTitle("RPS-101 | TitleScreen");
+        Core.getDisplay().setTitle("RPS-101 | Login");
 
         //background
         addElement(new Background(new Texture("mountainBg"), this));
@@ -47,17 +47,9 @@ public final class TitleScreen extends Gui {
         addElement(new Quad(485, 20, 300,100, this, Core.title));
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth(" RPS-101") / 2, 40, this, FontRenderer.titleFont, "RPS-101", new Color(242, 212, 146)));
 
-        //credits page
-        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 500,
-                140,
-                60,
-                this,
-                "Credits",
-                Core.btnTexture,
-                n -> Core.getUiManager().setCurrentGui(new Credits())));
 
-        //menu page
-        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 100,
+        //menu page - will remove button and load when user logs in
+        addElement(new Button(30, 100,
                 140,
                 60,
                 this,
@@ -65,14 +57,37 @@ public final class TitleScreen extends Gui {
                 Core.btnTexture,
                 n -> Core.getUiManager().setCurrentGui(new Menu())));
 
+
+        //user inputs
+        Input Username;
+        Input Password;
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Username") / 2, 150, this, FontRenderer.normalFont, "Username", new Color(32, 44, 57)));
+        addElement(Username = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 200, 280, 40, this, new Color(255,255,255), new Color(0,0,0), "", FontRenderer.normalFont));
+
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Password") / 2, 250, this, FontRenderer.normalFont, "Password", new Color(32, 44, 57)));
+        addElement(Password = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 300, 280, 40, this, new Color(255,255,255), new Color(0,0,0), "", FontRenderer.normalFont));
+
+        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 350, 140, 60, this, "Submit", Core.btnTexture, n ->System.out.println(Password))); //on click checks user details and logs in
+
+
         //settings page
-        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 150,
+        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 500,
                 140,
                 60,
                 this,
                 "Settings",
                 Core.btnTexture,
                 n -> Core.getUiManager().setCurrentGui(new Settings())));
+
+
+        //credits page
+        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 550,
+                140,
+                60,
+                this,
+                "Credits",
+                Core.btnTexture,
+                n -> Core.getUiManager().setCurrentGui(new Credits())));
 
     }
 

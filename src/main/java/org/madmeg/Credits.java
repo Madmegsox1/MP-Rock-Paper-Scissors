@@ -20,7 +20,6 @@ import org.madmeg.ui.elements.*;
 
 public final class Credits extends Gui {
 
-    public Texture title;
 
     public Credits(){
 
@@ -38,11 +37,11 @@ public final class Credits extends Gui {
         //sub-title
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth("Credits") / 2, 120, this, FontRenderer.titleFont, "Credits", new Color(32, 44, 57)));
 
-        //names  - use github api to get names from commits
+        //names  - use GitHub api to get names from commits
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Name1") / 2, 240, this, FontRenderer.normalFont, "Name1", new Color(242, 212, 146)));
 
         //back button
-        addElement(new Button(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Bk") / 2, Profile.Display.HEIGHT-100,
+        addElement(new Button(Profile.Display.WIDTH / 2 - FontRenderer.buttonFont.getWidth("Back") / 2, Profile.Display.HEIGHT-100,
                 80,
                 40,
                 this,

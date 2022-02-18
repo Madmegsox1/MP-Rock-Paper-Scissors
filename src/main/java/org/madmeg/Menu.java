@@ -33,14 +33,16 @@ public final class Menu extends Gui {
 
         //title
         addElement(new Quad(485, 20, 300,100, this, Core.title));
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth(" RPS-101") / 2, 40, this, FontRenderer.titleFont, "RPS-101", new Color(242, 212, 146)));
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth(" RPS-101") / 2, 40, this, FontRenderer.titleFont, "RPS-101", new Color(242, 212, 146)));
 
         //sub-title
         addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Menu") / 2, 120, this, FontRenderer.titleFont, "Menu", new Color(32,44,57)));
+
         //
 
+
         //back button
-        addElement(new Button(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Back") / 2, Profile.Display.HEIGHT-100,
+        addElement(new Button(Profile.Display.WIDTH / 2 - FontRenderer.buttonFont.getWidth("Back") / 2, Profile.Display.HEIGHT-100,
                 80,
                 40,
                 this,
