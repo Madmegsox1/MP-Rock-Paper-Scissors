@@ -44,5 +44,8 @@ public final class Profile {
         public static Color tealSand = new Color(184, 176, 141);
         public static Color lighterTealSand = new Color(242, 212, 146);
         public static Color funnyOrange = new Color(242, 149, 89);
+        public static Color black = new Color(0, 0, 0);
+        public static Color white = new Color(255, 255, 255);
+        public static Color grey = new Color(100, 100, 100);
     }
 }

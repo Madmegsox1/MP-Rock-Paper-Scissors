@@ -61,17 +61,17 @@ public final class TitleScreen extends Gui {
         //user inputs
         Input Username;
         Input Password;
-        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Username") / 2, 150, this, FontRenderer.normalFont, "Username", Profile.Colors.navyBlue));
-        addElement(Username = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 200, 280, 40, this, new Color(255,255,255), new Color(0,0,0), "", FontRenderer.normalFont));
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Username") / 2, 200, this, FontRenderer.normalFont, "Username", Profile.Colors.navyBlue));
+        addElement(Username = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 250, 280, 40, this, new Color(255,255,255), new Color(0,0,0), "", FontRenderer.normalFont));
 
-        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Password") / 2, 250, this, FontRenderer.normalFont, "Password", Profile.Colors.navyBlue));
-        addElement(Password = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 300, 280, 40, this, new Color(255,255,255), new Color(0,0,0), "", FontRenderer.normalFont));
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Password") / 2, 300, this, FontRenderer.normalFont, "Password", Profile.Colors.navyBlue));
+        addElement(Password = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 350, 280, 40, this, Profile.Colors.white, Profile.Colors.black, "", FontRenderer.normalFont));
 
-        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 350, 140, 60, this, "Submit", Core.btnTexture, n ->System.out.println(Password))); //on click checks user details and logs in
+        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 400, 140, 60, this, "Submit", Core.btnTexture, n ->System.out.println(Password))); //on click checks user details and logs in
 
 
-        //settings page  -  also add to menu so dont have to log out to change settings
-        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 500,
+        //settings page  -  also add to menu so don't have to log out to change settings
+        addElement(new Button(Profile.Display.WIDTH / 2  - 140, 550,
                 140,
                 60,
                 this,
@@ -81,7 +81,7 @@ public final class TitleScreen extends Gui {
 
 
         //credits page
-        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 550,
+        addElement(new Button(Profile.Display.WIDTH / 2 , 550,
                 140,
                 60,
                 this,
