@@ -40,7 +40,6 @@ import java.io.IOException;
 
 public final class Core extends Engine {
 
-    public Animation animation;
     public Gui overlay = null;
     public static PacketProcessor packetProcessor;
 
@@ -61,14 +60,8 @@ public final class Core extends Engine {
         renderer = new Renderer(display);
         renderer.init();
 
-
         btnTexture = new Texture("button");
         title  = new Texture("button"); //replace with title.png when made
-
-        animation = new Animation(new Vector2(400, 400), 100, 100, 30);
-        animation.addTexture(new Texture("1"));
-        animation.addTexture(new Texture("test"));
-        animation.addTexture(new Texture("transparent"));
 
 
         fontRenderer = new FontRenderer(new Font());
@@ -79,8 +72,7 @@ public final class Core extends Engine {
         Core.getFontRenderer().addFont(new Font(new java.awt.Font("Comic Sans MS", java.awt.Font.BOLD,50), true));
         Core.getFontRenderer().addFont(new Font(new java.awt.Font("impact", java.awt.Font.BOLD,20), true));
 
-        uiManager = new UiManager();
-        uiManager.setCurrentGui(new TitleScreen());
+
 
         packetProcessor = new PacketProcessor();
         packetProcessor.queuePacket(new CConnect());
@@ -94,6 +86,11 @@ public final class Core extends Engine {
         } catch (NoSuchFieldException | IllegalAccessException | IOException e) {
             e.printStackTrace();
         }
+
+        fileManager.getConfig().update();
+
+        uiManager = new UiManager();
+        uiManager.setCurrentGui(new TitleScreen());
 
 
         renderEngine = new RenderEngine();

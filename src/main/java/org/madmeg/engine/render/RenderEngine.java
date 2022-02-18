@@ -8,6 +8,8 @@ import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.engine.event.events.RenderEvent;
 
+import java.io.IOException;
+
 import static org.lwjgl.opengl.GL11.*;
 
 public final class RenderEngine {
@@ -30,6 +32,11 @@ public final class RenderEngine {
             }
         }
         Core.running = false;
+        try {
+            Core.getFileManager().saveSettings();
+        } catch (IOException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
         System.exit(0);
     }
 

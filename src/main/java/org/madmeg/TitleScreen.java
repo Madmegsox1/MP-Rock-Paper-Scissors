@@ -8,6 +8,7 @@ import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.engine.event.events.KeyEvent;
 import org.madmeg.engine.event.events.MouseClickEvent;
 import org.madmeg.engine.event.events.RenderEvent;
+import org.madmeg.engine.render.font.FontRenderer;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.elements.*;
 
@@ -44,7 +45,7 @@ public final class TitleScreen extends Gui {
 
         //title
         addElement(new Quad(485, 20, 300,100, this, Core.title));
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth(" RPS-101") / 2, 40, this, Core.getFontRenderer().fonts.get(1), "RPS-101", new Color(242, 212, 146)));
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth(" RPS-101") / 2, 40, this, FontRenderer.titleFont, "RPS-101", new Color(242, 212, 146)));
 
         //credits page
         addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 500,
@@ -73,14 +74,6 @@ public final class TitleScreen extends Gui {
                 Core.btnTexture,
                 n -> Core.getUiManager().setCurrentGui(new Settings())));
 
-        //login page
-        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 200,
-                140,
-                60,
-                this,
-                "Login",
-                Core.btnTexture,
-                n -> Core.getUiManager().setCurrentGui(new Login())));
     }
 
 

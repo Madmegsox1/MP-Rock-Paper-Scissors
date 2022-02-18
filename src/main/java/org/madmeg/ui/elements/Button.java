@@ -1,6 +1,5 @@
 package org.madmeg.ui.elements;
 
-import org.madmeg.engine.Engine;
 import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Texture;
@@ -54,7 +53,7 @@ public final class Button extends Element {
 
     public void mouseClick(MouseClickEvent event){
 
-        if(inBounds((int)event.mX, (int)event.mY)){
+        if(inBounds((int)event.mX, (int)event.mY) && event.action == 1){
             update.run(event);
         }
 
