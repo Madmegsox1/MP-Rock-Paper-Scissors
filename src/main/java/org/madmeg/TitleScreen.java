@@ -105,6 +105,7 @@ public final class TitleScreen extends Gui {
     @Override
     public void render(RenderEvent event) {
         passEvents(event);
+        // draws rps textures to screen
         RenderEngine.drawQuadTexture(new Vector2(100, 610), 50, 80, rock);
         RenderEngine.drawQuadTexture(new Vector2(Profile.Display.WIDTH/2 + 50/2 - 50, 610), 50, 80, paper);
         RenderEngine.drawQuadTexture(new Vector2(1130, 610), 50, 80, scissors);

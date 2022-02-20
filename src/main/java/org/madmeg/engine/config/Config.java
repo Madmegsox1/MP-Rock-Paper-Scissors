@@ -1,5 +1,6 @@
 package org.madmeg.engine.config;
 
+import org.madmeg.engine.config.processor.ConfigType;
 import org.madmeg.engine.render.font.Font;
 import org.madmeg.engine.render.font.FontRenderer;
 
@@ -9,6 +10,7 @@ import org.madmeg.engine.render.font.FontRenderer;
  */
 
 public final class Config {
+    @ConfigType(dataType = "boolean")
     public boolean comicSans;
 
 

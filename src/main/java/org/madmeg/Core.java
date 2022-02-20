@@ -34,7 +34,6 @@ import java.io.IOException;
  * Rock, Paper, Scissors Game
  *
  * * * * Please add your own author tags
- *no.
  *
  */
 
@@ -53,6 +52,7 @@ public final class Core extends Engine {
     public void run(){
         running = true;
         eventProcessor.addEventListener(this);
+
 
         display = new Display("Rock - Paper - Scissors 101");
         display.init(true);
