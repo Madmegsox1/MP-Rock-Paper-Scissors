@@ -11,9 +11,6 @@ import java.util.Scanner;
 /**
  * @author Madmegsox1
  * @since 17/02/2022
- *
- * save Username on db of online but singleplayer its saved to local drive
- *
  */
 
 public final class FileManager {

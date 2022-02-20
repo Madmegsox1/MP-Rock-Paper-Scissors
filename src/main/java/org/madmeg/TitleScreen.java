@@ -28,6 +28,9 @@ public final class TitleScreen extends Gui {
     public Texture rock;
     public Texture scissors;
 
+    public Input username;
+    public Input password;
+
 
     public TitleScreen() {
 
@@ -58,15 +61,13 @@ public final class TitleScreen extends Gui {
 
 
         //user inputs
-        Input Username;
-        Input Password;
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Username") / 2, 200, this, FontRenderer.normalFont, "Username", Profile.Colors.navyBlue));
-        addElement(Username = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 250, 280, 40, this, Profile.Colors.white, Profile.Colors.black, "", FontRenderer.normalFont));
+        addElement(username = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 250, 280, 40, this, Profile.Colors.white, Profile.Colors.black, "", FontRenderer.normalFont));
 
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Password") / 2, 300, this, FontRenderer.normalFont, "Password", Profile.Colors.navyBlue));
-        addElement(Password = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 350, 280, 40, this, Profile.Colors.white, Profile.Colors.black, "", FontRenderer.normalFont));
+        addElement(password = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 350, 280, 40, this, Profile.Colors.white, Profile.Colors.black, "", FontRenderer.normalFont));
 
-        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 400, 140, 60, this, "Submit", Core.btnTexture, n ->System.out.println(Password))); //on click checks user details and logs in
+        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 400, 140, 60, this, "Submit", Core.btnTexture, n ->System.out.println(password.text))); //on click checks user details and logs in
 
 
         //settings page  -  also add to menu so don't have to log out to change settings
