@@ -67,6 +67,7 @@ public final class ConfigProcessor {
                 final String line = sc.nextLine();
                 if(!line.contains(":"))continue;
                 final String head = line.split(":")[0]; // gets the head or the config type
+                if(!Objects.equals(head, c.field().getName()))continue;
                 final String val = line.split(":")[1]; // gets the value
 
                 final Field field = c.instance().getClass().getField(head); // gets the field linked to the head
