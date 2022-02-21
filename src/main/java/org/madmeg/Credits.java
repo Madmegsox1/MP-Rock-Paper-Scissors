@@ -24,7 +24,7 @@ public final class Credits extends Gui {
         Core.getDisplay().setTitle("RPS-101 | Credits");
 
         //background
-        addElement(new Background(new Texture("mountainBg"), this));
+        addElement(new Background(Core.BgTexture, this));
 
 
         //title

@@ -43,13 +43,14 @@ public final class TitleScreen extends Gui {
         Core.getDisplay().setTitle("RPS-101 | Login");
 
         //background
-        addElement(new Background(new Texture("mountainBg"), this));
+        addElement(new Background(Core.BgTexture, this));
 
         //title
         addElement(new Quad(485, 20, 300,100, this, Core.title));
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth(" RPS-101") / 2, 40, this, FontRenderer.titleFont, "RPS-101", Profile.Colors.lighterTealSand));
 
 
+//
         //menu page - will remove button and load when user logs in
         addElement(new Button(30, 100,
                 140,
@@ -58,17 +59,19 @@ public final class TitleScreen extends Gui {
                 "Menu",
                 Core.btnTexture,
                 n -> Core.getUiManager().setCurrentGui(new Menu())));
+//
 
 
         //user inputs
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Username") / 2, 200, this, FontRenderer.normalFont, "Username", Profile.Colors.navyBlue));
-        addElement(username = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 250, 280, 40, this, Profile.Colors.white, Profile.Colors.black, "", FontRenderer.normalFont));
+        addElement(username = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 250, 280, 40, this, Profile.Colors.navyBlue, Profile.Colors.tealSand, "", FontRenderer.normalFont));
 
+        //change password to display * instead of text
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Password") / 2, 300, this, FontRenderer.normalFont, "Password", Profile.Colors.navyBlue));
-        addElement(password = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 350, 280, 40, this, Profile.Colors.white, Profile.Colors.black, "", FontRenderer.normalFont));
+        addElement(password = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 350, 280, 40, this, Profile.Colors.navyBlue, Profile.Colors.tealSand, "", FontRenderer.normalFont));
 
-        addElement(new Button(Profile.Display.WIDTH / 2  - 140/2, 400, 140, 60, this, "Submit", Core.btnTexture, n ->System.out.println(password.text))); //on click checks user details and logs in
-
+        addElement(new Button(Profile.Display.WIDTH / 2  - 140, 400, 140, 60, this, "Register", Core.btnTexture, n ->System.out.println(password.text))); //on click registers new user and logs in
+        addElement(new Button(Profile.Display.WIDTH / 2, 400, 140, 60, this, "Login", Core.btnTexture, n ->System.out.println(username.text)));  //on click checks user details and logs in
 
         //settings page  -  also add to menu so don't have to log out to change settings
         addElement(new Button(Profile.Display.WIDTH / 2  - 140, 550,

@@ -42,6 +42,7 @@ public final class Core extends Engine {
     public Gui overlay = null;
     public static PacketProcessor packetProcessor;
 
+    public static Texture BgTexture;
     public static Texture btnTexture;
     public static Texture title;
 
@@ -60,6 +61,7 @@ public final class Core extends Engine {
         renderer = new Renderer(display);
         renderer.init();
 
+        BgTexture = new Texture("mountainBg");
         btnTexture = new Texture("button");
         title  = new Texture("button"); //replace with title.png when made
 
