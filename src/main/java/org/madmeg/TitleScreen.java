@@ -2,6 +2,7 @@ package org.madmeg;
 
 import org.madmeg.engine.Profile;
 import org.madmeg.engine.render.RenderEngine;
+import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.engine.event.events.KeyEvent;
@@ -10,6 +11,8 @@ import org.madmeg.engine.event.events.RenderEvent;
 import org.madmeg.engine.render.font.FontRenderer;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.elements.*;
+
+import java.util.Arrays;
 
 /**
  * @author Madmegsox1
@@ -91,6 +94,8 @@ public final class TitleScreen extends Gui {
                 "Credits",
                 Core.btnTexture,
                 n -> Core.getUiManager().setCurrentGui(new Credits())));
+
+        addElement(new ComboBox(500, 500, this, Profile.Colors.navyBlue, Color.WHITE, FontRenderer.normalFont, Arrays.asList("test", "test1", "test2", "test3")));
 
     }
 
