@@ -16,6 +16,7 @@ public final class Switch extends Element {
     public Color c2;
 
     public boolean switched;
+    public float boarderRadius;
 
     public Switch(int x, int y, Color c1, Color c2, Gui parent, boolean switched, Update<Boolean> update) {
         super(x, y, parent);
@@ -23,13 +24,25 @@ public final class Switch extends Element {
         this.c1 = c1;
         this.c2 = c2;
         this.switched = switched;
+        this.boarderRadius = 2f;
+    }
+
+    public Switch(int x, int y, Color c1, Color c2, Gui parent, boolean switched, float boarderRadius,Update<Boolean> update) {
+        super(x, y, parent);
+        this.update = update;
+        this.c1 = c1;
+        this.c2 = c2;
+        this.switched = switched;
+        this.boarderRadius = boarderRadius;
     }
 
 
     @Override
     public void render(RenderEvent event) {
+        RenderEngine.drawQuadA(new Vector2(x-boarderRadius, y-boarderRadius), 50 + (boarderRadius * 2), 20 + (boarderRadius * 2), Color.BLACK);
         RenderEngine.drawQuadA(new Vector2(x, y), 50, 20, c1);
         RenderEngine.drawQuadA(new Vector2(((!switched) ? x + 5 : x + 25), y + 5/2f), 20, 15, c2);
+
     }
 
     @Override

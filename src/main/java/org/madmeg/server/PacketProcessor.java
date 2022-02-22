@@ -2,6 +2,7 @@ package org.madmeg.server;
 
 import org.jasypt.util.text.StrongTextEncryptor;
 import org.madmeg.networking.Packet;
+import org.madmeg.server.packets.SAuth;
 import org.madmeg.server.packets.SConnect;
 import org.madmeg.server.packets.SPing;
 
@@ -12,6 +13,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * @author Madmegsox1
@@ -111,9 +113,30 @@ public final class PacketProcessor {
         System.out.println(data);
         String uuid = "";
         String username = "";
-        if (sData.length > 2) {
+        String token = "";
+        if (sData.length > 3) {
             uuid = sData[1];
             username = sData[2];
+            token = sData[3];
+
+            boolean flag = false;
+
+            for(final Client c : clients){
+                if(Objects.equals(c.uuid, uuid)){
+                    flag = true;
+                    if(c.token.equals("null") && !token.equals("null")){
+                        c.setToken(token);
+                    }
+
+                    break;
+                }
+            }
+            if(!flag) {
+                if (token.equals("null")) {
+                    clients.add(new Client(uuid, username));
+                    System.out.println("New client made with username of -> " + username + " and uuid of -> " + uuid);
+                }
+            }
         }
 
         switch (packetHead) {
@@ -122,6 +145,9 @@ public final class PacketProcessor {
             }
             case "CConnect" -> {
                 sendPacket(new SConnect(), socket, "1");
+            }
+            case "CAuth" -> {
+                sendPacket(new SAuth(), socket, uuid);
             }
         }
     }

@@ -13,6 +13,9 @@ public final class Config {
     @ConfigType(dataType = "boolean")
     public boolean comicSans;
 
+    @ConfigType(dataType = "boolean")
+    public boolean antiAliasing;
+
 
     public boolean isComicSans() {
         return comicSans;
@@ -22,7 +25,13 @@ public final class Config {
         this.comicSans = comicSans;
     }
 
+    public boolean isAntiAliasing() {
+        return antiAliasing;
+    }
 
+    public void setAntiAliasing(boolean antiAliasing) {
+        this.antiAliasing = antiAliasing;
+    }
 
     public void update(){ // put things that need to be updated when the game is launched
         if(this.comicSans) {

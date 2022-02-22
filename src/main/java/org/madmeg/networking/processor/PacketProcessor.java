@@ -25,6 +25,7 @@ public final class PacketProcessor extends Thread {
 
     private String uuid;
     private String username = "test";
+    private String token = "null";
 
     private final List<Listener> events;
 
@@ -117,7 +118,7 @@ public final class PacketProcessor extends Thread {
             if(packet instanceof CConnect){
                 sendData(currentSocket, packet.encryptPacket());
             }else {
-                sendData(currentSocket, packet.encryptPacket(uuid, username));
+                sendData(currentSocket, packet.encryptPacket(uuid, username, token));
             }
 
             String data = receiveData(currentSocket).readLine();

@@ -23,8 +23,8 @@ public abstract class Packet {
         return packetHead + ((packetData.startsWith("|")) ? packetData : splitter + packetData);
     }
 
-    public String compilePacket(String uuid, String username){
-        return packetHead +"|" +uuid + "|" + username + ((packetData.startsWith("|")) ? packetData : splitter + packetData);
+    public String compilePacket(String uuid, String username, String token){
+        return packetHead +"|" +uuid + "|" + username + "|" + token + ((packetData.startsWith("|")) ? packetData : splitter + packetData);
     }
 
     public String encryptPacket(){
@@ -39,10 +39,10 @@ public abstract class Packet {
         return textEncryptor.encrypt(compilePacket())+ "|" + uuid;
     }
 
-    public String encryptPacket(String uuid, String username){
+    public String encryptPacket(String uuid, String username, String token){
         StrongTextEncryptor textEncryptor = new StrongTextEncryptor();
         textEncryptor.setPassword(uuid);
-        return textEncryptor.encrypt(compilePacket(uuid, username)) + "|" + uuid;
+        return textEncryptor.encrypt(compilePacket(uuid, username, token)) + "|" + uuid;
     }
 
 

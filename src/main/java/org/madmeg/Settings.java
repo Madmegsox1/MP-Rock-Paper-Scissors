@@ -38,7 +38,7 @@ public final class Settings extends Gui {
 
         //Settings button - will change buttons to toggle switches when made
         addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(2).getWidth("Comic Sans") / 2, 200, this, Core.getFontRenderer().fonts.get(2), "Comic Sans", Profile.Colors.navyBlue));
-        addElement(new Switch(Profile.Display.WIDTH / 2 - 25, 225, Profile.Colors.white, Profile.Colors.grey, this, Core.getFileManager().getConfig().isComicSans(), n ->  {
+        addElement(new Switch(Profile.Display.WIDTH / 2 - 25, 225, Profile.Colors.navyBlue, Profile.Colors.white, this, Core.getFileManager().getConfig().isComicSans(), n ->  {
             if(n) {
                 FontRenderer.titleFont = (new Font(new java.awt.Font("Comic Sans MS", java.awt.Font.BOLD,50), true));
                 Core.getFileManager().getConfig().setComicSans(true);
@@ -46,6 +46,11 @@ public final class Settings extends Gui {
                 FontRenderer.titleFont = (new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));
                 Core.getFileManager().getConfig().setComicSans(false);
             }
+        }));
+
+        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(2).getWidth("Anti Aliasing") / 2, 250, this, Core.getFontRenderer().fonts.get(2), "Anti Aliasing", Profile.Colors.navyBlue));
+        addElement(new Switch(Profile.Display.WIDTH / 2 - 25, 275, Profile.Colors.navyBlue, Profile.Colors.white, this, Core.getFileManager().getConfig().isAntiAliasing(), n ->  {
+            Core.getFileManager().getConfig().setAntiAliasing(n);
         }));
 
         //back button

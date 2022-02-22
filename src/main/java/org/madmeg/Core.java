@@ -2,15 +2,12 @@ package org.madmeg;
 
 import org.lwjgl.glfw.GLFW;
 import org.madmeg.engine.Engine;
-import org.madmeg.engine.config.Config;
 import org.madmeg.engine.config.FileManager;
 import org.madmeg.engine.render.Display;
 import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.Renderer;
-import org.madmeg.engine.render.elements.Animation;
 import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.elements.Timer;
-import org.madmeg.engine.render.elements.Vector2;
 import org.madmeg.engine.render.font.Font;
 import org.madmeg.engine.render.font.FontRenderer;
 import org.madmeg.engine.event.events.KeyEvent;
@@ -23,7 +20,6 @@ import org.madmeg.networking.processor.packets.CPing;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.UiManager;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
@@ -34,6 +30,8 @@ import java.io.IOException;
  * Rock, Paper, Scissors Game
  *
  * * * * Please add your own author tags
+ *
+ * JDK 16 required
  *
  */
 
@@ -54,9 +52,17 @@ public final class Core extends Engine {
         running = true;
         eventProcessor.addEventListener(this);
 
+        fileManager = new FileManager();
+
+        try {
+            fileManager.loadSettings();
+        } catch (NoSuchFieldException | IllegalAccessException | IOException e) {
+            e.printStackTrace();
+        }
+
 
         display = new Display("Rock - Paper - Scissors 101");
-        display.init(true);
+        display.init(Core.fileManager.getConfig().isAntiAliasing());
 
         renderer = new Renderer(display);
         renderer.init();
@@ -81,13 +87,7 @@ public final class Core extends Engine {
 
         timer = new Timer();
 
-        fileManager = new FileManager();
 
-        try {
-            fileManager.loadSettings();
-        } catch (NoSuchFieldException | IllegalAccessException | IOException e) {
-            e.printStackTrace();
-        }
 
         fileManager.getConfig().update();
 
