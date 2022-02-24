@@ -2,6 +2,7 @@ package org.madmeg.networking;
 
 import org.madmeg.Core;
 import org.madmeg.networking.processor.packets.CAuth;
+import org.madmeg.networking.processor.packets.CRegister;
 import org.madmeg.ui.elements.Label;
 
 import java.nio.charset.StandardCharsets;
@@ -35,15 +36,19 @@ public final class Auth {
         return hexString.toString();
     }
 
-    public static void auth(String username, String password, Label feedback) throws NoSuchAlgorithmException {
+    public static void auth(String username, String password, Label feedback, boolean reg)  {
         if(!validate(username, password)){
             feedback.updateText("Username or Password must be longer than 5 letters!");
             return;
         }
 
-        final String hashedPassword = hash(password);
-        Core.packetProcessor.queuePacket(new CAuth(username, hashedPassword));
-
+        final String hashedPassword;
+        try {
+            hashedPassword = hash(password);
+            Core.packetProcessor.queuePacket((reg) ? new CRegister(username, hashedPassword) : new CAuth(username, hashedPassword));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
     }
 
 }

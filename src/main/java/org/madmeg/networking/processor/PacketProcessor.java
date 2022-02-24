@@ -163,10 +163,19 @@ public final class PacketProcessor extends Thread {
                 p.timeSent =Long.parseLong(data[1]);
                 ping = System.currentTimeMillis() - Long.parseLong(data[1]);
                 postPacket(p);
+            }case "SAuth" -> {
+                System.out.println(data[1]);
+                if(data[1].equals("success")){
+                    System.out.println("logged in");
+                }
+            }case "SRegister" -> {
+                if(data[1].equals("success")){
+                    System.out.println(data[2]);
+                    this.token = data[2];
+                }
             }
         }
     }
-
 
     public String getUuid() {
         return uuid;

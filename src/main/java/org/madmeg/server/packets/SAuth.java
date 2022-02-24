@@ -19,11 +19,8 @@ public final class SAuth extends Packet {
             Server.userDatabase.searchDatabase(token, user);
             if(user.username == null || user.hashedPassword == null || !user.username.equals(username) || !user.hashedPassword.equals(password)){
                 appendData("failed");
-                appendData("10001");
             }else {
                 appendData("success");
-                appendData("10001");
-
                 for(Client c : PacketProcessor.clients){
                     if(c.equals(token)){
                         c.setLoggedIn(true);

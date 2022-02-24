@@ -5,6 +5,7 @@ import org.madmeg.networking.Packet;
 import org.madmeg.server.packets.SAuth;
 import org.madmeg.server.packets.SConnect;
 import org.madmeg.server.packets.SPing;
+import org.madmeg.server.packets.SRegister;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -147,6 +148,9 @@ public final class PacketProcessor {
             }
             case "CAuth" -> {
                 sendPacket(new SAuth(sData), socket, uuid);
+            }
+            case "CRegister"-> {
+                sendPacket(new SRegister(sData), socket, uuid);
             }
         }
     }

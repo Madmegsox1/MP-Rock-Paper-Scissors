@@ -9,6 +9,8 @@ import org.madmeg.engine.event.events.KeyEvent;
 import org.madmeg.engine.event.events.MouseClickEvent;
 import org.madmeg.engine.event.events.RenderEvent;
 import org.madmeg.engine.render.font.FontRenderer;
+import org.madmeg.networking.Auth;
+import org.madmeg.networking.processor.packets.CRegister;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.elements.*;
 
@@ -33,6 +35,7 @@ public final class TitleScreen extends Gui {
 
     public Input username;
     public Input password;
+    public Label feedback;
 
 
     public TitleScreen() {
@@ -73,8 +76,13 @@ public final class TitleScreen extends Gui {
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Password") / 2, 300, this, FontRenderer.normalFont, "Password", Profile.Colors.navyBlue));
         addElement(password = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 350, 280, 40, this, Profile.Colors.navyBlue, Profile.Colors.tealSand, "", FontRenderer.normalFont));
 
-        addElement(new Button(Profile.Display.WIDTH / 2  - 140, 400, 140, 60, this, "Register", Core.btnTexture, n ->System.out.println(password.text))); //on click registers new user and logs in
-        addElement(new Button(Profile.Display.WIDTH / 2, 400, 140, 60, this, "Login", Core.btnTexture, n ->System.out.println(username.text)));  //on click checks user details and logs in
+
+        addElement(feedback = new Label(Profile.Display.WIDTH / 2, 420, this, FontRenderer.normalFont, "", new Color(255, 0,0)));
+
+        addElement(new Button(Profile.Display.WIDTH / 2  - 140, 400, 140, 60, this, "Register", Core.btnTexture, n -> Auth.auth(username.text, password.text, feedback, true))); //on click registers new user and logs in
+        addElement(new Button(Profile.Display.WIDTH / 2, 400, 140, 60, this, "Login", Core.btnTexture, n ->Auth.auth(username.text, password.text, feedback, false)));  //on click checks user details and logs in
+
+
 
         //settings page  -  also add to menu so don't have to log out to change settings
         addElement(new Button(Profile.Display.WIDTH / 2  - 140, 550,

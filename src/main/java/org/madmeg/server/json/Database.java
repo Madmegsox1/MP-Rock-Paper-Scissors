@@ -27,7 +27,9 @@ public final class Database {
 
         final FileReader reader = new FileReader(file);
 
-        parentObject = JsonParser.parseReader(reader).getAsJsonObject();
+         JsonElement jsonObject = JsonParser.parseReader(reader);
+        if(jsonObject == null)return;
+        parentObject = jsonObject.getAsJsonObject();
     }
 
     public void saveModelToObject(final String key, final Object modelToSave) throws IllegalAccessException {
