@@ -14,6 +14,10 @@ project.ext.lwjglNatives = "natives-windows"
 project.ext.jomlVersion = "1.10.0"
 
 dependencies {
+
+    implementation 'com.google.firebase:firebase-admin:8.1.0'
+
+
     implementation group: 'org.l33tlabs.twl', name: 'pngdecoder', version: '1.0'
     implementation group: 'org.jasypt', name: 'jasypt', version: '1.9.2'
     implementation(files("bin/slick-util.jar"))
