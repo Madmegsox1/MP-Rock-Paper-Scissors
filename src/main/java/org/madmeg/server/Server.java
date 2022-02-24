@@ -22,6 +22,7 @@ public final class Server {
 
         userDatabase.createDatabase(User.class);
         userDatabase.initJsonObject();
+        userDatabase.readDbToJsonObject();
 
         PacketProcessor packetProcessor = new PacketProcessor();
         packetProcessor.openPort(PacketProcessor.port);

@@ -21,6 +21,15 @@ public final class Database {
         parentObject = new JsonObject();
     }
 
+    public void readDbToJsonObject() throws FileNotFoundException {
+
+        if(!file.exists())return;
+
+        final FileReader reader = new FileReader(file);
+
+        parentObject = JsonParser.parseReader(reader).getAsJsonObject();
+    }
+
     public void saveModelToObject(final String key, final Object modelToSave) throws IllegalAccessException {
         if(!file.exists())return;
 
@@ -61,12 +70,8 @@ public final class Database {
     public void searchDatabase(final String key, final Object modelToLoad) throws FileNotFoundException, IllegalAccessException {
         if(!file.exists())return;
 
-
-        @SuppressWarnings("deprecation")
-        final JsonParser parser = new JsonParser();
-
         final FileReader reader = new FileReader(file);
-        final JsonObject jsonObject = parser.parse(reader).getAsJsonObject();
+        final JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
 
         if(!jsonObject.has(key)){
             return;
