@@ -1,5 +1,7 @@
 package org.madmeg.networking;
 
+import org.madmeg.Core;
+import org.madmeg.networking.processor.packets.CAuth;
 import org.madmeg.ui.elements.Label;
 
 import java.nio.charset.StandardCharsets;
@@ -40,6 +42,7 @@ public final class Auth {
         }
 
         final String hashedPassword = hash(password);
+        Core.packetProcessor.queuePacket(new CAuth(username, hashedPassword));
 
     }
 

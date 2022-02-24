@@ -124,10 +124,9 @@ public final class PacketProcessor {
             for(final Client c : clients){
                 if(Objects.equals(c.uuid, uuid)){
                     flag = true;
-                    if(c.token.equals("null") && !token.equals("null")){
+                    if(c.token.equals("null") && (!token.equals("null") && !token.isBlank())){
                         c.setToken(token);
                     }
-
                     break;
                 }
             }
@@ -147,7 +146,7 @@ public final class PacketProcessor {
                 sendPacket(new SConnect(), socket, "1");
             }
             case "CAuth" -> {
-                sendPacket(new SAuth(), socket, uuid);
+                sendPacket(new SAuth(sData), socket, uuid);
             }
         }
     }
