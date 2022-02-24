@@ -1,6 +1,8 @@
 package org.madmeg.server.packets;
 
 import org.madmeg.networking.Packet;
+import org.madmeg.server.Client;
+import org.madmeg.server.PacketProcessor;
 import org.madmeg.server.Server;
 import org.madmeg.server.models.User;
 
@@ -21,6 +23,14 @@ public final class SAuth extends Packet {
             }else {
                 appendData("success");
                 appendData("10001");
+
+                for(Client c : PacketProcessor.clients){
+                    if(c.equals(token)){
+                        c.setLoggedIn(true);
+                        break;
+                    }
+                }
+
             }
 
         } catch (FileNotFoundException | IllegalAccessException e) {
