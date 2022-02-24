@@ -5,6 +5,8 @@ public final class User {
     public String hashedPassword;
     public String token;
 
+    public User(){}
+
     public User(String username, String hashedPassword, String token){
         this.username = username;
         this.hashedPassword = hashedPassword;
