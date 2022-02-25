@@ -2,6 +2,7 @@ package org.madmeg.networking.processor;
 
 import org.jasypt.util.text.StrongTextEncryptor;
 import org.madmeg.Core;
+import org.madmeg.TitleScreen;
 import org.madmeg.engine.event.processor.Event;
 import org.madmeg.networking.Packet;
 import org.madmeg.networking.processor.packets.CConnect;
@@ -168,11 +169,15 @@ public final class PacketProcessor extends Thread {
                 if(data[1].equals("success")){
                     System.out.println("logged in token = " + data[2]);
                     this.token = data[2];
+                }else {
+                    TitleScreen.feedback.updateText("Failed to login");
                 }
             }case "SRegister" -> {
                 if(data[1].equals("success")){
                     System.out.println(data[2]);
                     this.token = data[2];
+                }else {
+                    TitleScreen.feedback.updateText("Failed to login as username exists");
                 }
             }
         }

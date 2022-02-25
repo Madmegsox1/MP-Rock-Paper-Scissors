@@ -35,7 +35,7 @@ public final class TitleScreen extends Gui {
 
     public Input username;
     public Input password;
-    public Label feedback;
+    public static Label feedback;
 
 
     public TitleScreen() {

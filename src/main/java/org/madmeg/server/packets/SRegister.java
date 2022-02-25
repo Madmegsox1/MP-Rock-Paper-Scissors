@@ -5,6 +5,7 @@ import org.madmeg.server.Server;
 import org.madmeg.server.models.User;
 
 import javax.crypto.KeyGenerator;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -23,12 +24,29 @@ public final class SRegister extends Packet { //TODO check if name exists
         String password = sData[5];
 
 
+        User tmpUser = new User();
+        try {
+            Server.userDatabase.searchDatabase(username,tmpUser);
+
+        } catch (FileNotFoundException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        if(tmpUser.username != null && tmpUser.hashedPassword != null){
+            appendData("failed");
+            return;
+        }
+
+
         final KeyGenerator gen;
         try {
             gen = KeyGenerator.getInstance("AES");
             gen.init(256, new SecureRandom());
             String key = Base64.getEncoder().encodeToString(gen.generateKey().getEncoded());
+
+
             User user = new User(username, password, key);
+
 
             Server.userDatabase.saveModelToObject(username, user);
             Server.userDatabase.saveModelsToDb();
@@ -39,9 +57,6 @@ public final class SRegister extends Packet { //TODO check if name exists
         } catch (NoSuchAlgorithmException | IllegalAccessException | IOException e) {
             e.printStackTrace();
         }
-
-
-
 
     }
 }
