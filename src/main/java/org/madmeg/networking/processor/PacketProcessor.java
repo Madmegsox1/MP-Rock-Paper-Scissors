@@ -166,7 +166,8 @@ public final class PacketProcessor extends Thread {
             }case "SAuth" -> {
                 System.out.println(data[1]);
                 if(data[1].equals("success")){
-                    System.out.println("logged in");
+                    System.out.println("logged in token = " + data[2]);
+                    this.token = data[2];
                 }
             }case "SRegister" -> {
                 if(data[1].equals("success")){

@@ -39,8 +39,8 @@ public final class Client {
 
     @Override
     public boolean equals(Object client){
-        if(client instanceof String token){
-            return Objects.equals(token, this.token);
+        if(client instanceof String username){
+            return Objects.equals(username, this.username);
         }
         if(client instanceof Client c){
             return Objects.equals(c.uuid, this.uuid);

@@ -1,22 +1,7 @@
 {
-  "v3I4lAcKUrwP4E88EL3AVYYungMoXrS5Df6lhlTl0ZM\u003d": {
-    "username": "123123",
-    "hashedPassword": "0416e7730f8c55ddbc58fc10d0fbc4bc31afa07e40d935608e4fd9092781a67f",
-    "token": "v3I4lAcKUrwP4E88EL3AVYYungMoXrS5Df6lhlTl0ZM\u003d"
-  },
-  "MPQWmay02Z7f3Xg5/u13d8qDQsb5xdo4hnKP17Ln+ho\u003d": {
-    "username": "1231234",
-    "hashedPassword": "0416e7730f8c55ddbc58fc10d0fbc4bc31afa07e40d935608e4fd9092781a67f",
-    "token": "MPQWmay02Z7f3Xg5/u13d8qDQsb5xdo4hnKP17Ln+ho\u003d"
-  },
-  "5L46VZ6E+WWiVIiQF05NPIioQ4bTl7vWz9G9cwC1NqI\u003d": {
-    "username": "Test123",
-    "hashedPassword": "932f3c1b56257ce8539ac269d7aab42550dacf8818d075f0bdf1990562aae3ef",
-    "token": "5L46VZ6E+WWiVIiQF05NPIioQ4bTl7vWz9G9cwC1NqI\u003d"
-  },
-  "DhN5mRHYtc880ssBgYGMIFX9bq3hv9/EiO+oMIlLEic\u003d": {
+  "Test123": {
     "username": "Test123",
     "hashedPassword": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e",
-    "token": "DhN5mRHYtc880ssBgYGMIFX9bq3hv9/EiO+oMIlLEic\u003d"
+    "token": "SOsoYjpj6Vc4MHkV4RhlTnjbzeq8W+BqSl2HPmntdbw\u003d"
   }
 }

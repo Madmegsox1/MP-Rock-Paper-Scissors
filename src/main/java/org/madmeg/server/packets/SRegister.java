@@ -30,7 +30,7 @@ public final class SRegister extends Packet { //TODO check if name exists
             String key = Base64.getEncoder().encodeToString(gen.generateKey().getEncoded());
             User user = new User(username, password, key);
 
-            Server.userDatabase.saveModelToObject(key, user);
+            Server.userDatabase.saveModelToObject(username, user);
             Server.userDatabase.saveModelsToDb();
 
             appendData("success");

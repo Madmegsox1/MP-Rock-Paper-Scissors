@@ -16,11 +16,12 @@ public final class SAuth extends Packet {
         String password = sData[5];
         try {
             User user = new User();
-            Server.userDatabase.searchDatabase(token, user);
+            Server.userDatabase.searchDatabase(username, user);
             if(user.username == null || user.hashedPassword == null || !user.username.equals(username) || !user.hashedPassword.equals(password)){
                 appendData("failed");
             }else {
                 appendData("success");
+                appendData(user.token);
                 for(Client c : PacketProcessor.clients){
                     if(c.equals(token)){
                         c.setLoggedIn(true);
