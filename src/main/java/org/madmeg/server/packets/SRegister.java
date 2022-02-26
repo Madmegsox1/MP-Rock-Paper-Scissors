@@ -20,14 +20,13 @@ public final class SRegister extends Packet { //TODO check if name exists
     public SRegister(String[] sData) {
         super("SRegister");
 
-        String username = sData[4];
-        String password = sData[5];
+        final String username = sData[4];
+        final String password = sData[5];
 
 
         User tmpUser = new User();
         try {
             Server.userDatabase.searchDatabase(username,tmpUser);
-
         } catch (FileNotFoundException | IllegalAccessException e) {
             e.printStackTrace();
         }

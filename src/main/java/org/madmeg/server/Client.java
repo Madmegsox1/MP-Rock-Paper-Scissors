@@ -37,6 +37,10 @@ public final class Client {
         this.token = token;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public boolean equals(Object client){
         if(client instanceof String username){

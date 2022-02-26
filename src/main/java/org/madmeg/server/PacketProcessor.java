@@ -128,6 +128,9 @@ public final class PacketProcessor {
                     if(c.token.equals("null") && (!token.equals("null") && !token.isBlank())){
                         c.setToken(token);
                     }
+                    if(c.username.equals("null") && (!username.equals("null") && !username.isBlank())){
+                        c.setUsername(username);
+                    }
                     break;
                 }
             }

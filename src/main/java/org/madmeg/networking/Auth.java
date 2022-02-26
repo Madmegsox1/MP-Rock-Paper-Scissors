@@ -1,6 +1,8 @@
 package org.madmeg.networking;
 
 import org.madmeg.Core;
+import org.madmeg.TitleScreen;
+import org.madmeg.engine.render.elements.Color;
 import org.madmeg.networking.processor.packets.CAuth;
 import org.madmeg.networking.processor.packets.CRegister;
 import org.madmeg.ui.elements.Label;
@@ -38,6 +40,7 @@ public final class Auth {
 
     public static void auth(String username, String password, Label feedback, boolean reg)  {
         if(!validate(username, password)){
+            TitleScreen.feedback.color = new Color(255, 0, 0);
             feedback.updateText("Username or Password must be longer than 5 letters!");
             return;
         }

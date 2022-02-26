@@ -8,8 +8,10 @@ import org.madmeg.networking.Packet;
  */
 
 public final class CAuth extends Packet {
+    public String username;
     public CAuth(String username, String password) {
         super("CAuth");
+        this.username = username;
         appendData(username);
         appendData(password);
     }

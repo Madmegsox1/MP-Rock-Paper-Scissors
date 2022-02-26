@@ -8,8 +8,10 @@ import org.madmeg.networking.Packet;
  */
 
 public final class CRegister extends Packet {
+    public String username;
     public CRegister(String username, String password) {
         super("CRegister");
+        this.username = username;
         appendData(username);
         appendData(password);
     }

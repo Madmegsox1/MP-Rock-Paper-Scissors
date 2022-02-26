@@ -4,8 +4,11 @@ import org.jasypt.util.text.StrongTextEncryptor;
 import org.madmeg.Core;
 import org.madmeg.TitleScreen;
 import org.madmeg.engine.event.processor.Event;
+import org.madmeg.engine.render.elements.Color;
 import org.madmeg.networking.Packet;
+import org.madmeg.networking.processor.packets.CAuth;
 import org.madmeg.networking.processor.packets.CConnect;
+import org.madmeg.networking.processor.packets.CRegister;
 import org.madmeg.server.packets.SConnect;
 import org.madmeg.server.packets.SPing;
 
@@ -25,7 +28,7 @@ public final class PacketProcessor extends Thread {
     public static Queue<Packet> packetQueue;
 
     private String uuid;
-    private String username = "test";
+    private String username = "null";
     private String token = "null";
 
     private final List<Listener> events;
@@ -112,6 +115,14 @@ public final class PacketProcessor extends Thread {
     public void sendPacket(Packet packet) {
         System.out.println(packet.compilePacket());
         try {
+
+            if(packet instanceof CRegister){
+                username = ((CRegister) packet).username;
+            }
+            if(packet instanceof CAuth){
+                username = ((CAuth) packet).username;
+            }
+
             System.out.println("Connection to server");
             currentSocket = connect();
             System.out.println("Connected to server");
@@ -169,14 +180,22 @@ public final class PacketProcessor extends Thread {
                 if(data[1].equals("success")){
                     System.out.println("logged in token = " + data[2]);
                     this.token = data[2];
+                    TitleScreen.feedback.color = new Color(0, 255, 0);
+                    TitleScreen.feedback.updateText("Welcome " + username + "!");
                 }else {
+                    this.token = "null";
+                    TitleScreen.feedback.color = new Color(255, 0, 0);
                     TitleScreen.feedback.updateText("Failed to login");
                 }
             }case "SRegister" -> {
                 if(data[1].equals("success")){
                     System.out.println(data[2]);
                     this.token = data[2];
+                    TitleScreen.feedback.color = new Color(0, 255, 0);
+                    TitleScreen.feedback.updateText("Welcome " + username + "!");
                 }else {
+                    this.token = "null";
+                    TitleScreen.feedback.color = new Color(255, 0, 0);
                     TitleScreen.feedback.updateText("Failed to login as username exists");
                 }
             }

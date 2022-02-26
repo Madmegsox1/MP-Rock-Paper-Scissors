@@ -77,7 +77,7 @@ public final class TitleScreen extends Gui {
         addElement(password = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 350, 280, 40, this, Profile.Colors.navyBlue, Profile.Colors.tealSand, "", FontRenderer.normalFont));
 
 
-        addElement(feedback = new Label(Profile.Display.WIDTH / 2, 420, this, FontRenderer.normalFont, "", new Color(255, 0,0)));
+        addElement(feedback = new Label(Profile.Display.WIDTH / 2, 460, this, FontRenderer.normalFont, "", new Color(255, 0,0)));
 
         addElement(new Button(Profile.Display.WIDTH / 2  - 140, 400, 140, 60, this, "Register", Core.btnTexture, n -> Auth.auth(username.text, password.text, feedback, true))); //on click registers new user and logs in
         addElement(new Button(Profile.Display.WIDTH / 2, 400, 140, 60, this, "Login", Core.btnTexture, n ->Auth.auth(username.text, password.text, feedback, false)));  //on click checks user details and logs in

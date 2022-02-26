@@ -11,23 +11,30 @@ import java.io.FileNotFoundException;
 public final class SAuth extends Packet {
     public SAuth(String[] sData) { // TODO database and rest of auth stuff
         super("SAuth");
-        String token = sData[3];
-        String username = sData[4];
-        String password = sData[5];
+        final String token = sData[3];
+        final String username = sData[4];
+        final String password = sData[5];
         try {
             User user = new User();
             Server.userDatabase.searchDatabase(username, user);
             if(user.username == null || user.hashedPassword == null || !user.username.equals(username) || !user.hashedPassword.equals(password)){
                 appendData("failed");
             }else {
-                appendData("success");
-                appendData(user.token);
+
                 for(Client c : PacketProcessor.clients){
                     if(c.equals(token)){
+
+                        if(c.isLoggedIn()){
+                            appendData("loggedIn");
+                            return;
+                        }
+
                         c.setLoggedIn(true);
                         break;
                     }
                 }
+                appendData("success");
+                appendData(user.token);
 
             }
 

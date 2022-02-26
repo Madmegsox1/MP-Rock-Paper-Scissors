@@ -39,9 +39,9 @@ public final class Database {
         final JsonObject jsonObject = new JsonObject();
 
         final Field[] fields = modelToSave.getClass().getFields();
-
         for(final Field f : fields){
             f.setAccessible(true);
+            //TODO support arrays
             switch (f.getType().getSimpleName()) {
                 case "String" -> jsonObject.addProperty(f.getName(), f.get(modelToSave).toString());
                 case "double" ->  jsonObject.addProperty(f.getName(), f.getDouble(modelToSave));
