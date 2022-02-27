@@ -11,6 +11,7 @@ import org.madmeg.networking.processor.packets.CAuth;
 import org.madmeg.networking.processor.packets.CConnect;
 import org.madmeg.networking.processor.packets.CRegister;
 import org.madmeg.server.packets.SConnect;
+import org.madmeg.server.packets.SLobby;
 import org.madmeg.server.packets.SPing;
 
 import java.io.*;
@@ -200,6 +201,8 @@ public final class PacketProcessor extends Thread {
                     TitleScreen.feedback.color = new Color(255, 0, 0);
                     TitleScreen.feedback.updateText("Failed to login as username exists");
                 }
+            }case "SLobby" -> {
+
             }
         }
     }

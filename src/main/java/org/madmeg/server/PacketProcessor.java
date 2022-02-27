@@ -2,10 +2,7 @@ package org.madmeg.server;
 
 import org.jasypt.util.text.StrongTextEncryptor;
 import org.madmeg.networking.Packet;
-import org.madmeg.server.packets.SAuth;
-import org.madmeg.server.packets.SConnect;
-import org.madmeg.server.packets.SPing;
-import org.madmeg.server.packets.SRegister;
+import org.madmeg.server.packets.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -142,6 +139,9 @@ public final class PacketProcessor {
             }
         }
 
+        if((!packetHead.equals("CPing") && !packetHead.equals("CConnect") && !packetHead.equals("CAuth") && !packetHead.equals("CRegister")) && (token.equals("null") || username.equals("null")))return;
+
+
         switch (packetHead) {
             case "CPing" -> {
                 sendPacket(new SPing(), socket, uuid);
@@ -154,8 +154,18 @@ public final class PacketProcessor {
             }
             case "CRegister"-> {
                 sendPacket(new SRegister(sData), socket, uuid);
+            }case "CLobby" ->{
+                sendPacket(new SLobby(), socket, uuid);
             }
         }
+    }
+
+
+    public Client findClient(String username){
+        for(Client c : clients){
+            if(c.equals(username))return c;
+        }
+        return null;
     }
 
     public void sendPacket(final Packet packet, final Socket socket, final String uuid) {

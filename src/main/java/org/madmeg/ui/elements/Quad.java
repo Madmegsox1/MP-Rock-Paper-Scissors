@@ -27,7 +27,7 @@ public final class Quad extends Element {
     @Override
     public void render(RenderEvent event) {
         if(color != null) {
-            RenderEngine.drawQuad(new Vector2(x, y), w, h, color);
+            RenderEngine.drawQuadA(new Vector2(x, y), w, h, color);
         }else {
             RenderEngine.drawQuadTexture(new Vector2(x, y),w , h, texture);
         }

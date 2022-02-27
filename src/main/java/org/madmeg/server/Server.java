@@ -1,9 +1,11 @@
 package org.madmeg.server;
 
 import org.madmeg.server.json.Database;
+import org.madmeg.server.models.Lobby;
 import org.madmeg.server.models.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * @author Madmegsox1
@@ -14,6 +16,8 @@ public final class Server {
 
     public static Database userDatabase;
 
+    public static ArrayList<Lobby> lobbies;
+
 
     public static void main(String[] args) throws IOException {
 
@@ -23,7 +27,7 @@ public final class Server {
         userDatabase.createDatabase(User.class);
         userDatabase.initJsonObject();
         userDatabase.readDbToJsonObject();
-
+        lobbies = new ArrayList<>();
         PacketProcessor packetProcessor = new PacketProcessor();
         packetProcessor.openPort(PacketProcessor.port);
         packetProcessor.run();
