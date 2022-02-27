@@ -27,7 +27,10 @@ public final class Server {
         userDatabase.createDatabase(User.class);
         userDatabase.initJsonObject();
         userDatabase.readDbToJsonObject();
+
         lobbies = new ArrayList<>();
+        lobbies.add(new Lobby(1, "Test", "Test123"));
+        lobbies.add(new Lobby(2, "Test2", "Test123"));
         PacketProcessor packetProcessor = new PacketProcessor();
         packetProcessor.openPort(PacketProcessor.port);
         packetProcessor.run();

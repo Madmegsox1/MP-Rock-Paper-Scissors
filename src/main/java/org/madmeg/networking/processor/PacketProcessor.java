@@ -10,6 +10,7 @@ import org.madmeg.networking.Packet;
 import org.madmeg.networking.processor.packets.CAuth;
 import org.madmeg.networking.processor.packets.CConnect;
 import org.madmeg.networking.processor.packets.CRegister;
+import org.madmeg.server.models.Lobby;
 import org.madmeg.server.packets.SConnect;
 import org.madmeg.server.packets.SLobby;
 import org.madmeg.server.packets.SPing;
@@ -202,7 +203,16 @@ public final class PacketProcessor extends Thread {
                     TitleScreen.feedback.updateText("Failed to login as username exists");
                 }
             }case "SLobby" -> {
-
+                Hub.lobbies.clear();
+                if(!data[1].equals("empty")) {
+                    for (final String lobby : data) {
+                        if (!lobby.contains(",")) continue;
+                        final String[] lobbyData = lobby.split(",");
+                        final Lobby l = new Lobby(Integer.parseInt(lobbyData[0]), lobbyData[1], lobbyData[2]);
+                        l.full = (lobbyData[3].equals("closed"));
+                        Hub.lobbies.add(l);
+                    }
+                }
             }
         }
     }

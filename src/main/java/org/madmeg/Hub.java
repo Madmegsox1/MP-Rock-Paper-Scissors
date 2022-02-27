@@ -4,12 +4,17 @@ import org.madmeg.engine.Profile;
 import org.madmeg.engine.event.events.KeyEvent;
 import org.madmeg.engine.event.events.MouseClickEvent;
 import org.madmeg.engine.event.events.RenderEvent;
+import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.font.FontRenderer;
+import org.madmeg.networking.processor.packets.CLobby;
+import org.madmeg.server.models.Lobby;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.elements.Background;
 import org.madmeg.ui.elements.Label;
 import org.madmeg.ui.elements.Quad;
+
+import java.util.ArrayList;
 
 /**
  * @author Madmegsox1
@@ -18,10 +23,11 @@ import org.madmeg.ui.elements.Quad;
 
 public final class Hub extends Gui {
 
+    public static ArrayList<Lobby> lobbies = new ArrayList<>();
 
     public Hub(){
 
-
+        Core.packetProcessor.queuePacket(new CLobby());
         Core.getDisplay().setTitle("RPS-101 | Hub");
 
         addElement(new Background(Core.BgTexture, this));
@@ -42,6 +48,15 @@ public final class Hub extends Gui {
     @Override
     public void render(RenderEvent event) {
         passEvents(event);
+        if(lobbies.isEmpty()){
+            FontRenderer.normalFont.drawText("No lobby's open!", Profile.Display.WIDTH / 2f - FontRenderer.normalFont.getWidth("No lobby's open!") / 2f, 220);
+        }else {
+            int y = 210;
+            for(Lobby l : lobbies){
+                FontRenderer.buttonFont.drawText(l.id + " | " + l.name + " | " + l.hostName + " | " + l.full, 310, y);
+                y += FontRenderer.buttonFont.getHeight("|") + 4;
+            }
+        }
     }
 
     @Override

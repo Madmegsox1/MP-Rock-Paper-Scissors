@@ -13,6 +13,7 @@ public final class Lobby {
     public String hostName;
     public Client host;
     public Client player;
+    public boolean full;
 
     public Lobby(){}
 
