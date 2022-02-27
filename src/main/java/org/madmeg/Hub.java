@@ -8,9 +8,11 @@ import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.font.FontRenderer;
 import org.madmeg.networking.processor.packets.CLobby;
+import org.madmeg.networking.processor.packets.CNewLobby;
 import org.madmeg.server.models.Lobby;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.elements.Background;
+import org.madmeg.ui.elements.Button;
 import org.madmeg.ui.elements.Label;
 import org.madmeg.ui.elements.Quad;
 
@@ -36,7 +38,8 @@ public final class Hub extends Gui {
         addElement(new Quad(485, 20, 300,100, this, Core.title));
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth( "Hub") / 2, 40, this, FontRenderer.titleFont, "Hub", Profile.Colors.lighterTealSand));
         addElement(new Quad(300, 200, 650, 500, this, new Color(25,25,25, 100)));
-
+        addElement(new Button(200, 200, FontRenderer.normalFont.getWidth("New Game"), 40, this,"New Game", Core.title, n -> Core.packetProcessor.queuePacket(new CNewLobby("Test"))));
+        addElement(new Button(200, 250, FontRenderer.normalFont.getWidth("Refresh"), 40, this,"Refresh", Core.title, n -> Core.packetProcessor.queuePacket(new CLobby())));
     }
 
 

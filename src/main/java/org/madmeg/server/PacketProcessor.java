@@ -2,6 +2,7 @@ package org.madmeg.server;
 
 import org.jasypt.util.text.StrongTextEncryptor;
 import org.madmeg.networking.Packet;
+import org.madmeg.networking.processor.packets.CNewLobby;
 import org.madmeg.server.packets.*;
 
 import java.io.BufferedReader;
@@ -141,6 +142,7 @@ public final class PacketProcessor {
 
         if((!packetHead.equals("CPing") && !packetHead.equals("CConnect") && !packetHead.equals("CAuth") && !packetHead.equals("CRegister")) && (token.equals("null") || username.equals("null")))return;
 
+        Client client = findClient(username);
 
         switch (packetHead) {
             case "CPing" -> {
@@ -156,6 +158,8 @@ public final class PacketProcessor {
                 sendPacket(new SRegister(sData), socket, uuid);
             }case "CLobby" ->{
                 sendPacket(new SLobby(), socket, uuid);
+            }case "CNewLobby" -> {
+                sendPacket(new SNewLobby(client, sData[4]), socket, uuid);
             }
         }
     }
