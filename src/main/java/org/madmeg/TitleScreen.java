@@ -1,5 +1,6 @@
 package org.madmeg;
 
+import org.madmeg.RPSGame.Game;
 import org.madmeg.engine.Profile;
 import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.elements.Color;
@@ -10,11 +11,8 @@ import org.madmeg.engine.event.events.MouseClickEvent;
 import org.madmeg.engine.event.events.RenderEvent;
 import org.madmeg.engine.render.font.FontRenderer;
 import org.madmeg.networking.Auth;
-import org.madmeg.networking.processor.packets.CRegister;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.elements.*;
-
-import java.util.Arrays;
 
 /**
  * @author Madmegsox1
