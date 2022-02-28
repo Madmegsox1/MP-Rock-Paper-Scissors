@@ -91,6 +91,14 @@ public final class TitleScreen extends Gui {
                 Core.btnTexture,
                 n -> Core.getUiManager().setCurrentGui(new Credits())));
 
+        addElement(new Button(Profile.Display.WIDTH / 2 + 140, 550,
+                260,
+                60,
+                this,
+                "Test The Game",
+                Core.btnTexture,
+                n -> Core.getUiManager().setCurrentGui(new Game())));
+
         //addElement(new ComboBox(500, 500, this, Profile.Colors.navyBlue, Color.WHITE, FontRenderer.normalFont, Arrays.asList("test", "test1", "test2", "test3")));
 
     }
