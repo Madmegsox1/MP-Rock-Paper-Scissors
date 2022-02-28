@@ -56,18 +56,6 @@ public final class TitleScreen extends Gui {
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth("RPS-101") / 2, 40, this, FontRenderer.titleFont, "RPS-101", Profile.Colors.lighterTealSand));
 
 
-//
-        //menu page - will remove button and load when user logs in
-        addElement(new Button(30, 100,
-                140,
-                60,
-                this,
-                "Menu",
-                Core.btnTexture,
-                n -> Core.getUiManager().setCurrentGui(new Menu())));
-//
-
-
         //user inputs
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Username") / 2, 200, this, FontRenderer.normalFont, "Username", Profile.Colors.navyBlue));
         addElement(username = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 250, 280, 40, this, Profile.Colors.navyBlue, Profile.Colors.tealSand, "", FontRenderer.normalFont));
@@ -84,7 +72,7 @@ public final class TitleScreen extends Gui {
 
 
 
-        //settings page  -  also add to menu so don't have to log out to change settings
+        //settings page
         addElement(new Button(Profile.Display.WIDTH / 2  - 140, 550,
                 140,
                 60,
@@ -103,7 +91,7 @@ public final class TitleScreen extends Gui {
                 Core.btnTexture,
                 n -> Core.getUiManager().setCurrentGui(new Credits())));
 
-        addElement(new ComboBox(500, 500, this, Profile.Colors.navyBlue, Color.WHITE, FontRenderer.normalFont, Arrays.asList("test", "test1", "test2", "test3")));
+        //addElement(new ComboBox(500, 500, this, Profile.Colors.navyBlue, Color.WHITE, FontRenderer.normalFont, Arrays.asList("test", "test1", "test2", "test3")));
 
     }
 

@@ -40,6 +40,28 @@ public final class Hub extends Gui {
         addElement(new Quad(300, 200, 650, 500, this, new Color(25,25,25, 100)));
         addElement(new Button(200, 200, FontRenderer.normalFont.getWidth("New Game"), 40, this,"New Game", Core.title, n -> Core.packetProcessor.queuePacket(new CNewLobby("Test"))));
         addElement(new Button(200, 250, FontRenderer.normalFont.getWidth("Refresh"), 40, this,"Refresh", Core.title, n -> Core.packetProcessor.queuePacket(new CLobby())));
+
+
+        //settings page  -  also add to menu so don't have to log out to change settings
+        addElement(new Button(Profile.Display.WIDTH / 2  - 140, 550,
+                140,
+                60,
+                this,
+                "Settings",
+                Core.btnTexture,
+                n -> Core.getUiManager().setCurrentGui(new Settings())));
+
+
+        //back button
+        addElement(new Button(Profile.Display.WIDTH / 2 , 550,
+                140,
+                60,
+                this,
+                "Back",
+                Core.btnTexture,
+                n -> Core.getUiManager().setCurrentGui(new TitleScreen()))); //log out aswell
+
+
     }
 
 
