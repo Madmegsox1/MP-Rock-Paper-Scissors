@@ -4,7 +4,6 @@ import com.google.gson.*;
 
 import java.io.*;
 import java.lang.reflect.Field;
-import java.util.Objects;
 
 public final class Database {
 
@@ -97,14 +96,5 @@ public final class Database {
                 default -> System.out.println("Unknown datatype from json DB " + modelToLoad.getClass().getName() + " skipping...");
             }
         }
-
-
-
     }
-
-
-
-
-
-
 }

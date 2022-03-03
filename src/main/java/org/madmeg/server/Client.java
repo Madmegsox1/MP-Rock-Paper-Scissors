@@ -1,5 +1,7 @@
 package org.madmeg.server;
 
+import org.madmeg.server.models.Lobby;
+
 import java.util.Objects;
 
 /**
@@ -12,6 +14,7 @@ public final class Client {
     public String username;
     public boolean loggedIn;
     public String token;
+    public Lobby lobby;
 
 
     public Client(String uuid, String username){
@@ -19,6 +22,7 @@ public final class Client {
         this.username = username;
         this.loggedIn = false;
         this.token = "null";
+        this.lobby = null;
     }
 
     public boolean isLoggedIn() {

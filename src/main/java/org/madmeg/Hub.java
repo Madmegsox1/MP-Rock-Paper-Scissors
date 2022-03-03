@@ -7,6 +7,7 @@ import org.madmeg.engine.event.events.RenderEvent;
 import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.font.FontRenderer;
+import org.madmeg.networking.processor.packets.CJoinLobby;
 import org.madmeg.networking.processor.packets.CLobby;
 import org.madmeg.networking.processor.packets.CNewLobby;
 import org.madmeg.server.models.Lobby;
@@ -38,7 +39,10 @@ public final class Hub extends Gui {
         addElement(new Quad(485, 20, 300,100, this, Core.title));
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth( "Hub") / 2, 40, this, FontRenderer.titleFont, "Hub", Profile.Colors.lighterTealSand));
         addElement(new Quad(300, 200, 650, 500, this, new Color(25,25,25, 100)));
-        addElement(new Button(200, 200, FontRenderer.normalFont.getWidth("New Game"), 40, this,"New Game", Core.title, n -> Core.packetProcessor.queuePacket(new CNewLobby("Test"))));
+        addElement(new Button(200, 200, FontRenderer.normalFont.getWidth("New Game"), 40, this,"New Game", Core.title, n -> {
+            Core.packetProcessor.queuePacket(new CNewLobby("Test"));
+            Core.packetProcessor.queuePacket(new CLobby());
+        }));
         addElement(new Button(200, 250, FontRenderer.normalFont.getWidth("Refresh"), 40, this,"Refresh", Core.title, n -> Core.packetProcessor.queuePacket(new CLobby())));
 
 
@@ -78,8 +82,23 @@ public final class Hub extends Gui {
         }else {
             int y = 210;
             for(Lobby l : lobbies){
+                if(l.button == null){
+                    l.button = new Button(
+                            FontRenderer.buttonFont.getWidth(l.id + " | " + l.name + " | " + l.hostName + " | " + l.full) + 310 + 20,
+                            y + 4,
+                            FontRenderer.buttonFont.getWidth("Join") + 4,
+                            14,
+                            this,
+                            "Join",
+                            Color.BLACK,
+                            n -> Core.packetProcessor.queuePacket(new CJoinLobby(l.id)));
+
+                }
+
                 FontRenderer.buttonFont.drawText(l.id + " | " + l.name + " | " + l.hostName + " | " + l.full, 310, y);
                 y += FontRenderer.buttonFont.getHeight("|") + 4;
+                l.button.render(event);
+
             }
         }
     }
@@ -87,6 +106,9 @@ public final class Hub extends Gui {
     @Override
     public void mouseClick(MouseClickEvent event) {
         passEvents(event);
+        for(Lobby l : lobbies){
+            l.button.mouseClick(event);
+        }
     }
 
     @Override

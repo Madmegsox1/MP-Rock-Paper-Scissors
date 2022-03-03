@@ -3,6 +3,7 @@ package org.madmeg.server;
 import org.jasypt.util.text.StrongTextEncryptor;
 import org.madmeg.networking.Packet;
 import org.madmeg.networking.processor.packets.CNewLobby;
+import org.madmeg.server.models.Lobby;
 import org.madmeg.server.packets.*;
 
 import java.io.BufferedReader;
@@ -160,6 +161,13 @@ public final class PacketProcessor {
                 sendPacket(new SLobby(), socket, uuid);
             }case "CNewLobby" -> {
                 sendPacket(new SNewLobby(client, sData[4]), socket, uuid);
+            }case "CJoinLobby" -> {
+                for(final Lobby l : Server.lobbies){
+                    if(l.id == Integer.parseInt(sData[4])){
+                        sendPacket(new SJoinLobby(l, client), socket, uuid);
+                        break;
+                    }
+                }
             }
         }
     }

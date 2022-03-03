@@ -12,7 +12,6 @@ import org.madmeg.networking.processor.packets.CConnect;
 import org.madmeg.networking.processor.packets.CRegister;
 import org.madmeg.server.models.Lobby;
 import org.madmeg.server.packets.SConnect;
-import org.madmeg.server.packets.SLobby;
 import org.madmeg.server.packets.SPing;
 
 import java.io.*;
@@ -28,6 +27,9 @@ public final class PacketProcessor extends Thread {
     public static long lastPacketTime;
     public static long ping;
 
+
+    public static Lobby currentGame;
+
     public static Queue<Packet> packetQueue;
 
     private String uuid;
@@ -39,6 +41,7 @@ public final class PacketProcessor extends Thread {
     public PacketProcessor() {
         events = new ArrayList<>();
         packetQueue = new LinkedList<>();
+        currentGame = null;
         this.start();
     }
 
@@ -211,6 +214,16 @@ public final class PacketProcessor extends Thread {
                         final Lobby l = new Lobby(Integer.parseInt(lobbyData[0]), lobbyData[1], lobbyData[2]);
                         l.full = (lobbyData[3].equals("closed"));
                         Hub.lobbies.add(l);
+                    }
+                }
+            }case "SJoinLobby" -> {
+                if(data[1].equals("success")){
+                    int id = Integer.parseInt(data[2]);
+                    for(Lobby l : Hub.lobbies){
+                        if(l.id == id){
+                            currentGame = l;
+                            break;
+                        }
                     }
                 }
             }
