@@ -5,6 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.madmeg.Core;
+import org.madmeg.TitleScreen;
 import org.madmeg.engine.Profile;
 import org.madmeg.engine.event.events.KeyEvent;
 import org.madmeg.engine.event.events.MouseClickEvent;
@@ -66,6 +67,15 @@ public class Game extends Gui {
 
 
                 }));
+
+        //back button
+        addElement(new Button(Profile.Display.WIDTH / 2 - FontRenderer.buttonFont.getWidth("Back") / 2, Profile.Display.HEIGHT-100,
+                80,
+                40,
+                this,
+                "Back",
+                Core.btnTexture,
+                n -> Core.getUiManager().setCurrentGui(new TitleScreen())));
 //https://www.delftstack.com/howto/java/java-get-json-from-url/
     }
 

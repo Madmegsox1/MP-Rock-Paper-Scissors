@@ -11,13 +11,13 @@ import org.madmeg.engine.render.font.FontRenderer;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.elements.*;
 
+import java.util.Arrays;
+
 
 /**
  * @author JLey21
  * @since 15/02/2022
  */
-
-//josh is making a toggle switch to use for settings.
 
 public final class Settings extends Gui {
 
@@ -52,6 +52,10 @@ public final class Settings extends Gui {
         addElement(new Switch(Profile.Display.WIDTH / 2 - 25, 275, Profile.Colors.navyBlue, Profile.Colors.white, this, Core.getFileManager().getConfig().isAntiAliasing(), n ->  {
             Core.getFileManager().getConfig().setAntiAliasing(n);
         }));
+
+        //clickable button
+        addElement(new ComboBox(500, 500, this, Profile.Colors.navyBlue, Color.WHITE, FontRenderer.normalFont, Arrays.asList("test", "test1", "test2", "test3")));
+
 
         //back button
         addElement(new Button(Profile.Display.WIDTH / 2 - FontRenderer.buttonFont.getWidth("Back") / 2, Profile.Display.HEIGHT-100,
