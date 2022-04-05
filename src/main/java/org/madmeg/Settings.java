@@ -40,10 +40,21 @@ public final class Settings extends Gui {
         addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(2).getWidth("Comic Sans") / 2, 200, this, Core.getFontRenderer().fonts.get(2), "Comic Sans", Profile.Colors.navyBlue));
         addElement(new Switch(Profile.Display.WIDTH / 2 - 25, 225, Profile.Colors.navyBlue, Profile.Colors.white, this, Core.getFileManager().getConfig().isComicSans(), n ->  {
             if(n) {
-                FontRenderer.titleFont = (new Font(new java.awt.Font("Comic Sans MS", java.awt.Font.BOLD,50), true));
+                //comic sans
+                FontRenderer.titleFont = (new Font(new java.awt.Font("Comic Sans MS", java.awt.Font.BOLD,40), true));
                 Core.getFileManager().getConfig().setComicSans(true);
+                FontRenderer.normalFont = (new Font(new java.awt.Font("Comic Sans MS", java.awt.Font.PLAIN,30), true));
+                Core.getFileManager().getConfig().setComicSans(true);
+                FontRenderer.buttonFont = (new Font(new java.awt.Font("Comic Sans MS", java.awt.Font.PLAIN,20), true));
+                Core.getFileManager().getConfig().setComicSans(true);
+
             } else {
+                //impact
                 FontRenderer.titleFont = (new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));
+                Core.getFileManager().getConfig().setComicSans(false);
+                FontRenderer.normalFont = (new Font(new java.awt.Font("impact", java.awt.Font.PLAIN,30), true));
+                Core.getFileManager().getConfig().setComicSans(false);
+                FontRenderer.buttonFont = (new Font(new java.awt.Font("impact", java.awt.Font.PLAIN,20), true));
                 Core.getFileManager().getConfig().setComicSans(false);
             }
         }));

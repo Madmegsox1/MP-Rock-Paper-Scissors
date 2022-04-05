@@ -76,6 +76,7 @@ public class Game extends Gui {
                 "Back",
                 Core.btnTexture,
                 n -> Core.getUiManager().setCurrentGui(new TitleScreen())));
+
 //https://www.delftstack.com/howto/java/java-get-json-from-url/
     }
 
