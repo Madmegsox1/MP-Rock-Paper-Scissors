@@ -3,6 +3,7 @@ package org.madmeg.networking.processor;
 import org.jasypt.util.text.StrongTextEncryptor;
 import org.madmeg.Core;
 import org.madmeg.Hub;
+import org.madmeg.Menu;
 import org.madmeg.TitleScreen;
 import org.madmeg.engine.event.processor.Event;
 import org.madmeg.engine.render.elements.Color;
@@ -188,7 +189,7 @@ public final class PacketProcessor extends Thread {
                     this.token = data[2];
                     TitleScreen.feedback.color = new Color(0, 255, 0);
                     TitleScreen.feedback.updateText("Welcome " + username + "!");
-                    Core.getUiManager().setCurrentGui(new Hub());
+                    Core.getUiManager().setCurrentGui(new Menu());
                 }else {
                     this.token = "null";
                     TitleScreen.feedback.color = new Color(255, 0, 0);

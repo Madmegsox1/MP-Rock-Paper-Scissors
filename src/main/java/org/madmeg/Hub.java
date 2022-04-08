@@ -63,7 +63,7 @@ public final class Hub extends Gui {
                 this,
                 "Back",
                 Core.btnTexture,
-                n -> Core.getUiManager().setCurrentGui(new TitleScreen()))); //log out aswell
+                n -> Core.getUiManager().setCurrentGui(new Menu())));
 
 
     }

@@ -1,5 +1,6 @@
 package org.madmeg;
 
+import org.madmeg.RPSGame.Game;
 import org.madmeg.engine.Profile;
 import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.font.FontRenderer;
@@ -34,9 +35,25 @@ public final class Menu extends Gui {
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth(" RPS-101") / 2, 40, this, FontRenderer.titleFont, "RPS-101", Profile.Colors.lighterTealSand));
 
         //sub-title
-        addElement(new Label(Profile.Display.WIDTH / 2 - Core.getFontRenderer().fonts.get(1).getWidth("Menu") / 2, 120, this, FontRenderer.titleFont, "Menu", Profile.Colors.navyBlue));
+        addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth("Menu") / 2, 120, this, FontRenderer.titleFont, "Menu", Profile.Colors.navyBlue));
 
-        //
+        //game button
+        addElement(new Button(Profile.Display.WIDTH / 2 - 260 / 2, 200,
+                260,
+                60,
+                this,
+                "Test The Game",
+                Core.btnTexture,
+                n -> Core.getUiManager().setCurrentGui(new Game())));
+
+        //hub button
+        addElement(new Button(Profile.Display.WIDTH / 2 - 260 / 2, 300,
+                260,
+                60,
+                this,
+                "Hub",
+                Core.btnTexture,
+                n -> Core.getUiManager().setCurrentGui(new Hub())));
 
 
         //back button

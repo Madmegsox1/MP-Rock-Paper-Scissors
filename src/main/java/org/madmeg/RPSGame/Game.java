@@ -5,6 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.madmeg.Core;
+import org.madmeg.Menu;
 import org.madmeg.TitleScreen;
 import org.madmeg.engine.Profile;
 import org.madmeg.engine.event.events.KeyEvent;
@@ -26,6 +27,8 @@ import java.text.MessageFormat;
 public class Game extends Gui {
 
     public Game(){
+        //page name
+        Core.getDisplay().setTitle("RPS-101 | Game");
 
         addElement(new Background(Core.BgTexture, this));
 
@@ -75,7 +78,7 @@ public class Game extends Gui {
                 this,
                 "Back",
                 Core.btnTexture,
-                n -> Core.getUiManager().setCurrentGui(new TitleScreen())));
+                n -> Core.getUiManager().setCurrentGui(new Menu())));
 
 //https://www.delftstack.com/howto/java/java-get-json-from-url/
     }

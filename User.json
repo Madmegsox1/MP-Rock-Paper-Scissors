@@ -13,5 +13,15 @@
     "username": "FSNCryo",
     "hashedPassword": "e6ca941b1d3c5057ed8851b18374ab5b23ad643ac79957243b887311aec4f8b4",
     "token": "lAwlUQiPiXdJE1ZIFEuVqcPEaMSlT4wiuvvWFrmRDxU\u003d"
+  },
+  "user123": {
+    "username": "user123",
+    "hashedPassword": "e606e38b0d8c19b24cf0ee3808183162ea7cd63ff7912dbb22b5e803286b4446",
+    "token": "erRh1Z8pLLQWnzNFnp8rcWljYjpb8NKqfWn7obJ5Alg\u003d"
+  },
+  "test123": {
+    "username": "test123",
+    "hashedPassword": "ecd71870d1963316a97e3ac3408c9835ad8cf0f3c1bc703527c30265534f75ae",
+    "token": "JAo2K5btPQDKJxAQcSb0DM+56+Rzpy+LhsEHVyL7v4E\u003d"
   }
 }

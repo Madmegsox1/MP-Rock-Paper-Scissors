@@ -61,7 +61,7 @@ public final class TitleScreen extends Gui {
         //change password to display * instead of text
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.normalFont.getWidth("Password") / 2, 300, this, FontRenderer.normalFont, "Password", Profile.Colors.navyBlue));
         addElement(password = new Input(Profile.Display.WIDTH / 2  - 280 / 2, 350, 280, 40, this, Profile.Colors.navyBlue, Profile.Colors.tealSand, "", FontRenderer.normalFont));
-
+        //add a show password button
 
         addElement(feedback = new Label(Profile.Display.WIDTH / 2, 460, this, FontRenderer.normalFont, "", new Color(255, 0,0)));
 
@@ -88,16 +88,6 @@ public final class TitleScreen extends Gui {
                 "Credits",
                 Core.btnTexture,
                 n -> Core.getUiManager().setCurrentGui(new Credits())));
-
-        addElement(new Button(Profile.Display.WIDTH / 2 + 140, 550,
-                260,
-                60,
-                this,
-                "Test The Game",
-                Core.btnTexture,
-                n -> Core.getUiManager().setCurrentGui(new Game())));
-
-        //addElement(new ComboBox(500, 500, this, Profile.Colors.navyBlue, Color.WHITE, FontRenderer.normalFont, Arrays.asList("test", "test1", "test2", "test3")));
 
     }
 
