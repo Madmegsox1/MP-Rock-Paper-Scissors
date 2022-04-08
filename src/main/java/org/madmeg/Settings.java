@@ -84,9 +84,7 @@ public final class Settings extends Gui {
         }));
 
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.buttonFont.getWidth("Anti Aliasing") / 2, 255, this, FontRenderer.buttonFont, "Anti Aliasing", Profile.Colors.navyBlue));
-        addElement(new Switch(Profile.Display.WIDTH / 2 - 25, 280, Profile.Colors.navyBlue, Profile.Colors.white, this, Core.getFileManager().getConfig().isAntiAliasing(), n ->  {
-            Core.getFileManager().getConfig().setAntiAliasing(n);
-        }));
+        addElement(new Switch(Profile.Display.WIDTH / 2 - 25, 280, Profile.Colors.navyBlue, Profile.Colors.white, this, Core.getFileManager().getConfig().isAntiAliasing(), n -> Core.getFileManager().getConfig().setAntiAliasing(n)));
 
         //back button
         addElement(new Button(Profile.Display.WIDTH / 2 - FontRenderer.buttonFont.getWidth("Back") / 2, Profile.Display.HEIGHT-100,
