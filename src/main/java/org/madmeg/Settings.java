@@ -5,14 +5,14 @@ import org.madmeg.engine.event.events.KeyEvent;
 import org.madmeg.engine.event.events.MouseClickEvent;
 import org.madmeg.engine.event.events.RenderEvent;
 import org.madmeg.engine.render.elements.Color;
-import org.madmeg.engine.render.elements.Texture;
 import org.madmeg.engine.render.font.Font;
 import org.madmeg.engine.render.font.FontRenderer;
-import org.madmeg.ui.Element;
 import org.madmeg.ui.Gui;
 import org.madmeg.ui.elements.*;
 
 import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicInteger;
+
 
 
 /**
@@ -23,6 +23,8 @@ import java.util.Arrays;
 public final class Settings extends Gui {
 
     public Settings(){
+        AtomicInteger count = new AtomicInteger();
+        count.set(-1);
 
         //page name
         Core.getDisplay().setTitle("RPS-101 | Settings");
@@ -39,45 +41,45 @@ public final class Settings extends Gui {
 
         //Settings button - will change buttons to toggle switches when made
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.buttonFont.getWidth("Font") / 2, 200, this, FontRenderer.buttonFont, "Font", Profile.Colors.navyBlue));
-        addElement(new ComboBox(Profile.Display.WIDTH / 2 - FontRenderer.buttonFont.getWidth("Comic Sans MS") / 2, 225, this, Profile.Colors.navyBlue, Color.WHITE, FontRenderer.buttonFont, Arrays.asList("        Impact        ", "Comic Sans MS", "       Curlz MT       ", "       Papyrus       ")));
-
-
-        addElement(new Switch(Profile.Display.WIDTH / 2 - 25, 500, Profile.Colors.navyBlue, Profile.Colors.white, this, Core.getFileManager().getConfig().isComicSans(), n ->  {
-            if(n) {
+        addElement(new ComboBox(Profile.Display.WIDTH / 2 - 125 / 2, 225, 125, 25, this, Profile.Colors.navyBlue, Color.WHITE, FontRenderer.buttonFont, Arrays.asList("        Impact        ", "Comic Sans MS", "       Curlz MT       ", "       Papyrus       "), n ->  {
+            count.set(count.get() + 1);
+            System.out.println(count.get());
+            if (count.get() == 1) {
+                //impact
+                FontRenderer.titleFont = (new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));
+                //Core.getFileManager().getConfig().setComicSans(false);
+                FontRenderer.normalFont = (new Font(new java.awt.Font("impact", java.awt.Font.PLAIN,30), true));
+                //Core.getFileManager().getConfig().setComicSans(false);
+                FontRenderer.buttonFont = (new Font(new java.awt.Font("impact", java.awt.Font.PLAIN,20), true));
+                //Core.getFileManager().getConfig().setComicSans(false);
+            }
+            if (count.get() == 2) {
                 //comic sans
                 FontRenderer.titleFont = (new Font(new java.awt.Font("Comic Sans MS", java.awt.Font.BOLD,40), true));
-                Core.getFileManager().getConfig().setComicSans(true);
+                //Core.getFileManager().getConfig().setComicSans(true);
                 FontRenderer.normalFont = (new Font(new java.awt.Font("Comic Sans MS", java.awt.Font.PLAIN,30), true));
-                Core.getFileManager().getConfig().setComicSans(true);
+                //Core.getFileManager().getConfig().setComicSans(true);
                 FontRenderer.buttonFont = (new Font(new java.awt.Font("Comic Sans MS", java.awt.Font.PLAIN,20), true));
-                Core.getFileManager().getConfig().setComicSans(true);
-
-            } //else {
-                //impact
-                //FontRenderer.titleFont = (new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));
-                //Core.getFileManager().getConfig().setComicSans(false);
-                //FontRenderer.normalFont = (new Font(new java.awt.Font("impact", java.awt.Font.PLAIN,30), true));
-                //Core.getFileManager().getConfig().setComicSans(false);
-                //FontRenderer.buttonFont = (new Font(new java.awt.Font("impact", java.awt.Font.PLAIN,20), true));
-              //  Core.getFileManager().getConfig().setComicSans(false);
-            //}
-            //else {
+                //Core.getFileManager().getConfig().setComicSans(true);
+            }
+            if (count.get() == 3) {
                 //Curlz MT
-              //  FontRenderer.titleFont = (new Font(new java.awt.Font("Curlz MT", java.awt.Font.BOLD,50), true));
-               // Core.getFileManager().getConfig().setComicSans(false);
-                //FontRenderer.normalFont = (new Font(new java.awt.Font("Curlz MT", java.awt.Font.PLAIN,30), true));
+                FontRenderer.titleFont = (new Font(new java.awt.Font("Curlz MT", java.awt.Font.BOLD,50), true));
                 //Core.getFileManager().getConfig().setComicSans(false);
-                //FontRenderer.buttonFont = (new Font(new java.awt.Font("Curlz MT", java.awt.Font.PLAIN,20), true));
+                FontRenderer.normalFont = (new Font(new java.awt.Font("Curlz MT", java.awt.Font.PLAIN,30), true));
                 //Core.getFileManager().getConfig().setComicSans(false);
-            //}
-            else {
+                FontRenderer.buttonFont = (new Font(new java.awt.Font("Curlz MT", java.awt.Font.PLAIN,20), true));
+                //Core.getFileManager().getConfig().setComicSans(false);
+            }
+            if (count.get() == 4) {
                 //papyrus
                 FontRenderer.titleFont = (new Font(new java.awt.Font("papyrus", java.awt.Font.BOLD,50), true));
-                Core.getFileManager().getConfig().setComicSans(false);
+                //Core.getFileManager().getConfig().setComicSans(false);
                 FontRenderer.normalFont = (new Font(new java.awt.Font("papyrus", java.awt.Font.PLAIN,30), true));
-                Core.getFileManager().getConfig().setComicSans(false);
+                //Core.getFileManager().getConfig().setComicSans(false);
                 FontRenderer.buttonFont = (new Font(new java.awt.Font("papyrus", java.awt.Font.PLAIN,20), true));
-                Core.getFileManager().getConfig().setComicSans(false);
+                //Core.getFileManager().getConfig().setComicSans(false);
+                count.set(0);
             }
         }));
 
