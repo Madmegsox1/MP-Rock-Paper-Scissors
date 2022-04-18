@@ -24,20 +24,21 @@ import java.io.IOException;
 
 
 /**
- * @author Madmegsox1
- * @author JLey21
  *
  * Rock, Paper, Scissors Game
  *
- * * * * Please add your own author tags
+ * Please add your own author tags
  *
  * JDK 16 required
+ *
+ * @author Madmegsox1
+ * @author JLey21
  *
  */
 
 public final class Core extends Engine {
 
-    public Gui overlay = null;
+    public static Gui overlay = null;
     public static PacketProcessor packetProcessor;
 
     public static Texture BgTexture;
@@ -73,9 +74,6 @@ public final class Core extends Engine {
 
 
         fontRenderer = new FontRenderer(new Font());
-        //FontRenderer.titleFont = (new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));
-        //FontRenderer.normalFont = (new Font(new java.awt.Font("impact", java.awt.Font.PLAIN,30), true));
-        //FontRenderer.buttonFont = new Font();
 
         //default font
         FontRenderer.titleFont = (new Font(new java.awt.Font("impact", java.awt.Font.BOLD,50), true));

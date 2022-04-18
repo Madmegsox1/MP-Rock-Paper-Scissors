@@ -4,7 +4,6 @@ import org.madmeg.engine.Profile;
 import org.madmeg.engine.event.events.KeyEvent;
 import org.madmeg.engine.event.events.MouseClickEvent;
 import org.madmeg.engine.event.events.RenderEvent;
-import org.madmeg.engine.render.RenderEngine;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.engine.render.font.FontRenderer;
 import org.madmeg.networking.processor.packets.CJoinLobby;
@@ -27,6 +26,7 @@ import java.util.ArrayList;
 public final class Hub extends Gui {
 
     public static ArrayList<Lobby> lobbies = new ArrayList<>();
+    public static Label label;
 
     public Hub(){
 
@@ -38,6 +38,7 @@ public final class Hub extends Gui {
 
         addElement(new Quad(485, 20, 300,100, this, Core.title));
         addElement(new Label(Profile.Display.WIDTH / 2 - FontRenderer.titleFont.getWidth( "Hub") / 2, 40, this, FontRenderer.titleFont, "Hub", Profile.Colors.lighterTealSand));
+        addElement(label = new Label(Profile.Display.WIDTH/2 - FontRenderer.normalFont.getWidth("Failed") / 2, 100, this, FontRenderer.normalFont, "", Color.BLACK));
         addElement(new Quad(300, 200, 650, 500, this, new Color(25,25,25, 100)));
         addElement(new Button(200, 200, FontRenderer.normalFont.getWidth("New Game"), 40, this,"New Game", Core.title, n -> {
             Core.packetProcessor.queuePacket(new CNewLobby("Test"));
@@ -81,7 +82,7 @@ public final class Hub extends Gui {
             FontRenderer.normalFont.drawText("No lobby's open!", Profile.Display.WIDTH / 2f - FontRenderer.normalFont.getWidth("No lobby's open!") / 2f, 220);
         }else {
             int y = 210;
-            for(Lobby l : lobbies){
+            for(final Lobby l : lobbies){
                 if(l.button == null){
                     l.button = new Button(
                             FontRenderer.buttonFont.getWidth(l.id + " | " + l.name + " | " + l.hostName + " | " + l.full) + 310 + 20,

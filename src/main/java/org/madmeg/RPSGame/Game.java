@@ -64,8 +64,6 @@ public class Game extends Gui {
                         winnerLabel.text = (winner.toUpperCase()+" WINS!    " + winner.toLowerCase()+" "+outcome.toLowerCase()+" "+loser.toLowerCase()).replaceAll("\"|\"", "");
 
                     } catch (Exception e) {
-
-                        e.printStackTrace();
                     }
 
 

@@ -1,10 +1,7 @@
 package org.madmeg.networking.processor;
 
 import org.jasypt.util.text.StrongTextEncryptor;
-import org.madmeg.Core;
-import org.madmeg.Hub;
-import org.madmeg.Menu;
-import org.madmeg.TitleScreen;
+import org.madmeg.*;
 import org.madmeg.engine.event.processor.Event;
 import org.madmeg.engine.render.elements.Color;
 import org.madmeg.networking.Packet;
@@ -13,6 +10,8 @@ import org.madmeg.networking.processor.packets.CConnect;
 import org.madmeg.networking.processor.packets.CRegister;
 import org.madmeg.server.models.Lobby;
 import org.madmeg.server.packets.SConnect;
+import org.madmeg.server.packets.SLobby;
+import org.madmeg.server.packets.SNewLobby;
 import org.madmeg.server.packets.SPing;
 
 import java.io.*;
@@ -156,6 +155,11 @@ public final class PacketProcessor extends Thread {
             System.out.println("Closed connection with server");
             currentSocket = null;
         }catch (ConnectException e){
+
+            if(!(Core.overlay instanceof NetworkError)){
+                Core.overlay = new NetworkError();
+            }
+
             System.out.println("Connection refused from server!");
             Core.running = false;
         }
@@ -216,6 +220,10 @@ public final class PacketProcessor extends Thread {
                         l.full = (lobbyData[3].equals("closed"));
                         Hub.lobbies.add(l);
                     }
+                }
+            }case "SNewLobby" -> {
+                if(!data[1].equals("success")){
+                    Hub.label.updateText("failed");
                 }
             }case "SJoinLobby" -> {
                 if(data[1].equals("success")){

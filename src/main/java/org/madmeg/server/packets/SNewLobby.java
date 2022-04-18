@@ -13,7 +13,13 @@ import org.madmeg.server.models.Lobby;
 public final class SNewLobby extends Packet {
     public SNewLobby(Client c, String name){
         super("SNewLobby");
-        for(Lobby l : Server.lobbies){
+
+        if(Server.lobbies.size() > 6){
+            appendData("full");
+            return;
+        }
+
+        for(final Lobby l : Server.lobbies){
             if(l.host == null)continue;
             if(l.host.uuid.equals(c.uuid)){
                 appendData("failed");
